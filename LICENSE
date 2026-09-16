@@ -1,0 +1,26 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+This repository is a derivative work of the EBA Fraud Taxonomy, Version 7.0
+(3 June 2026), which is © Euro Banking Association (EBA) 2026 and licensed by
+the Euro Banking Association under CC BY 4.0. The taxonomy content in
+taxonomy.json is attributed to the Euro Banking Association.
+
+The additional material in this repository (JSON structure, identifier codes,
+lineage records, schema.json, scripts and documentation) is voluntary work by
+users of the taxonomy, prepared for the Euro Banking Association, and is
+likewise made available under CC BY 4.0, attributed to its contributors.
+
+Changes made to the source material are described in README.md under
+"Changes made". Individual definitions quoted by the EBA from third-party
+sources remain the property of their respective authors and are cited in
+taxonomy.json with source and source_url.
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, provide a link to the
+licence, and indicate if changes were made.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+This repository is not an EBA publication. The EBA's PDF is the sole
+authoritative version of the taxonomy.

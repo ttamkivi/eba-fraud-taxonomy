@@ -1,0 +1,13 @@
+{
+  "taxonomy_version": "7.0",
+  "method_code": "M09",
+  "method": "Phone contact",
+  "modus_code": "D001",
+  "modus": "Safe account fraud",
+  "initiator_code": "I01",
+  "initiator": "Customer",
+  "labels_tags_codes": ["L021", "L037"],
+  "labels_tags": ["Fake bank / financial institution", "Impersonation"],
+  "payment_instrument_code": "P01",
+  "payment_instrument": "Account-to-account transaction"
+}

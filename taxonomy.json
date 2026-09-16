@@ -1,0 +1,1538 @@
+{
+  "taxonomy": "EBA Fraud Taxonomy",
+  "version": "7.0",
+  "published": "2026-06-03",
+  "effective_from": "2027-01-01",
+  "publisher": "Euro Banking Association (EBA)",
+  "publisher_body": "Expert Group on Payment Fraud-related Topics (EGPF), created by the EBA in February 2020",
+  "classification": "Public",
+  "license": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "usage_conditions": [
+      "Acknowledge the review and updating process and the expectation that updated versions are implemented effective 1 January following an annual review cycle, save emergency updates.",
+      "Adhere to the objective of a common pan-European fraud vocabulary without limitation on payment instrument type."
+    ]
+  },
+  "source_document": {
+    "filename": "EBA_20260603_EBA_Fraud_Taxonomy_(Fraud_Type_Categorisation)_v7.0",
+    "note": "This JSON is a community-maintained machine-readable transcription of the official EBA Fraud Taxonomy PDF. The PDF published by the EBA is the sole authoritative source; this file is not itself an EBA publication."
+  },
+  "objectives": [
+    "Applies to both payment fraud and card fraud.",
+    "Creates a common vocabulary regarding fraud in the area of payments, building on definitions from authoritative and publicly available sources wherever possible.",
+    "Reduces the risk of overlap in the identification of fraud types, increasing the accuracy of statistics used to identify fraud trends.",
+    "Separates the contact method ('how') from the actual trick applied ('what'), supporting PSPs in developing effective fraud prevention campaigns.",
+    "Aligned with the EBA Guidelines on Fraud Reporting under PSD2.",
+    "Available to any interested party."
+  ],
+  "fraud_definition": {
+    "summary": "Fraud comprises two branches, split by who initiated the payment transaction.",
+    "branches": [
+      {
+        "name": "Unauthorised payment transactions",
+        "initiator": "fraudster",
+        "definition": "Unauthorised payment transactions made, including as a result of the loss, theft or misappropriation of sensitive payment data or a payment instrument, whether detectable or not to the payer prior to a payment and whether or not caused by gross negligence of the payer or executed in the absence of consent by the payer."
+      },
+      {
+        "name": "Manipulation of the payer",
+        "aka": "scam",
+        "initiator": "payer",
+        "definition": "Payment transactions made as a result of the payer being manipulated by the fraudster to issue a payment order, or to give the instruction to do so to the payment service provider, in good faith, to a payment account it believes belongs to a legitimate payee."
+      }
+    ],
+    "source": "Guideline 1.1, EBA/GL/2018/05 (consolidated version), Guidelines on reporting requirements for fraud data under Article 96(6) PSD2",
+    "source_url": "https://www.eba.europa.eu/sites/default/files/document_library/960425/Final%20Report%20on%20EBA%20GL%20on%20fraud%20reporting%20-%20Consolidated%20version.pdf"
+  },
+  "dimensions": {
+    "method": {
+      "label": "Method (how)",
+      "definition": "Describes the attack vector and specifies the first point of contact between the fraudster and the victim or the point of compromise.",
+      "values": [
+        {
+          "name": "Brute force",
+          "definition": "An exhaustive process to try and determine a cryptographic key, password or other secret credential by systematically trying all candidates or combinations until the correct one is discovered.",
+          "source": "Australian Cyber Security Centre 'Glossary'",
+          "source_url": "https://www.cyber.gov.au/learn-basics/view-resources/glossary/b",
+          "example": "BIN attack",
+          "code": "M01",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Data breach / theft",
+          "definition": "A data breach is a security incident in which information is accessed without authorization. Data theft is the act of stealing information stored on corporate databases, devices, and servers.",
+          "source": "Norton 'What is a data breach?' (data breach); Okta 'What is Data Theft?' (data theft)",
+          "source_url": "https://us.norton.com/internetsecurity-privacy-data-breaches-what-you-need-to-know.html",
+          "example": "Theft of customer data/credentials from a merchant database",
+          "code": "M02",
+          "source_url_2": "https://www.okta.com/blog/2020/07/data-theft/",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Email contact",
+          "definition": "The first point of contact was an e-mail message from the fraudster to the victim.",
+          "code": "M03",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake advertising",
+          "definition": "The fraudster has created advertisement, which lures victims in with false promises.",
+          "example": "Direct advertisement in the form of banners and pop-ups; fraudulent web pages created to incentivise the victim to contact the fraudster",
+          "code": "M04",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake merchant",
+          "definition": "Fake merchant websites, for example offering non-existing goods or services to harvest personal details or banking/card details (honey trap), or to make the victim initiate a payment transaction.",
+          "code": "M05",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "In person contact",
+          "definition": "The first point of contact was a person-to-person contact between the fraudster and the victim initiated by the fraudster.",
+          "code": "M06",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Malware",
+          "definition": "Malware is short for 'malicious software' and is used as a single term to refer to virus, spyware, worm etc. Malware is designed to cause damage to a stand-alone computer or a networked PC.",
+          "source": "Digicert 'What is Malware Viruses, Spyware, and Cookies?'",
+          "source_url": "https://www.digicert.com/faq/vulnerability-management/what-is-malware-viruses-spyware-and-cookies",
+          "example": "Modification of a payment order by the fraudster",
+          "code": "M07",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Online contact",
+          "definition": "Contact while connected to, served by, or available through a system and especially a computer or telecommunications system (such as the Internet). Usually initiated by the first-party fraudster with an online helpdesk or service centre at a financial institution.",
+          "source": "Merriam-Webster",
+          "source_url": "https://www.merriam-webster.com/dictionary/online#other-words",
+          "example": "Online credit card application, fraudulent disputes",
+          "code": "M08",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Phone contact",
+          "definition": "The first point of contact was a phone call by the fraudster to the victim.",
+          "code": "M09",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Physical copy",
+          "definition": "Creation of a physical duplicate or taking of a picture of a card or key card.",
+          "example": "Skimming",
+          "code": "M10",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Physical theft",
+          "definition": "Physical stealing of access credentials or device or whatever is needed to create fraud.",
+          "code": "M11",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Social media contact",
+          "definition": "The first point of contact was a message from the fraudster to the victim via a social media channel.",
+          "example": "Instagram, Facebook, Snapchat, LinkedIn",
+          "code": "M12",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Text message contact",
+          "definition": "The first point of contact was a text message from the fraudster to the victim sent through a (pure) text messaging functionality/app.",
+          "note": "Includes any form of pure text that is designed for messaging.",
+          "example": "SMS, iMessage, WhatsApp",
+          "code": "M13",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "New method",
+          "definition": "Used to register a new method of contact / attack vector not yet included in the list of methods.",
+          "is_catch_all": true,
+          "code": "M14",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        }
+      ],
+      "retired": []
+    },
+    "initiator": {
+      "label": "Initiator (who)",
+      "definition": "Describes who initiates the payment transaction affected by the fraud, i.e. the customer or the fraudster. Aligned with EBA Guidelines on Fraud Reporting under PSD2.",
+      "values": [
+        {
+          "name": "Customer",
+          "definition": "Manipulation of the payer by the fraudster to issue a payment order (payer initiates, in good faith, having been manipulated).",
+          "source": "Guideline 1.1.b, EBA/GL/2018/05",
+          "example": "Manipulation of the customer into initiating and signing off a payment order",
+          "code": "I01",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fraudster",
+          "definition": "Issuance of a payment order by the fraudster, covers both modification of a legitimate payment order in transit (e.g. man-in-the-middle) and issuance of a fake payment order after obtaining the payer/payee's sensitive payment data through fraudulent means.",
+          "source": "Guidelines 1.6.c and 1.6.d, EBA/GL/2018/05",
+          "example": "Initiation and sign-off of a payment order by the fraudster",
+          "code": "I02",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "First party",
+          "definition": "A person knowingly misrepresents their identity or gives false information for financial or material gain. Optional element, relevant in particular to card fraud.",
+          "source": "Experian 'The different types of fraud and how they're changing'",
+          "source_url": "https://www.experian.co.uk/blogs/latest-thinking/fraud-prevention/what-is-first-second-and-third-party-fraud/",
+          "example": "Fraudulent online credit card application",
+          "optional": true,
+          "code": "I03",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        }
+      ],
+      "retired": []
+    },
+    "modus": {
+      "label": "Modus (what)",
+      "definition": "Describes the unauthorised and often manipulative action taken by the fraudster and resulting in the loss of money via a payment transaction. Clustered within high-level classifications reflecting the fraudster's strategic approach.",
+      "high_level_classifications": [
+        {
+          "name": "Your money / personal information is at risk",
+          "definition": "Fraudster tricks victim into believing that an intervention is needed to keep their money / personal information safe.",
+          "modi": [
+            {
+              "name": "Safe account fraud",
+              "definition": "You'll be contacted, usually by phone, by someone claiming to be from your bank's fraud department, the police or a regulatory body. They'll say your account has been compromised and pressure you to transfer all your money from your bank to a 'safe account' they control. Alternatively/additionally, could result in the victim handing over account credentials, a physical/virtual card or card details, and/or completing authentication steps to access the account and/or sign off payment transactions.",
+              "source": "MoneyHelper 'Types of Scams'",
+              "source_url": "https://www.moneyhelper.org.uk/en/money-troubles/scams/types-of-scam",
+              "possible_labels_tags": [
+                "Fake bank / financial institution",
+                "Fake police",
+                "Impersonation"
+              ],
+              "code": "D001",
+              "group_code": "G01",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Stop unauthorised transaction fraud",
+              "definition": "The fraudster impersonates a representative of a payment service provider, law enforcement, or a public authority. The fraudster tells the PSP's customer that an unauthorised transaction can be blocked by giving out authentication codes and/or signing off transactions and/or sending money.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Fake bank / financial institution",
+                "Fake police",
+                "Impersonation"
+              ],
+              "code": "D002",
+              "group_code": "G01",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Stop unauthorised access fraud",
+              "definition": "The fraudster impersonates a representative of a payment service provider, law enforcement, or a public authority. The fraudster tells the PSP's customer that someone has gained unauthorised access to the customer's accounts and therefore the customer would be exposed to multiple risks. The fraudster convinces the customer that this unauthorised access can be addressed by the customer authenticating themselves or providing authentication codes.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Fake bank / financial institution",
+                "Fake police",
+                "Impersonation"
+              ],
+              "code": "D003",
+              "group_code": "G01",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G01"
+        },
+        {
+          "name": "You can earn/save a lot of money",
+          "definition": "Victim makes payment up front in expectation of a return at a later stage.",
+          "modi": [
+            {
+              "name": "Advance fee fraud",
+              "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required.",
+              "definition": "Advance fee fraud is a type of financial scam where the victim is tricked into paying an upfront fee with the false promise of receiving a significant reward or benefit later. Alternatively/additionally, could result in the victim handing over account credentials, a physical/virtual card or card details, and/or completing authentication steps.",
+              "source": "Finance Strategists 'Advance Fee Fraud'",
+              "source_url": "https://www.financestrategists.com/wealth-management/investments/advance-fee-fraud/#what-is-advance-fee-fraud",
+              "possible_labels_tags": [
+                "Fake betting",
+                "Fake loan",
+                "Fake prize, sweepstakes, and lottery fraud",
+                "Impersonation",
+                "Nigeria"
+              ],
+              "code": "D004",
+              "group_code": "G02",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0",
+              "last_modified_in": "7.0",
+              "last_change_type": "recited"
+            },
+            {
+              "name": "Claim a benefit fraud",
+              "definition": "The aim of this type of fraud is to deceive victims into handing over account credentials or card details and/or completing authentication steps required to access the account and/or sign off payment transactions to claim a reward or benefits, such as lottery wins, discounts or reimbursements.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Discount / refund fraud",
+                "Fake customer support",
+                "Fake prize, sweepstakes, and lottery fraud",
+                "Impersonation"
+              ],
+              "code": "D005",
+              "group_code": "G02",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Investment fraud",
+              "definition": "Investment scams promise big returns, but the goal is stealing money. Scammers use convincing marketing and new technology to make their investment sound too good to miss, promising big payouts with little or no risk and using pressure tactics to get victims to act fast.",
+              "source": "ScamWatch 'Investment scams'",
+              "source_url": "https://www.scamwatch.gov.au/types-of-scams/investment-scams",
+              "possible_labels_tags": [
+                "Fake website",
+                "Fraudulent use of Contract for Difference (CFD)",
+                "Fraudulent use of crypto currency",
+                "Impersonation",
+                "Non-crypto investment fraud"
+              ],
+              "code": "D006",
+              "group_code": "G02",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G02"
+        },
+        {
+          "name": "I am a seller/buyer",
+          "definition": "Victim responds to fake/alleged offer for services/goods that later turns out to be fraudulent.",
+          "modi": [
+            {
+              "name": "Online shopping fraud",
+              "definition": "Shopping and auction fraud involves fraudulent shopping scams that rely on the anonymity of the internet.",
+              "source": "Action Fraud 'Online shopping fraud'",
+              "source_url": "https://www.actionfraud.police.uk/a-z-of-fraud/online-shopping-fraud",
+              "examples": [
+                "Buyers not receiving goods",
+                "Sellers not receiving payment",
+                "Buyers receiving goods less valuable than or significantly different from the original description",
+                "Failure to disclose relevant information about a product or the terms of sale"
+              ],
+              "possible_labels_tags": [
+                "Fake website",
+                "Goods not received",
+                "Lookalike domain"
+              ],
+              "code": "D007",
+              "group_code": "G03",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G03"
+        },
+        {
+          "name": "Please help",
+          "definition": "Fraudster creates an emotional bond with the victim, typically friendship/sympathy/romantic/empathy, then exploits the bond by getting the victim to help the fraudster financially or to contribute to a fake charity. Alternatively, the fraudster invents an emergency scenario requiring the victim to provide financial assistance to a family member or friend.",
+          "modi": [
+            {
+              "name": "Support a friend or family member fraud",
+              "definition": "The victim is tricked into providing money or gifts to the fraudster. The fraudster impersonates a friend or family member requiring support in an emergency, or pretends to represent an institution/organisation authorised to request bail to release a family member from prison ('shock calls'). Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Family emergency",
+                "Impersonation",
+                "Shock calls"
+              ],
+              "code": "D008",
+              "group_code": "G04",
+              "derived_from": {
+                "code": "D-RETIRED-01",
+                "name": "Emotional manipulation",
+                "relation": "split_from"
+              },
+              "status": "active",
+              "introduced_in": "7.0"
+            },
+            {
+              "name": "Romance fraud",
+              "definition": "Scammers use romance, dating or friendship to earn your trust and steal your money. Scammers use social media, dating or gaming apps and websites to find people looking for love and friendship. They create fake profiles, sometimes of famous people, and try to connect with you ('love bombing'), then tell you about an urgent problem they need money for, or convince you to invest in a fake scheme. Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
+              "source": "ScamWatch 'Relationship scams'",
+              "source_url": "https://www.scamwatch.gov.au/types-of-scams/relationship-scams",
+              "possible_labels_tags": [
+                "Impersonation",
+                "Money mule victim"
+              ],
+              "code": "D009",
+              "group_code": "G04",
+              "derived_from": {
+                "code": "D-RETIRED-01",
+                "name": "Emotional manipulation",
+                "relation": "split_from"
+              },
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "7.0",
+              "introduced_in_note": "New as a modus in 7.0. The concept is older: it existed as a label/tag in earlier versions.",
+              "moved_from": {
+                "dimension": "labels_tags",
+                "in_version": "7.0",
+                "note": "Moved from the labels/tags section to the modus section in v7.0."
+              }
+            },
+            {
+              "name": "Charity / donation fraud",
+              "definition": "Charity fraud involves deceitful practices to exploit donor generosity. Scammers misrepresent fake charities to collect donations; victims believe their contributions reach genuine causes. These fraudulent schemes often target emotional triggers, such as natural disasters or health crises, to prompt immediate donations. The victim is tricked into sending money to a fake charity or other non-profit organisation, not expecting a material return. Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
+              "source": "FraudNet 'Charity fraud'",
+              "source_url": "https://www.fraud.net/glossary/charity-fraud#what-is-charity-fraud",
+              "possible_labels_tags": [
+                "Fake website",
+                "Impersonation"
+              ],
+              "code": "D010",
+              "group_code": "G04",
+              "derived_from": {
+                "code": "D-RETIRED-01",
+                "name": "Emotional manipulation",
+                "relation": "split_from"
+              },
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "7.0"
+            }
+          ],
+          "code": "G04"
+        },
+        {
+          "name": "Send me money or I'll ...",
+          "definition": "Fraudster extorts e.g. money from victim, based on exposure threat, blackmail or other, like ransomware.",
+          "modi": [
+            {
+              "name": "Extortion",
+              "definition": "Scammers threaten you so you will pay them money. They may threaten you with arrest, deportation, or even physical harm, if you don't agree to pay them immediately. Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
+              "source": "ScamWatch 'Threat scams'",
+              "source_url": "https://www.scamwatch.gov.au/types-of-scams/threats-and-extortion-scams",
+              "possible_labels_tags": [
+                "Nightclub",
+                "Ransomware",
+                "Sextortion"
+              ],
+              "code": "D011",
+              "group_code": "G05",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G05"
+        },
+        {
+          "name": "We've changed account number",
+          "definition": "Victim misled into replacing genuine static account details of a creditor with details of an account under control of a fraudster.",
+          "modi": [
+            {
+              "name": "Impersonation of creditor",
+              "definition": "A fraudster impersonates a service provider, supplier or other creditor and tricks the victim into making a bill payment to an account that is not the account of the actual creditor but the account of the fraudster.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Beneficiary account change",
+                "Impersonation"
+              ],
+              "code": "D012",
+              "group_code": "G06",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G06"
+        },
+        {
+          "name": "Comply with payment obligation",
+          "definition": "Fraudster makes victim believe that money is owed or due, usually in relation to completely fictitious transactions or payments. Alternatively, the fraudster pretends to be a person with authority to instruct the victim to execute a payment transaction.",
+          "modi": [
+            {
+              "name": "Impersonation of person with authority to instruct payments",
+              "definition": "The fraudster impersonates a person with authority to instruct the victim to make payment(s) to a third party designated by the fraudster.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "CEO fraud",
+                "Impersonation"
+              ],
+              "code": "D013",
+              "group_code": "G07",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Overpayment fraud",
+              "definition": "Overpayment fraud involves a buyer paying a seller more than an item is worth and/or more than a seller is asking for. The buyer sends a check or a money order, asking the seller to send back the overpayment. The seller returns the excess money, but it turns out that the initial money order or check was fraudulent.",
+              "source": "NY Criminal Defense Lawyer 'Overpayment Fraud'",
+              "source_url": "https://nyccriminallawyer.com/fraud-charge/auction-fraud/overpayment-fraud/",
+              "possible_labels_tags": [
+                "Card not present"
+              ],
+              "code": "D014",
+              "group_code": "G07",
+              "possible_labels_tags_note": "The PDF annotates this label for this modus: scammer paid with a lost or stolen card.",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Phoney debt/bill collection",
+              "definition": "Aggressive fake debt collectors, who try to bully their targets into paying money they don't owe.",
+              "source": "AARP 'Debt Collection Scams'",
+              "source_url": "https://www.aarp.org/money/scams-fraud/info-2019/debt-collector.html",
+              "possible_labels_tags": [
+                "False billing fraud",
+                "Manipulated invoice",
+                "Subscription fraud"
+              ],
+              "code": "D015",
+              "group_code": "G07",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G07"
+        },
+        {
+          "name": "Can you please sign in / sign this off?",
+          "definition": "Fraudster tricks customer into giving out authentication codes for seemingly legitimate reasons not related to bank activity.",
+          "modi": [
+            {
+              "name": "Fake institution",
+              "definition": "The fraudster impersonates or claims to act on behalf of an institution like a health care provider, a government agency or a payment service provider. The fraudster asks the victim to provide authentication data and/or go through authentication steps in order to e.g. identify themselves, sign in to retrieve information, sign (off) something, or confirm something. The victims believe that they are resolving a legitimate issue by engaging with the fraudster.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Fake bank / financial institution",
+                "Fake police",
+                "Impersonation"
+              ],
+              "code": "D016",
+              "group_code": "G08",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G08"
+        },
+        {
+          "name": "Account / card / card details / digital wallet takeover by unauthorised party",
+          "definition": "A situation where the fraudster obtains control, without the victim being involved or aware, over the victim's account, card, card details or digital wallet allowing the fraudster to issue payment transactions through the victim's account, card or digital wallet.",
+          "modi": [
+            {
+              "name": "Pure account takeover",
+              "definition": "An account takeover can happen when a fraudster or cyber criminal poses as a genuine customer, gains control of an account and makes unauthorised transactions. Online banking accounts are usually taken over as a result of phishing, spyware or malware scams. Pure account takeover is a form of account takeover where the fraudster gains access to the account without tricking the victim into a handover of credentials.",
+              "source": "Action Fraud 'Account takeover'",
+              "source_url": "https://www.actionfraud.police.uk/a-z-of-fraud/account-takeover",
+              "examples": [
+                "Gaining control of authentication solution",
+                "Account takeover via compromised digital wallet"
+              ],
+              "possible_labels_tags": [
+                "Account takeover",
+                "Physical proximity credential theft / known perpetrator",
+                "Physical proximity credential theft / unknown perpetrator"
+              ],
+              "code": "D017",
+              "group_code": "G09",
+              "possible_labels_tags_note": "The PDF lists the generic 'Physical proximity credential theft'; the labels/tags section defines two variants, both listed here.",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Creditor account data manipulation",
+              "definition": "Creditor account data manipulation occurs if, following an account takeover, the fraudster changes creditor account data stored in this account so that future transactions reach the wrong beneficiaries.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Account takeover",
+                "Beneficiary account change"
+              ],
+              "code": "D018",
+              "group_code": "G09",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Control of card or card details by unauthorised party",
+              "definition": "Fraudster gains control of the victim's physical or virtual card or card details without tricking the victim into a handover of the card or the card details.",
+              "source": "EGPF",
+              "possible_labels_tags": [
+                "Card details stolen",
+                "Card lost",
+                "Card stolen",
+                "Card never received",
+                "Use of counterfeit cards",
+                "Card peeking",
+                "Card skimming",
+                "Shoulder surfing"
+              ],
+              "code": "D019",
+              "group_code": "G09",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G09"
+        },
+        {
+          "name": "First party fraud",
+          "definition": "A situation where a person knowingly misrepresents their identity or gives false information for financial or material gain.",
+          "note": "Included for exploration and internal reporting purposes only, not for fraud intelligence sharing.",
+          "source": "Experian 'The different types of fraud and how they're changing'",
+          "source_url": "https://www.experian.co.uk/blogs/latest-thinking/fraud-prevention/what-is-first-second-and-third-party-fraud/",
+          "modi": [
+            {
+              "name": "Fraudulent card application",
+              "definition": "When a fraudster uses another person's name and information to apply for and obtain a credit card.",
+              "source": "Digital News Asia 'The 8 Different Types of Card Fraud'",
+              "source_url": "https://www.digitalnewsasia.com/insights/the-8-different-types-of-card-fraud?8d5f_name=ff",
+              "possible_labels_tags": [
+                "Falsified ID",
+                "Falsifying personal and financial information",
+                "Impersonation",
+                "Synthetic ID"
+              ],
+              "code": "D020",
+              "group_code": "G10",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Fraudulent card claim",
+              "definition": "The fraudster files a false credit card dispute claim, e.g. false chargebacks. Chargeback abuse occurs if a buyer files a chargeback claim that's not tied to one of the valid reasons, also known as first-party or 'friendly' fraud.",
+              "source": "Chargebacks911.com 'False Chargeback Claims'",
+              "source_url": "https://chargebacks911.com/false-chargeback-claims/",
+              "example": "Impersonating the victim or pretending to be a victim, the fraudster presents a fraudulent claim to the bank.",
+              "possible_labels_tags": [
+                "Exploiting the system"
+              ],
+              "code": "D021",
+              "group_code": "G10",
+              "abridged": true,
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Fraudulent use of cash back scheme",
+              "definition": "Fraudulent use of cash back schemes involves fake transactions between merchants and employees to make undue gains from cashback offers.",
+              "source": "Global Banking & Finance Review 'What is cash back?'",
+              "source_url": "https://www.globalbankingandfinance.com/what-is-cash-back/",
+              "possible_labels_tags": [
+                "Exploiting the system"
+              ],
+              "code": "D022",
+              "group_code": "G10",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            },
+            {
+              "name": "Other first party fraud",
+              "definition": "Incidents of first party fraud not related to card fraud, e.g. mortgage fraud or lending fraud.",
+              "source": "EGPF",
+              "code": "D023",
+              "group_code": "G10",
+              "status": "active",
+              "introduced_in": "<=6.0"
+            }
+          ],
+          "code": "G10"
+        }
+      ],
+      "catch_all": {
+        "name": "New fraud type (describe)",
+        "definition": "Used to register new modus not yet included in the list of modi.",
+        "code": "D999"
+      },
+      "retired": [
+        {
+          "code": "D-RETIRED-01",
+          "name": "Emotional manipulation",
+          "high_level_classification": "Please help",
+          "superseded_by": [
+            "D008",
+            "D009",
+            "D010"
+          ],
+          "status": "retired",
+          "introduced_in": "<=6.0",
+          "retired_in": "7.0",
+          "reason": "split",
+          "dimension": "modus"
+        }
+      ]
+    },
+    "labels_tags": {
+      "label": "Labels/tags (what else) (PSP individual)",
+      "definition": "Optional, non-exhaustive suggestions to enrich a case with additional categorisation information on a voluntary basis. Individual PSPs remain free to choose labels/tags as they deem fit, for example to align with internal reporting requirements.",
+      "values": [
+        {
+          "name": "Account takeover",
+          "definition": "Account takeover fraud is a form of identity theft in which the fraudster gets access to a victim's bank or credit card accounts, through a data breach, malware or phishing, and uses them to make unauthorized transactions.",
+          "source": "Credit Cards.com",
+          "source_url": "https://www.creditcards.com/credit-card-news/glossary/term-account-takeover-fraud/",
+          "code": "L001",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Advanced persistent threat (APT)",
+          "definition": "A covert cyber attack on a computer network where the attacker gains and maintains unauthorized access to the targeted network and remains undetected for a significant period.",
+          "source": "Cisco",
+          "source_url": "https://www.cisco.com/c/en/us/products/security/advanced-persistent-threat.html",
+          "code": "L002",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Beneficiary account change",
+          "definition": "A request to change the details of a beneficiary's account to which payments are made. A fraudster exploits weaknesses in a genuine change request process, changing genuine beneficiary account details to those of an account he holds.",
+          "source": "Citibank 'Beneficiary Change Request: Risks and Best Practices'",
+          "source_url": "https://www.citibank.com/tts/sa/emea_marketing/docs/Beneficiary_Change_Request.pdf",
+          "code": "L003",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "BIN attack",
+          "definition": "Credit cards are produced in BIN ranges. Where an issuer does not use random generation of the card number, it is possible for an attacker to obtain one good card number and generate valid card numbers.",
+          "source": "European Association for Secure Transactions (EAST) 'Fraud Definitions'",
+          "source_url": "https://www.association-secure-transactions.eu/industry-information/fraud-definitions/",
+          "code": "L004",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card chip relay",
+          "definition": "Fraud trend where fraudsters manage to intercept the information exchanged between a card and an ATM/POS machine, slightly before the authorisation process, to generate a new, manipulated transaction before sending it to the issuing bank.",
+          "source": "EGPF",
+          "code": "L005",
+          "status": "active",
+          "introduced_in": "7.0"
+        },
+        {
+          "name": "Card details stolen",
+          "definition": "Involves the unauthorised use of credit or debit card data (card number, billing address, security code, expiry date) to purchase products and services in a non-face-to-face setting, such as via e-commerce websites or over the telephone.",
+          "source": "Europol 'Payment Fraud'",
+          "source_url": "https://www.europol.europa.eu/crime-areas-and-statistics/crime-areas/forgery-of-money-and-means-of-payment/payment-fraud",
+          "code": "L006",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card lost",
+          "definition": "Fraud carried out on cards that have been lost.",
+          "source": "FraudSmart 'Lost or Stolen Cards'",
+          "source_url": "https://www.fraudsmart.ie/personal/fraud-scams/card-cheque-fraud/lost-or-stolen-cards/",
+          "code": "L007",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card never received",
+          "definition": "When a new or replacement card is stolen from the mail, never reaching its rightful owner.",
+          "source": "Digital News Asia 'The 8 Different Types of Card Fraud'",
+          "source_url": "https://www.digitalnewsasia.com/insights/the-8-different-types-of-card-fraud?8d5f_name=ff",
+          "code": "L008",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card not present",
+          "definition": "A card not present transaction (CNP, MO/TO, Mail Order / Telephone Order, MOTOEC) is a payment card transaction made where the cardholder does not or cannot physically present the card for a merchant's visual examination at the time an order is given and payment effected.",
+          "source": "European Association for Secure Transactions (EAST) 'Fraud Definitions'",
+          "source_url": "https://www.association-secure-transactions.eu/industry-information/fraud-definitions/",
+          "code": "L009",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card peeking",
+          "definition": "Card details stolen by someone who has physical access to the card. The card remains in the possession of the cardholder.",
+          "source": "EGPF",
+          "example": "An employee has their business card stored in their office drawer. A colleague is able to get necessary card information without stealing the physical card.",
+          "code": "L010",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card present",
+          "definition": "A card present transaction occurs when a cardholder physically presents a card to request and authorise a financial transaction.",
+          "source": "European Association for Secure Transactions (EAST) 'Fraud Definitions'",
+          "source_url": "https://www.association-secure-transactions.eu/industry-information/fraud-definitions/",
+          "code": "L011",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card skimming",
+          "definition": "Skimming occurs when devices are illegally installed on or inside ATMs, point-of-sale (POS) terminals, or fuel pumps to capture card data and record cardholders' PIN entries. Criminals use the data to create fake debit or credit cards and then steal from victims' accounts.",
+          "source": "FBI 'Skimming'",
+          "source_url": "https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/skimming",
+          "code": "L012",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card stolen",
+          "definition": "Various ways criminals try to steal cards: intercepting new cards or PINs in the post, handbag or wallet snatches, shoulder surfing, distraction theft.",
+          "source": "FraudSmart 'Lost or Stolen Cards'",
+          "source_url": "https://www.fraudsmart.ie/personal/fraud-scams/card-cheque-fraud/lost-or-stolen-cards/",
+          "code": "L013",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "CEO fraud",
+          "definition": "Criminals pose as senior management (such as CEOs) or other senior staff to persuade staff into making urgent payments or to transfer funds. Requests often made via email but can also come via a phone call, often when the real member of staff is out of office.",
+          "source": "Barclays 'CEO Fraud'",
+          "source_url": "https://www.barclayscorporate.com/insights/fraud-protection/ceo-fraud/",
+          "example": "Impersonation of manager",
+          "code": "L014",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0",
+          "last_modified_in": "7.0",
+          "last_change_type": "recited",
+          "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required."
+        },
+        {
+          "name": "Collusive merchant / data misuse",
+          "definition": "Occurs when merchant owners and/or their employees conspire to commit fraud using their customers' (cardholder) accounts and/or personal information, merchant owners and/or their employees pass on the information about cardholders to fraudsters.",
+          "source": "International Journal of Advanced Research in Computer Science and Software Engineering, Vol. 3, Issue 6, 2013",
+          "source_url": "https://www.researchgate.net/publication/362517777_Credit_Card_Fraud_Detection_Using_Hidden_Markov_Model_and_Its_Performance",
+          "example": "Could also occur by abusing existing direct debit mandates or issuing new direct debit mandates.",
+          "code": "L015",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Contactless relay fraud",
+          "definition": "Where a fraudster uses a mobile NFC POS terminal or smartphone to capture a payment by standing very close to the cardholder and reading their contactless card through their clothing or handbag.",
+          "source": "EGPF",
+          "code": "L016",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Credit master",
+          "definition": "Algorithms are deployed which automatically generate credit card account numbers from an existing correct number as well as pairs of expiration dates. The criminal software then automatically tests these combinations, working sequentially through number combinations to see which match genuine cards by attempting a transaction.",
+          "source": "Global Banking & Finance Review",
+          "source_url": "https://www.globalbankingandfinance.com/fraud-the-artificial-intelligence-arms-race-is-on/",
+          "code": "L017",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Discount / refund fraud",
+          "definition": "The fraudster impersonates customer support and convinces the victim that they are entitled to a discount, but they just have to authenticate themselves first, thus giving the fraudster access to their account and/or signing off unauthorised transactions.",
+          "source": "EGPF",
+          "code": "L018",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Email compromise",
+          "definition": "Use of a hacked or spoofed e-mail address to gain access to other parties for fraudulent purposes. Business E-mail Compromise (BEC) is a sophisticated scam targeting businesses working with foreign suppliers and/or businesses that regularly perform wire transfer payments.",
+          "source": "Federal Bureau of Investigation",
+          "source_url": "https://www.fbi.gov/file-repository/email-compromise_508.pdf",
+          "example": "Used for CEO fraud",
+          "code": "L019",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Exploiting the system",
+          "definition": "The cardholder is trying to benefit and avoid paying for goods/services by filing a dispute and using the chargeback system.",
+          "source": "EGPF",
+          "code": "L020",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake bank / financial institution",
+          "definition": "A bank impersonation scam is when a scammer makes direct contact with the victim while impersonating a trusted bank, to gain access to their personal information and/or money.",
+          "source": "ANZ 'What is a bank impersonation scam, and how can you protect yourself?'",
+          "source_url": "https://www.anz.com.au/security/types-of-scams/bank-impersonation-scams/",
+          "code": "L021",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake betting",
+          "definition": "Betting and sports investment scams are fraudulent schemes where scammers entice victims to invest money in fake or exaggerated betting opportunities or sports-related investments, promising high returns with minimal risk, often posing as legitimate betting platforms, sports analysts, or investment firms.",
+          "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required.",
+          "source": "ScamSkunk 'Betting & Sports Investment Scam'",
+          "source_url": "https://www.scamskunk.com/knowledge-base/how-to-avoid-scams-a-z-category-b/betting-scams-and-sports-investment-2025/",
+          "code": "L022",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0",
+          "last_modified_in": "7.0",
+          "last_change_type": "recited"
+        },
+        {
+          "name": "Fake customer support",
+          "definition": "In these scams, criminals pose as technical or customer support/service, some working out of fraudulent call centres across the globe, posing as representatives from legitimate companies, telling the victim there's an issue with their device or account and that they must act fast.",
+          "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required.",
+          "source": "FBI 'How We Can Help You, Tech Support Scams'",
+          "source_url": "https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/tech-support-scams",
+          "code": "L023",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0",
+          "last_modified_in": "7.0",
+          "last_change_type": "recited"
+        },
+        {
+          "name": "Fake loan",
+          "definition": "In an advance-fee loan scam, scammers promise a loan, credit card, or access to credit, but first require an upfront fee. There is no loan, and the scammer disappears with the money.",
+          "source": "US Federal Trade Commission 'What To Know About Advance-Fee Loans'",
+          "source_url": "https://consumer.ftc.gov/articles/what-know-about-advance-fee-loans",
+          "code": "L024",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake police",
+          "definition": "To identify yourself as an officer of the law to purposefully deceive other individuals and gain advantage through such deceit. Impersonation may include dressing as an officer of the law or simply falsely identifying oneself as an officer to someone else.",
+          "source": "Hart Powell 'Impersonating a Police Officer'",
+          "source_url": "https://www.kohlerandhart.com/articles/impersonating-a-police-officer/",
+          "code": "L025",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake prize, sweepstakes, and lottery fraud",
+          "definition": "Fraudsters contact you to tell you you've won a large sum of money in an international lottery, sweepstake or other prize draw. The lottery doesn't exist or a genuine lottery's name is misused. If you respond, you're asked to supply personal information and copies of official documents, then asked to pay various fees so they can 'release' your non-existent winnings.",
+          "source": "Action Fraud 'Lottery scams'",
+          "source_url": "https://www.actionfraud.police.uk/a-z-of-fraud/lottery-scams",
+          "code": "L026",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fake website",
+          "definition": "Fake sites made to look like real ones to steal your personal or banking details when you submit them to the site.",
+          "source": "Metropolitan Police 'Online shopping'",
+          "source_url": "https://www.met.police.uk/advice/advice-and-information/fa/fraud/personal-fraud/online-shopping/",
+          "code": "L027",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "False billing fraud",
+          "definition": "False billing scams target you or your business with fake invoices for a variety of normal business supplies and activities including directory listings, advertising, domain name renewals or office supplies, hoping accounts staff will pay quickly without examining the fraudulent details.",
+          "source": "Northern Territory Consumer Affairs 'False billing scams'",
+          "source_url": "https://consumeraffairs.nt.gov.au/for-consumers/scams/false-billing-scams",
+          "code": "L028",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Falsified ID",
+          "definition": "A false or fake ID is any form of identification that is forged, altered, or otherwise purports to establish the false identity of a person.",
+          "source": "Criminal Defense Lawyer 'Fake ID: Laws and Penalties'",
+          "source_url": "https://www.criminaldefenselawyer.com/resources/criminal-defense/juvenile/fake-id-laws-and-penalties.htm",
+          "code": "L029",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Falsifying personal and financial information",
+          "definition": "The act of deliberately lying about or misrepresenting something.",
+          "source": "Vocabulary.com",
+          "source_url": "https://www.vocabulary.com/dictionary/falsification",
+          "code": "L030",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Family emergency",
+          "definition": "Someone calls or contacts you saying they are a family member or close friend. They say they need money to get out of trouble.",
+          "source": "US Federal Trade Commission 'Scammers Use Fake Emergencies To Steal Your Money'",
+          "source_url": "https://consumer.ftc.gov/articles/scammers-use-fake-emergencies-steal-your-money",
+          "code": "L031",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fraudulent MOTO card transaction",
+          "definition": "Fraud in so-called 'card-not-present' transactions online or via email order and telephone transactions.",
+          "source": "Digital News Asia 'The 8 Different Types of Card Fraud'",
+          "source_url": "https://www.digitalnewsasia.com/insights/the-8-different-types-of-card-fraud?8d5f_name=ff",
+          "code": "L032",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fraudulent use of Contract for Difference (CFD)",
+          "definition": "A CFD is a contract between a broker and a trader who agree to exchange the difference in value of an underlying asset between the beginning and the end of the contract, often less than one day. Fraudster pretends to represent a legitimate company offering an investment opportunity based on CFD; the customer is directed to a fake website and tricked into setting up an account; once the customer wishes to liquidate the account, the funds are gone.",
+          "source": "Capital.com 'What is CFD trading and how does it work?'",
+          "source_url": "https://capital.com/what-is-cfd-trading",
+          "code": "L033",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Fraudulent use of crypto currency",
+          "definition": "Cryptocurrency is a type of digital currency that generally exists only electronically. With investment scams, crypto is central in two ways: it can be both the investment and the payment.",
+          "source": "US Federal Trade Commission 'What To Know About Cryptocurrency and Scams'",
+          "source_url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams",
+          "example": "Fraudster pretends to represent a legitimate company offering an opportunity to invest into crypto currency; customer directed to a fake website and tricked into setting up an account; once the customer wishes to liquidate, the funds are gone.",
+          "code": "L034",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Gift card",
+          "definition": "Scammers like to get gift cards as payment as it's easy for them to quickly sell them on secondary markets and pocket the cash.",
+          "source": "ScamWatch 'Payment demanded by gift card? It's a scam'",
+          "source_url": "https://www.scamwatch.gov.au/news-alerts/payment-demanded-by-gift-card-its-a-scam",
+          "code": "L035",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Goods not received",
+          "definition": "Payer submitted payment, however does not receive the purchased goods, because the offer was issued on a fake website store or by a fake seller.",
+          "source": "ScamWatch \"'Tis the season for online shopping scams\"",
+          "source_url": "https://www.scamwatch.gov.au/news-alerts/tis-the-season-for-online-shopping-scams",
+          "code": "L036",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Impersonation",
+          "definition": "The act of attempting to deceive someone by pretending that you are another person.",
+          "source": "Cambridge Dictionary",
+          "source_url": "https://dictionary.cambridge.org/dictionary/english/impersonation",
+          "code": "L037",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Keylogger",
+          "definition": "A keylogger (or keystroke logger) is a type of spyware that monitors and records what you type on your computer or mobile phone.",
+          "source": "Norton 'What is a keylogger?'",
+          "source_url": "https://us.norton.com/blog/malware/what-is-a-keylogger",
+          "code": "L038",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Lookalike domain",
+          "aka": "cousin domain",
+          "definition": "Lookalike or 'cousin' domain names are addresses that use character replacement to make them look as close as possible to the domain of a brand, service or government authority.",
+          "source": "Domain Registration Services (Australia)",
+          "source_url": "https://www.domainregistration.com.au/news/2020/0409-lookalike-domains.php",
+          "example": "Fraudsters create domains very similar to an existing business/financial institution's name to collect sign-in credentials for online payment or shopping accounts.",
+          "code": "L039",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Malware – MageCart",
+          "definition": "Magecart is a consortium of malicious hacker groups who target online shopping cart systems, usually the Magento system, to steal customer payment card information, a supply chain attack compromising a third-party piece of software from a VAR or systems integrator.",
+          "source": "CSO 'What is Magecart? How this hacker group steals payment card data'",
+          "source_url": "https://www.csoonline.com/article/3400381/what-is-magecart-how-this-hacker-group-steals-payment-card-data.html",
+          "code": "L040",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Manipulated invoice",
+          "definition": "A contractor or supplier can commit fraud by knowingly submitting false, inflated or duplicate invoices with the intent to defraud, either acting alone or in collusion with contracting personnel.",
+          "source": "Guide to Combating Corruption & Fraud in Development Projects",
+          "source_url": "https://guide.iacrc.org/potential-scheme-false-inflated-and-duplicate-invoices/",
+          "code": "L041",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Money muling",
+          "definition": "Identifies transactions associated with patterns indicative of money mule activity. A money mule is a person who receives money from a third party in their bank account and transfers it to another one or takes it out in cash and gives it to someone else, obtaining a commission for it. Even if not directly involved in the crimes that generate the money, they are accomplices, as they launder the proceeds and help criminal syndicates remain anonymous.",
+          "source": "Europol 'Money muling'",
+          "source_url": "https://www.europol.europa.eu/operations-services-and-innovation/public-awareness-and-prevention-guides/money-muling",
+          "code": "L042",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "7.0"
+        },
+        {
+          "name": "Money mule victim",
+          "definition": "Unwitting or unknowing money mules are individuals unaware they are helping criminals profit by being part of a larger scheme, often solicited via an online romance scheme or job offer, asked to use their own account or open a new one in their true name, may be told to keep a portion of the money, motivated by trust in the actual existence of their romance or job position.",
+          "source": "FBI 'Money Mules'",
+          "source_url": "https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/money-mules",
+          "code": "L043",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "7.0"
+        },
+        {
+          "name": "Multiple imprint",
+          "definition": "When a single transaction is recorded multiple times on old-fashioned credit card imprint machines known as 'knuckle busters'.",
+          "source": "Digital News Asia 'The 8 Different Types of Card Fraud'",
+          "source_url": "https://www.digitalnewsasia.com/insights/the-8-different-types-of-card-fraud?8d5f_name=ff",
+          "code": "L044",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Nigeria",
+          "definition": "In a Nigerian scam, a scammer from abroad offers via mail the target a portion of a sizable quantity of money in exchange for helping them move the money out of his native country to his current place.",
+          "source": "WallstreetMojo 'Nigerian Scam Definition'",
+          "source_url": "https://www.wallstreetmojo.com/nigerian-scam/",
+          "code": "L045",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Nightclub",
+          "definition": "Clip joint fraud or nightclub fraud, where customers are threatened by a nightclub they have visited into making payments.",
+          "source": "EGPF",
+          "code": "L046",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Non-crypto investment fraud",
+          "definition": "You search online for bonds, shares or pension plans, then someone contacts you with an investment deal. They might say you need to pay a fee to secure it. Eventually they'll disappear with the fee and any money invested.",
+          "source": "Barclays Bank UK 'Investment Scams'",
+          "source_url": "https://www.barclays.co.uk/fraud-and-scams/investment-scams/",
+          "code": "L047",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "No physical meeting",
+          "definition": "E.g. reunion exclusively using a digital communication channel.",
+          "source": "EGPF",
+          "code": "L048",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Phishing",
+          "definition": "Technique of fraudulently obtaining private information. Typically, the phisher sends an e-mail that appears to come from a legitimate business, requesting 'verification' of information and warning of some dire consequence if not provided. The e-mail usually contains a link to a fraudulent web page that seems legitimate.",
+          "source": "European Association for Secure Transactions (EAST) 'Fraud Definitions'",
+          "source_url": "https://www.association-secure-transactions.eu/industry-information/fraud-definitions/",
+          "code": "L049",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Physical meeting",
+          "definition": "Face-to-face reunion.",
+          "source": "EGPF",
+          "code": "L050",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Physical proximity credential theft / known perpetrator",
+          "definition": "Credential theft where the perpetrator is known to the victim.",
+          "source": "EGPF",
+          "example": "A family member, family friend or caretaker who has been in the vicinity of the victim and e.g. takes a photo of the victim's payment card.",
+          "code": "L051",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Physical proximity credential theft / unknown perpetrator",
+          "definition": "Credential theft where the perpetrator is not known to the victim.",
+          "source": "EGPF",
+          "example": "A person not known to the victim steals the victim's payment card, e.g. from a locker in the gym.",
+          "code": "L052",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Ransomware",
+          "definition": "Ransomware is malware that employs encryption to hold a victim's information at ransom. A user or organization's critical data is encrypted so that they cannot access files, databases, or applications. A ransom is then demanded to provide access.",
+          "source": "Trellix 'What Is Ransomware?'",
+          "source_url": "https://www.trellix.com/en-us/security-awareness/ransomware/what-is-ransomware.html",
+          "code": "L053",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Remote access trojan",
+          "definition": "A malicious program that remotely accesses infected resources. RATs are among the most dangerous because they open up all kinds of opportunities for remote control of the compromised system, including installation/removal, file manipulation, reading data from the keyboard, webcam hijacking, and clipboard monitoring.",
+          "source": "Kaspersky IT Encyclopedia 'Remote access trojan'",
+          "source_url": "https://encyclopedia.kaspersky.com/glossary/remote-access-trojan-rat/",
+          "code": "L054",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Sextortion",
+          "definition": "Scammers use social media platforms and email as forums for sextortion scams, where they threaten to share intimate images or footage of you online, unless you give in to their demands.",
+          "source": "ScamWatch 'Gen Z the fastest growing victims of scams'",
+          "source_url": "https://www.scamwatch.gov.au/news-alerts/gen-z-the-fastest-growing-victims-of-scams",
+          "code": "L055",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Shock calls",
+          "definition": "The fraudster contacts the victim impersonating, for example, a representative of law enforcement or a health service, claiming a family member had been involved in an accident and that the victim must post bail for their release.",
+          "source": "Europol 'Police track down criminal network behind shock calls terrifying elderly across Europe'",
+          "source_url": "https://www.europol.europa.eu/media-press/newsroom/news/police-track-down-criminal-network-behind-shock-calls-terrifying-elderly-across-europe",
+          "code": "L056",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Shoulder surfing",
+          "definition": "Shoulder surfing is when identity thieves glance over your shoulder and steal your personal data, such as your login details for a bank or credit card account or bank PIN.",
+          "source": "Experian 'What Is Shoulder Surfing?'",
+          "source_url": "https://www.experian.com/blogs/ask-experian/what-is-shoulder-surfing/",
+          "code": "L057",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Smishing",
+          "aka": "SMS Phishing",
+          "definition": "A form of criminal activity using social engineering techniques. SMS phishing uses cell phone text messages to deliver information and/or requests to induce people to divulge or take action that will compromise their personal or confidential information.",
+          "source": "European Association for Secure Transactions (EAST) 'Fraud Definitions'",
+          "source_url": "https://www.association-secure-transactions.eu/industry-information/fraud-definitions/",
+          "code": "L058",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Social media compromise",
+          "definition": "Use of hacked, spoofed or stolen social media accounts to gain access to other parties for fraudulent purposes.",
+          "source": "EGPF",
+          "code": "L059",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Spoofed email",
+          "definition": "Email spoofing is a deceptive technique used to make an email appear as if it's from a trusted source, like a friend or legitimate organization. Scammers commonly use spoofed email addresses in phishing attacks to trick recipients into sharing sensitive personal information or clicking dangerous links.",
+          "source": "Norton 'What is email spoofing? A complete guide'",
+          "source_url": "https://us.norton.com/blog/online-scams/email-spoofing",
+          "code": "L060",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Subscription fraud",
+          "definition": "Some online subscription companies employ confusing business tactics, such as opting customers into recurring charges without their knowledge.",
+          "source": "CNBC",
+          "source_url": "https://www.cnbc.com/2018/11/16/locked-in-cnbc-investigates-online-subscription-models.html",
+          "code": "L061",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Synthetic ID",
+          "definition": "Synthetic identity theft is an advanced form of identity theft that involves using a mix of real and fake information to create a fictitious identity, which scammers can then use to open bank accounts, apply for loans, or commit other types of financial fraud. Especially challenging to detect because it blends valid data, like Social Security numbers or addresses, with fabricated details.",
+          "source": "LifeLock by Norton",
+          "source_url": "https://www.lifelock.com/learn-identity-theft-resources-synthetic-identity-theft.html",
+          "code": "L062",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Third-party channel",
+          "definition": "The fraudster used a third-party channel under PSD2 to initiate the payment.",
+          "source": "EGPF",
+          "code": "L063",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Third-party vendor account takeover",
+          "definition": "The fraudster is able to log into an online account held by the customer with a third party, i.e. a vendor, where payment information (e.g. card details) is stored. This enables the fraudster to consume digital goods/services or order merchandise and redirect its delivery to their own address.",
+          "source": "EGPF",
+          "code": "L064",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Use of counterfeit cards",
+          "definition": "A counterfeit card is a bogus replica of a legitimate credit or debit card, usually created from stolen card information. These fake cards are designed to mimic the appearance and functionality of actual payment cards.",
+          "source": "Chargebacks911 Glossary",
+          "source_url": "https://chargebacks911.com/glossary/counterfeit-card-2/",
+          "code": "L065",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Vishing",
+          "aka": "voice phishing",
+          "definition": "The criminal practice of using social engineering over the telephone system to gain access to private personal and financial information from the public. Also employed by attackers for reconnaissance purposes to gather more detailed intelligence on a target organisation.",
+          "source": "European Association for Secure Transactions (EAST) 'Fraud Definitions'",
+          "source_url": "https://www.association-secure-transactions.eu/industry-information/fraud-definitions/",
+          "code": "L066",
+          "abridged": true,
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Wecycle",
+          "definition": "A trend in debit card fraud, emails sent to consumers asking them to send in expired debit cards. The email contains a link to an online form where consumers enter personal information before receiving instructions on where to send the debit card for recycling, so fraudsters can easily get their hands on the victim's money.",
+          "source": "NL Times 'Warning issued over new debit card fraud'",
+          "source_url": "https://nltimes.nl/2015/09/18/warning-issued-new-debit-card-fraud",
+          "code": "L067",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        }
+      ],
+      "spelling_note": "The PDF spells one label two ways: 'Fake prize, sweepstakes, and lottery fraud' in the labels/tags section (p.39) and without the second comma in the modus tables (p.15). This file uses the labels/tags section spelling as canonical.",
+      "retired": []
+    },
+    "payment_instrument": {
+      "label": "Payment instrument (optional)",
+      "definition": "Optional element to identify whether the fraudulent payment was an account-to-account transaction or a card payment.",
+      "values": [
+        {
+          "name": "Account-to-account transaction",
+          "definition": "Account-to-account payments move money directly from a payer's bank account to a payee's bank account without the need for intermediaries, such as credit or debit cards.",
+          "source": "Payment Systems Regulator (UK) 'Account-to-account payments'",
+          "source_url": "https://www.psr.org.uk/our-work/account-to-account-payments/",
+          "code": "P01",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
+          "name": "Card payment",
+          "definition": "Card payments are a cashless payment method where customers pay for their purchases with their debit or credit card, either via a point of sale (POS) or online.",
+          "source": "Stripe 'Card payments explained'",
+          "source_url": "https://stripe.com/en-de/resources/more/card-payments",
+          "code": "P02",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        }
+      ],
+      "retired": []
+    }
+  },
+  "version_history": [
+    {
+      "version": "1.0",
+      "date": "2020-10-08"
+    },
+    {
+      "version": "2.0",
+      "date": "2021-07-12"
+    },
+    {
+      "version": "3.0",
+      "date": "2022-04-28"
+    },
+    {
+      "version": "3.1",
+      "date": "2022-10-27"
+    },
+    {
+      "version": "4.0",
+      "date": "2023-06-07"
+    },
+    {
+      "version": "5.0",
+      "date": "2024-06-05"
+    },
+    {
+      "version": "6.0",
+      "date": "2025-06-18"
+    },
+    {
+      "version": "7.0",
+      "date": "2026-06-03",
+      "effective_from": "2027-01-01"
+    }
+  ],
+  "change_types": {
+    "added": "A new entry with no predecessor. Consumers add it.",
+    "retired": "An entry removed with no successor. Its code is retained and never reused. Records classified under an earlier version stay valid.",
+    "split": "One entry replaced by several. Successors carry derived_from; the predecessor carries superseded_by. A trend series on the predecessor continues as the sum of its successors.",
+    "merged": "Several entries replaced by one. The survivor carries derived_from listing each predecessor.",
+    "renamed": "Same concept, different name. The code does not change, so stored records need no migration.",
+    "moved": "Same concept, different dimension (for example a label/tag becoming a modus). The code changes because code namespaces are per dimension; the entry carries moved_from.",
+    "redefined": "The meaning of an entry changed. This is the only change type that can require re-classification of existing records.",
+    "recited": "The definition text was replaced with an equivalent from a different source. The meaning did not change and no re-classification is required."
+  },
+  "changes": [
+    {
+      "version": "7.0",
+      "published": "2026-06-03",
+      "effective_from": "2027-01-01",
+      "source": "Annex of the EBA Fraud Taxonomy v7.0: changes since version 6.0.",
+      "records": [
+        {
+          "change_type": "split",
+          "dimension": "modus",
+          "from": [
+            "D-RETIRED-01"
+          ],
+          "to": [
+            "D008",
+            "D009",
+            "D010"
+          ],
+          "successor_notes": {
+            "D008": "New modus (add-on).",
+            "D009": "Previously a label/tag; moved into the modus section.",
+            "D010": "New modus (add-on)."
+          },
+          "note": "'Emotional manipulation' in the 'Please help' classification was not granular enough and was replaced by three more specific modi."
+        },
+        {
+          "change_type": "moved",
+          "dimension_from": "labels_tags",
+          "dimension_to": "modus",
+          "to": [
+            "D009"
+          ],
+          "note": "'Romance fraud' moved from labels/tags to modus. Listed separately from the split above because one real change can have more than one facet; these records describe facets, they are not a count of changes."
+        },
+        {
+          "change_type": "redefined",
+          "dimension": "modus",
+          "scope": "high_level_classification",
+          "to": [
+            "G04"
+          ],
+          "note": "Definition of the 'Please help' classification updated to cover the new 'Charity / donation fraud' modus. Clarification only."
+        },
+        {
+          "change_type": "added",
+          "dimension": "labels_tags",
+          "to": [
+            "L042",
+            "L043",
+            "L005"
+          ]
+        },
+        {
+          "change_type": "recited",
+          "dimension": "modus",
+          "to": [
+            "D004"
+          ],
+          "note": "Former definition replaced with one from an alternative source. Meaning unchanged."
+        },
+        {
+          "change_type": "recited",
+          "dimension": "labels_tags",
+          "to": [
+            "L014",
+            "L022",
+            "L023"
+          ],
+          "note": "Former definitions replaced with ones from alternative sources. Meanings unchanged."
+        }
+      ],
+      "sources_last_checked": "2026-04"
+    }
+  ],
+  "compatibility": {
+    "principle": "A record is classified under one version and carries that version. Consumers must expect to receive records classified under a version other than the one they run, because the taxonomy is republished annually with a six-month lead time and adopters do not all move on the same day. The rules below let a consumer interpret such a record instead of rejecting it.",
+    "code_stability": "Codes are the unit of compatibility. A code is assigned once and never renumbered or reused, including after retirement. A code therefore denotes the same concept in every version in which it appears, and any two versions can be related to each other through the lineage fields rather than through name matching.",
+    "backward": {
+      "meaning": "A consumer on a newer version reading a record classified under an older version.",
+      "rule": "Resolve the record's codes against the older version. Codes that still exist are read directly. A code that has since been retired is found in the dimension's retired array; its superseded_by list gives the successors. Do not rewrite the stored record: interpret it, and keep the original version stamp.",
+      "worked_example": "A record classified under an earlier version carrying the modus that became D-RETIRED-01 is read by a 7.0 consumer as 'one of D008, D009, D010'. Which one is not recoverable from the record alone, because the split added information that the original classification did not contain."
+    },
+    "forward": {
+      "meaning": "A consumer on an older version reading a record classified under a newer version.",
+      "rule": "An unrecognised code must not be discarded and must not be treated as invalid. Widen it: follow derived_from to the predecessor the consumer does know, and failing that fall back to the code's high-level classification group, which is coarser but stable. Record that the value was widened.",
+      "worked_example": "A consumer that predates 7.0 receives D009. It does not know that code. derived_from resolves to D-RETIRED-01, which it does know, so the record is read at that coarser level without loss of validity."
+    },
+    "unknown_code_rule": "Widen, never drop and never guess. Dropping an unknown code silently loses a case from every downstream count; guessing a sibling code invents data. Widening is lossy in precision but never wrong, and it is visible because the widening is recorded.",
+    "lossiness": {
+      "exact": "One code maps to one code. Safe in both directions. This is the case for every entry that did not change, and also for entries whose definition was only recited, since recitation does not change meaning.",
+      "widening": "Several codes map to one coarser code. Safe: counts roll up without loss. This is the direction that keeps a trend series continuous across a split.",
+      "narrowing": "One code maps to several finer codes. Not automatically resolvable. The finer distinction was not present in the original record and cannot be recovered from it. Either keep the record at the coarser level or re-classify the case from its source material."
+    },
+    "trend_series": "To carry a series across a split, sum the successors and attribute the total to the predecessor code. changes and the retired arrays carry what is needed to do this mechanically. The alternative, keying a series on names, breaks silently at every rename.",
+    "schema_versioning": "schema.json pins exactly one taxonomy version, deliberately, so that validation is unambiguous about what a record claims to be. A consumer that must accept several versions should keep one generated schema per version and select by the record's taxonomy_version field, rather than loosening a single schema to accept everything. Tag each release of this repository so previous schemas stay retrievable.",
+    "current_state": "This repository currently carries version 7.0 only. The codes in it are assigned by this repository; the EBA's published PDF does not define codes. There is therefore no earlier code table to map from yet. The mechanism above is defined now, and demonstrated against the 6.0 to 7.0 change recorded in 'changes', so that it is already in place when a second version is published. Transcribing 6.0 would make the mapping concrete in both directions."
+  },
+  "review_and_updating_process": {
+    "cadence": "Annual, launched every October",
+    "steps": [
+      {
+        "step": "Consultation process",
+        "when": "October",
+        "detail": "EBA invites change requests from EGPF members, fraud experts of EBA member organisations, and organisations with usage rights, via a standard form."
+      },
+      {
+        "step": "Submission deadline, method/modus/initiator",
+        "when": "Second week of January",
+        "detail": "Specific deadline agreed by the EGPF each year."
+      },
+      {
+        "step": "Submission deadline, labels/tags",
+        "when": "Early April",
+        "detail": "Change requests must specify the proposed naming and definition of the new label."
+      },
+      {
+        "step": "Review process",
+        "when": "Mid-January to mid-April",
+        "detail": "The EGPF reviews change requests received; non-member submitting organisations are invited to join the relevant EGPF meeting."
+      },
+      {
+        "step": "Adoption",
+        "when": "May",
+        "detail": "The EBA Board adopts an updated version of the EBA Fraud Taxonomy."
+      },
+      {
+        "step": "Communication",
+        "when": "June",
+        "detail": "The EBA communicates the updated version to EGPF members, fraud experts and organisations with usage rights."
+      },
+      {
+        "step": "Implementation deadline",
+        "when": "By end of December",
+        "detail": "Six-month lead time; effective 1 January of the next calendar year."
+      }
+    ],
+    "emergency_change_process": "May be triggered when exceptional circumstances require immediate amendments (e.g. regulatory requirements, or fraud developments with a high degree of proliferation and potential large-scale impact); steps to adoption may be expedited."
+  },
+  "lifecycle_note": "Every entry carries status, introduced_in and, where it changed, last_modified_in and last_change_type. introduced_in is '<=6.0' for any entry that predates version 7.0: the exact version in which it first appeared cannot be established from the v7.0 PDF alone and has deliberately not been guessed. Backfilling it requires the earlier published versions. Retired entries keep their code forever, move to the dimension's retired array, and are never reused, so a code is a permanent identifier for a concept rather than a slot. See change_types for the vocabulary used in the changes array, and derivations/README.md for declaring a local or simplified variant that stays traceable to this source.",
+  "codes_design_note": "Codes are intentionally opaque (for example 'D014', not 'romance_fraud'). Two reasons. First, a human-readable value in the machine field can bias a reviewer before they have read the definition. Second, names can change between annual versions while codes must not. Use code for storage and interchange, and name for display only. Once published, a code is never renumbered or reused: a retired entry keeps its code and is listed under dimensions.modus.retired with superseded_by, and each superseding entry carries derived_from, so trend series can be bridged across a split or rename instead of silently dropping to zero.",
+  "definitions_note": "Definitions are transcribed from the EBA Fraud Taxonomy v7.0 PDF. Where the EBA quotes a third-party source, this file reproduces the quotation with its attribution, but some quotations are shortened; those entries carry abridged: true. Ellipses that appear in the PDF's own quotations are the EBA's. For the exact quoted text, consult the PDF, which is the sole authoritative version."
+}

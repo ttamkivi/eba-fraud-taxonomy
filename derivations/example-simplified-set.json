@@ -1,0 +1,46 @@
+{
+  "derivation_of": {
+    "taxonomy": "EBA Fraud Taxonomy",
+    "version": "7.0"
+  },
+  "name": "Example simplified set",
+  "description": "An illustration only, not a real scheme. Shows how a coarse operational set of a handful of categories can stay reconcilable with the full taxonomy during a staged transition. Every local value rolls up from source codes, so counts aggregate without loss.",
+  "maintainer": "example",
+  "mappings": [
+    {
+      "local_code": "SCAM_IMPERSONATION",
+      "local_name": "Impersonation scam",
+      "relation": "broader",
+      "maps_to": ["D001", "D002", "D003", "D016"],
+      "note": "Covers the 'your money is at risk' modi plus the fake institution modus."
+    },
+    {
+      "local_code": "SCAM_INVESTMENT",
+      "local_name": "Investment or advance fee scam",
+      "relation": "broader",
+      "maps_to": ["D004", "D005", "D006"]
+    },
+    {
+      "local_code": "SCAM_PURCHASE",
+      "local_name": "Purchase scam",
+      "relation": "exact",
+      "maps_to": ["D007"]
+    },
+    {
+      "local_code": "SCAM_RELATIONSHIP",
+      "local_name": "Relationship or emotional scam",
+      "relation": "broader",
+      "maps_to": ["D008", "D009", "D010"],
+      "note": "These three replaced a single modus in v7.0. A local value at this level is stable across that split, which is one reason to map at a coarser level during a transition."
+    },
+    {
+      "local_code": "TAKEOVER",
+      "local_name": "Account or card takeover",
+      "relation": "broader",
+      "maps_to": ["D017", "D018", "D019"]
+    }
+  ],
+  "not_covered": {
+    "note": "This example deliberately does not map the first party fraud classification (D020 to D023). The taxonomy states those are for internal reporting and not for fraud intelligence sharing, so a derivation intended for cross-institution exchange should leave them out rather than map them."
+  }
+}
