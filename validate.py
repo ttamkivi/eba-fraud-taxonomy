@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Integrity checks for taxonomy.json and schema.json. Exit code 1 on any failure."""
 import json
+import os
 import re
 import sys
 
@@ -16,8 +17,30 @@ def warn(msg):
     warnings.append(msg)
 
 
-tax = json.load(open("taxonomy.json"))
-schema = json.load(open("schema.json"))
+import glob as _glob
+
+VERSION = sys.argv[1] if len(sys.argv) > 1 else None
+if VERSION is None:
+    # no argument: check every transcribed version, then root consistency
+    versions = sorted(os.path.basename(os.path.dirname(p))
+                      for p in _glob.glob("versions/*/taxonomy.json"))
+    import subprocess
+    rc = 0
+    for v in versions:
+        print(f"=== {v} ===")
+        rc |= subprocess.call([sys.executable, __file__, v])
+    latest = max(versions, key=lambda v: [int(x) for x in v.split(".")])
+    root = open("taxonomy.json", encoding="utf-8").read()
+    if root != open(f"versions/{latest}/taxonomy.json", encoding="utf-8").read():
+        print(f"FAIL: taxonomy.json differs from versions/{latest}/taxonomy.json "
+              f"(root must be a copy of the latest published version)")
+        rc |= 1
+    else:
+        print(f"OK: taxonomy.json matches versions/{latest}/taxonomy.json")
+    sys.exit(rc)
+
+tax = json.load(open(f"versions/{VERSION}/taxonomy.json", encoding="utf-8"))
+schema = json.load(open(f"versions/{VERSION}/schema.json", encoding="utf-8"))
 dims = tax["dimensions"]
 
 # ---- collect entries -------------------------------------------------------
@@ -113,8 +136,8 @@ if schema["properties"]["taxonomy_version"]["const"] != tax["version"]:
     fail("schema taxonomy_version const != taxonomy.json version")
 
 # ---- no em dashes anywhere (house rule) -------------------------------------
-for fname in ["taxonomy.json", "schema.json", "README.md", "LICENSE", "CHANGELOG.md",
-              "example-case.json", "build_schema.py", "validate.py"]:
+for fname in (_glob.glob("*.md") + _glob.glob("*.py") + _glob.glob("*.json")
+              + _glob.glob("versions/*/*.json") + _glob.glob("derivations/*") + ["LICENSE"]):
     try:
         txt = open(fname, encoding="utf-8").read()
     except FileNotFoundError:
@@ -188,7 +211,8 @@ for path in sorted(glob.glob("derivations/*.json")):
         continue
     src = der.get("derivation_of", {})
     if src.get("version") != tax["version"]:
-        warn(f"{path}: declares source version {src.get('version')}, repo holds {tax['version']}")
+        # A derivation is valid against one version only; it is not this version's problem.
+        continue
     for mapping in der.get("mappings", []):
         if mapping.get("relation") not in VALID_RELATIONS:
             fail(f"{path}: mapping '{mapping.get('local_code')}' has invalid relation '{mapping.get('relation')}'")
@@ -206,7 +230,10 @@ try:
     import jsonschema
 
     example = json.load(open("example-case.json"))
-    jsonschema.validate(example, schema)
+    if example.get("taxonomy_version") == VERSION:
+        jsonschema.validate(example, schema)
+    else:
+        warn(f"example-case.json is pinned to {example.get('taxonomy_version')}, not {VERSION}; skipped")
 except ImportError:
     warn("jsonschema not installed; skipped example validation")
 except FileNotFoundError:

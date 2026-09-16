@@ -6,6 +6,8 @@ The official taxonomy is published as a PDF. Every institution that integrates i
 
 This repository does that transcription once, in the open, so it can be checked instead of repeated.
 
+> **Which version do I need?** 7.0 is the latest published version but does not take effect until **1 January 2027**. Anything running in production today is on **6.0**. Both are in `versions/`.
+
 **What it gives you**
 
 - **The full v7.0 content as JSON**, every entry with its definition and source citation, ready to load rather than re-type.
@@ -14,11 +16,13 @@ This repository does that transcription once, in the open, so it can be checked 
 - **Version lineage that survives a split.** When a category is divided, a trend series keyed on the old code continues as the sum of its successors instead of dropping to zero.
 - **Rules for consumers on different versions**, so a record classified under one version can be read under another without being rejected or silently mangled.
 - **A path for simplified local vocabularies** that stay reconcilable with everyone else's, instead of each institution inventing a private mapping.
+- **A real diff between versions.** Run `diff_versions.py 6.0 7.0` and see exactly what moved, including the changes the annex does not list.
 
 **Status: community draft, version 0.1.0.** Voluntary work by users of the taxonomy, prepared for the Euro Banking Association. This is not an EBA publication. It is offered to the EBA and to other users of the taxonomy as a basis for discussion; if the EBA chooses to publish an official machine-readable distribution, that will supersede this file. Until then, the PDF is the sole authoritative text and this repository defers to it wherever the two differ.
 
 ```bash
-python3 validate.py    # check the data is internally consistent
+python3 validate.py              # check every version, and that root matches the latest
+python3 diff_versions.py 6.0 7.0 # what changed between versions
 ```
 
 Sections 1 to 3 below cover the legal position, what the annual change cycle means for an implementation, and the technical detail. Start at section 3 if you only want to use the files.
@@ -27,12 +31,16 @@ Sections 1 to 3 below cover the legal position, what the annual change cycle mea
 
 | File | Purpose |
 |---|---|
-| `taxonomy.json` | The full content: objectives, the definition of fraud, the five dimensions (method, modus, initiator, labels/tags, payment instrument) with codes, names, definitions and source citations, plus version history, the v6 to v7 change log, retired entries, and the annual review process. |
+| `versions/<v>/taxonomy.json` | One transcription per published version. Currently **6.0** (in force until 31 December 2026) and **7.0** (effective 1 January 2027). |
+| `versions/<v>/schema.json` | The record schema for that version, generated from its taxonomy file. |
+| `taxonomy.json`, `schema.json` | Copies of the latest published version (7.0), kept at the root for convenience. `validate.py` enforces that they match. |
 | `schema.json` | JSON Schema (2020-12) for validating a single fraud-case classification record. Generated from `taxonomy.json`; do not edit by hand. |
 | `example-case.json` | A record that validates against `schema.json`. |
 | `build_schema.py` | Regenerates `schema.json` from `taxonomy.json`. |
 | `validate.py` | Integrity checks: code uniqueness, cross-references, lineage consistency, schema drift, example validation. Exit code 1 on failure. |
 | `migrate.py` | Resolves a classification record across taxonomy versions and reports the fidelity of the result. |
+| `diff_versions.py` | Reports what actually changed between two versions, and which of it the official annex does not mention. |
+| `build_v6.py` | How the 6.0 transcription was derived, kept so the derivation is auditable. |
 | `derivations/` | How to declare a local or simplified vocabulary that stays traceable to this one, with a worked example. |
 | `CHANGELOG.md` | Changes to this repository (not to the taxonomy itself; that is in `taxonomy.json` under `version_history` and `changes`). |
 | `LICENSE` | CC BY 4.0. |
@@ -155,6 +163,24 @@ python3 migrate.py --explain D009          # how one code resolves in both direc
 
 This repository currently carries 7.0 only, and the codes in it are assigned here: the EBA's PDF does not define codes. So there is no earlier code table to map from yet. The mechanism is defined now and demonstrated against the 6.0 to 7.0 change, so it is in place before it is needed. Transcribing 6.0 would make the mapping concrete in both directions.
 
+### What actually changes between versions
+
+Running `python3 diff_versions.py 6.0 7.0` on the two transcriptions gives:
+
+```
+added 6, removed 2, changed in place 16 (12 recited, 4 text-changed)
+```
+
+The annex to v7.0 describes eight changes: one modus split into three, three new labels, one label moved to the modus section, and four definitions re-cited from different sources. All of that is real and correctly documented.
+
+The diff finds **sixteen entries changed in place, eleven of which the annex does not mention.** The largest single pattern is an attribution change: the Australian source cited as "National Anti-Scam Centre" throughout 6.0 is cited as "ScamWatch" throughout 7.0, affecting five entries, with one also changing its article title from "Threats and extortion scams" to "Threat scams". Several cited URLs changed. Four definitions differ in wording.
+
+This is not sloppy drafting. Most definitions in the taxonomy are quotations from external bodies, and those bodies rewrite their own pages between June and June. The EBA re-quotes the current text, which is the right thing to do. The consequence is simply that **the annex is a guide to intended changes, not a complete record of textual ones**, and an implementer diffing on definition text will see more movement than the changelog predicts.
+
+That is the argument for keeping the content in a form that can be diffed. `diff_versions.py --undocumented` lists only the changes the annex does not cover.
+
+A caveat the tool states in its own output: it reports `text-changed` where the definition differs but nothing declares why, because a machine cannot tell a cosmetic rewording from a change of meaning. Two of the four are visibly cosmetic (`Malware` moves quotation marks; `Pure account takeover` modernises "computer criminal" to "cyber criminal"). The tool does not guess, and neither does the data.
+
 ### Local and simplified variants
 
 Not every institution can adopt full granularity at once, and the usual result is private mappings that are not comparable between institutions. `derivations/` documents how to declare a coarser local vocabulary that maps onto this one with stated relations (`exact`, `broader`, `narrower`, `related`, following SKOS mapping conventions), so that two parties on different local sets can still be reconciled. A derivation never redefines or renumbers a source code. If a local value cannot be expressed as a relation to any source code, that is a gap in the taxonomy and belongs in the EBA's change-request process rather than a private extension.
@@ -176,8 +202,10 @@ Not every institution can adopt full granularity at once, and the usual result i
 ### Checking and regenerating
 
 ```bash
-python3 validate.py          # integrity checks; exits 1 on any failure
-python3 build_schema.py      # regenerate schema.json after editing taxonomy.json
+python3 validate.py              # every version; exits 1 on any failure
+python3 validate.py 7.0          # one version
+python3 build_schema.py 7.0      # regenerate that version's schema after editing its taxonomy
+python3 diff_versions.py 6.0 7.0 # what changed, and what the annex omits
 ```
 
 `validate.py` requires the `jsonschema` package for the example-record check and skips it with a warning if the package is absent.

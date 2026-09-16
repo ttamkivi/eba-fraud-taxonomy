@@ -2,6 +2,20 @@
 
 Changes to this repository. Changes to the taxonomy itself are recorded by the EBA and mirrored in `taxonomy.json` under `version_history` and `changes`.
 
+## 0.2.0 (2026-09-16)
+
+Adds the version currently in force and the means to compare versions.
+
+- `versions/6.0/taxonomy.json`: full transcription of EBA Fraud Taxonomy v6.0 (18 June 2025), the version in force until 31 December 2026. 14 methods, 21 modi, 3 initiators, 65 labels/tags, 2 payment instruments.
+- `versions/7.0/` alongside it; `taxonomy.json` and `schema.json` at the root are now copies of the latest published version, and `validate.py` enforces that they match.
+- `diff_versions.py`: compares two versions by code, classifies each change, and flags changes the target version's annex does not mention.
+- `build_v6.py`: the derivation of 6.0 from 7.0 plus verified reverse deltas, kept so the transcription is auditable rather than asserted. Every delta was checked against text extracted from both official PDFs.
+- `validate.py` and `build_schema.py` take an optional version argument; with none, `validate.py` checks all versions.
+
+**Code scheme corrected before adoption.** The retired modus carried the code `D-RETIRED-01`, which encoded its status into its identifier. That breaks as soon as a version exists in which the entry is active, which is exactly what 6.0 is. It is now `D024`. This is a renumbering, which the stability rule otherwise forbids; it was done at 0.2.0 with no known adopters, and is not expected to happen again.
+
+Finding recorded in the README: the v7.0 annex documents eight changes, and the diff finds sixteen entries changed in place, eleven of them unmentioned. The cause is benign (quoted sources reword their own pages) but it means the annex cannot be relied on as a complete record of textual change.
+
 ## 0.1.0 (2026-09-16)
 
 First community draft, transcribed from EBA Fraud Taxonomy v7.0 (3 June 2026).
@@ -21,5 +35,6 @@ First community draft, transcribed from EBA Fraud Taxonomy v7.0 (3 June 2026).
 Known limitations of this draft:
 
 - Some third-party definitions are shortened relative to the PDF's verbatim quotation. The PDF governs. A follow-up pass to restore every quotation verbatim is recommended before any official adoption.
-- `introduced_in` is `<=6.0` for every entry predating v7.0. The exact introduction version is not established from the v7.0 PDF alone and has not been guessed; backfilling needs the earlier published versions.
+- `introduced_in` is `<=6.0` throughout. Versions 1.0 to 5.0 have not been transcribed, so the version in which an entry first appeared is not established and has not been guessed. Transcribing 5.0 and earlier would close this.
+- The 5.0 to 6.0 change set is not transcribed, so `diff_versions.py` cannot flag undocumented changes for that transition.
 - Not yet reviewed by the Euro Banking Association.

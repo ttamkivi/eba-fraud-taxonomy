@@ -2,7 +2,10 @@
 """Regenerate schema.json from taxonomy.json. Run after any edit to taxonomy.json."""
 import json
 
-tax = json.load(open("taxonomy.json"))
+import sys, os
+VERSION = sys.argv[1] if len(sys.argv) > 1 else None
+SRC = os.path.join("versions", VERSION, "taxonomy.json") if VERSION else "taxonomy.json"
+tax = json.load(open(SRC))
 dims = tax["dimensions"]
 
 
@@ -115,8 +118,9 @@ schema = {
     "additionalProperties": True,
 }
 
-with open("schema.json", "w") as f:
+DST = os.path.join("versions", VERSION, "schema.json") if VERSION else "schema.json"
+with open(DST, "w") as f:
     json.dump(schema, f, indent=2, ensure_ascii=False)
     f.write("\n")
 
-print(f"schema.json written: methods={len(methods)} modi={len(modi)}+1 initiators={len(initiators)} instruments={len(instruments)}")
+print(f"{DST} written: methods={len(methods)} modi={len(modi)}+1 initiators={len(initiators)} instruments={len(instruments)}")

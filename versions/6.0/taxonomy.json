@@ -1,8 +1,8 @@
 {
   "taxonomy": "EBA Fraud Taxonomy",
-  "version": "7.0",
-  "published": "2026-06-03",
-  "effective_from": "2027-01-01",
+  "version": "6.0",
+  "published": "2025-06-18",
+  "effective_from": "2026-01-01",
   "publisher": "Euro Banking Association (EBA)",
   "publisher_body": "Expert Group on Payment Fraud-related Topics (EGPF), created by the EBA in February 2020",
   "classification": "Public",
@@ -12,10 +12,11 @@
     "usage_conditions": [
       "Acknowledge the review and updating process and the expectation that updated versions are implemented effective 1 January following an annual review cycle, save emergency updates.",
       "Adhere to the objective of a common pan-European fraud vocabulary without limitation on payment instrument type."
-    ]
+    ],
+    "copyright": "Euro Banking Association (EBA) 2025"
   },
   "source_document": {
-    "filename": "EBA_20260603_EBA_Fraud_Taxonomy_(Fraud_Type_Categorisation)_v7.0",
+    "filename": "EBA_20250618_EBA_Fraud_Taxonomy_(Fraud_Type_Categorisation)_v6.0",
     "note": "This JSON is a community-maintained machine-readable transcription of the official EBA Fraud Taxonomy PDF. The PDF published by the EBA is the sole authoritative source; this file is not itself an EBA publication."
   },
   "objectives": [
@@ -102,9 +103,9 @@
         },
         {
           "name": "Malware",
-          "definition": "Malware is short for 'malicious software' and is used as a single term to refer to virus, spyware, worm etc. Malware is designed to cause damage to a stand-alone computer or a networked PC.",
+          "definition": "'Malware' is short for malicious software and is used as a single term to refer to virus, spy ware, worm etc. Malware is designed to cause damage to a stand-alone computer or a networked PC. Wherever a malware term is used it means a program which is designed to damage your computer and it could refer to either a virus, worm or Trojan Horse.",
           "source": "Digicert 'What is Malware Viruses, Spyware, and Cookies?'",
-          "source_url": "https://www.digicert.com/faq/vulnerability-management/what-is-malware-viruses-spyware-and-cookies",
+          "source_url": "https://www.websecurity.digicert.com/security-topics/what-are-malware-viruses-spyware-and-cookies-and-what-differentiates-them",
           "example": "Modification of a payment order by the fraudster",
           "code": "M07",
           "abridged": true,
@@ -217,8 +218,8 @@
           "modi": [
             {
               "name": "Safe account fraud",
-              "definition": "You'll be contacted, usually by phone, by someone claiming to be from your bank's fraud department, the police or a regulatory body. They'll say your account has been compromised and pressure you to transfer all your money from your bank to a 'safe account' they control. Alternatively/additionally, could result in the victim handing over account credentials, a physical/virtual card or card details, and/or completing authentication steps to access the account and/or sign off payment transactions.",
-              "source": "MoneyHelper 'Types of Scams'",
+              "definition": "You'll be contacted, usually on the phone by someone claiming to be from your bank's fraud department, the police or a regulatory body (...). They'll say your account has been compromised in some way and encourage you to transfer all your money from your bank to a 'safe account' they control. Alternatively/additionally, this modus could result in the victim handing over account credentials or a physical/virtual card or card details and/or completing authentication steps required to access the account and/or sign off payment transactions.",
+              "source": "Moneyhelper Types of Scams",
               "source_url": "https://www.moneyhelper.org.uk/en/money-troubles/scams/types-of-scam",
               "possible_labels_tags": [
                 "Fake bank / financial institution",
@@ -268,10 +269,9 @@
           "modi": [
             {
               "name": "Advance fee fraud",
-              "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required.",
-              "definition": "Advance fee fraud is a type of financial scam where the victim is tricked into paying an upfront fee with the false promise of receiving a significant reward or benefit later. Alternatively/additionally, could result in the victim handing over account credentials, a physical/virtual card or card details, and/or completing authentication steps.",
-              "source": "Finance Strategists 'Advance Fee Fraud'",
-              "source_url": "https://www.financestrategists.com/wealth-management/investments/advance-fee-fraud/#what-is-advance-fee-fraud",
+              "definition": "Advance fee fraud is when fraudsters target victims to make advance or upfront payments for goods, services and/or financial gains that do not materialise. Alternatively/additionally, this modus could result in the victim handing over account credentials or a physical/virtual card or card details and/or completing authentication steps required to access the account and/or sign off payment transactions.",
+              "source": "National Fraud & Cyber Crime Reporting Centre 'Advance Fee Fraud'",
+              "source_url": "https://www.actionfraud.police.uk/a-z-of-fraud/advance-fee-fraud",
               "possible_labels_tags": [
                 "Fake betting",
                 "Fake loan",
@@ -283,9 +283,7 @@
               "group_code": "G02",
               "abridged": true,
               "status": "active",
-              "introduced_in": "<=6.0",
-              "last_modified_in": "7.0",
-              "last_change_type": "recited"
+              "introduced_in": "<=6.0"
             },
             {
               "name": "Claim a benefit fraud",
@@ -305,7 +303,7 @@
             {
               "name": "Investment fraud",
               "definition": "Investment scams promise big returns, but the goal is stealing money. Scammers use convincing marketing and new technology to make their investment sound too good to miss, promising big payouts with little or no risk and using pressure tactics to get victims to act fast.",
-              "source": "ScamWatch 'Investment scams'",
+              "source": "National Anti-Scam Centre 'Investment scams'",
               "source_url": "https://www.scamwatch.gov.au/types-of-scams/investment-scams",
               "possible_labels_tags": [
                 "Fake website",
@@ -353,72 +351,25 @@
         },
         {
           "name": "Please help",
-          "definition": "Fraudster creates an emotional bond with the victim, typically friendship/sympathy/romantic/empathy, then exploits the bond by getting the victim to help the fraudster financially or to contribute to a fake charity. Alternatively, the fraudster invents an emergency scenario requiring the victim to provide financial assistance to a family member or friend.",
+          "definition": "Fraudster creates an emotional bond with the victim, typically friendship/sympathy/romantic, then exploits the bond by getting the victim to help the fraudster financially. Alternatively, the fraudster invents an emergency scenario requiring the victim to provide financial assistance to a family member or friend.",
           "modi": [
             {
-              "name": "Support a friend or family member fraud",
-              "definition": "The victim is tricked into providing money or gifts to the fraudster. The fraudster impersonates a friend or family member requiring support in an emergency, or pretends to represent an institution/organisation authorised to request bail to release a family member from prison ('shock calls'). Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
-              "source": "EGPF",
+              "name": "Emotional manipulation",
+              "code": "D024",
+              "group_code": "G04",
+              "status": "active",
+              "introduced_in": "<=6.0",
+              "definition": "Emotional manipulation is considered to be the ability to influence another individual's feelings and behaviors for one's own self-interest or benefit. The victim is tricked into providing, for example, money or gifts. Alternatively/additionally, this modus could result in the victim handing over account credentials or a physical/virtual card or card details and/or completing authentication steps required to access the account and/or sign off payment transactions.",
+              "source": "Hyde, J. & Grieve, R. (2014). Able and willing: Refining the measurement of emotional manipulation",
+              "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0191886914001408?via%3Dihub",
               "possible_labels_tags": [
                 "Family emergency",
                 "Impersonation",
+                "Romance fraud",
                 "Shock calls"
               ],
-              "code": "D008",
-              "group_code": "G04",
-              "derived_from": {
-                "code": "D024",
-                "name": "Emotional manipulation",
-                "relation": "split_from"
-              },
-              "status": "active",
-              "introduced_in": "7.0"
-            },
-            {
-              "name": "Romance fraud",
-              "definition": "Scammers use romance, dating or friendship to earn your trust and steal your money. Scammers use social media, dating or gaming apps and websites to find people looking for love and friendship. They create fake profiles, sometimes of famous people, and try to connect with you ('love bombing'), then tell you about an urgent problem they need money for, or convince you to invest in a fake scheme. Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
-              "source": "ScamWatch 'Relationship scams'",
-              "source_url": "https://www.scamwatch.gov.au/types-of-scams/relationship-scams",
-              "possible_labels_tags": [
-                "Impersonation",
-                "Money mule victim"
-              ],
-              "code": "D009",
-              "group_code": "G04",
-              "derived_from": {
-                "code": "D024",
-                "name": "Emotional manipulation",
-                "relation": "split_from"
-              },
-              "abridged": true,
-              "status": "active",
-              "introduced_in": "7.0",
-              "introduced_in_note": "New as a modus in 7.0. The concept is older: it existed as a label/tag in earlier versions.",
-              "moved_from": {
-                "dimension": "labels_tags",
-                "in_version": "7.0",
-                "note": "Moved from the labels/tags section to the modus section in v7.0."
-              }
-            },
-            {
-              "name": "Charity / donation fraud",
-              "definition": "Charity fraud involves deceitful practices to exploit donor generosity. Scammers misrepresent fake charities to collect donations; victims believe their contributions reach genuine causes. These fraudulent schemes often target emotional triggers, such as natural disasters or health crises, to prompt immediate donations. The victim is tricked into sending money to a fake charity or other non-profit organisation, not expecting a material return. Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
-              "source": "FraudNet 'Charity fraud'",
-              "source_url": "https://www.fraud.net/glossary/charity-fraud#what-is-charity-fraud",
-              "possible_labels_tags": [
-                "Fake website",
-                "Impersonation"
-              ],
-              "code": "D010",
-              "group_code": "G04",
-              "derived_from": {
-                "code": "D024",
-                "name": "Emotional manipulation",
-                "relation": "split_from"
-              },
-              "abridged": true,
-              "status": "active",
-              "introduced_in": "7.0"
+              "possible_labels_tags_note": "The v6.0 PDF lists this label as 'Shock call'; the labels/tags section of the same document spells it 'Shock calls'. Normalised to the labels/tags spelling.",
+              "abridged": true
             }
           ],
           "code": "G04"
@@ -430,7 +381,7 @@
             {
               "name": "Extortion",
               "definition": "Scammers threaten you so you will pay them money. They may threaten you with arrest, deportation, or even physical harm, if you don't agree to pay them immediately. Alternatively/additionally, could result in the victim handing over account credentials, a card or card details, and/or completing authentication steps.",
-              "source": "ScamWatch 'Threat scams'",
+              "source": "National Anti-Scam Centre 'Threats and extortion scams'",
               "source_url": "https://www.scamwatch.gov.au/types-of-scams/threats-and-extortion-scams",
               "possible_labels_tags": [
                 "Nightclub",
@@ -543,7 +494,7 @@
           "modi": [
             {
               "name": "Pure account takeover",
-              "definition": "An account takeover can happen when a fraudster or cyber criminal poses as a genuine customer, gains control of an account and makes unauthorised transactions. Online banking accounts are usually taken over as a result of phishing, spyware or malware scams. Pure account takeover is a form of account takeover where the fraudster gains access to the account without tricking the victim into a handover of credentials.",
+              "definition": "An account takeover can happen when a fraudster or computer criminal poses as a genuine customer, gains control of an account and makes unauthorised transactions. Online banking accounts are usually taken over as a result of phishing, spyware or malware scams. Pure account takeover is a form of account takeover where the fraudster gains access to the account without tricking the victim into a handover of credentials.",
               "source": "Action Fraud 'Account takeover'",
               "source_url": "https://www.actionfraud.police.uk/a-z-of-fraud/account-takeover",
               "examples": [
@@ -666,23 +617,7 @@
         "definition": "Used to register new modus not yet included in the list of modi.",
         "code": "D999"
       },
-      "retired": [
-        {
-          "code": "D024",
-          "name": "Emotional manipulation",
-          "high_level_classification": "Please help",
-          "superseded_by": [
-            "D008",
-            "D009",
-            "D010"
-          ],
-          "status": "retired",
-          "introduced_in": "<=6.0",
-          "retired_in": "7.0",
-          "reason": "split",
-          "dimension": "modus"
-        }
-      ]
+      "retired": []
     },
     "labels_tags": {
       "label": "Labels/tags (what else) (PSP individual)",
@@ -710,7 +645,7 @@
           "name": "Beneficiary account change",
           "definition": "A request to change the details of a beneficiary's account to which payments are made. A fraudster exploits weaknesses in a genuine change request process, changing genuine beneficiary account details to those of an account he holds.",
           "source": "Citibank 'Beneficiary Change Request: Risks and Best Practices'",
-          "source_url": "https://www.citibank.com/tts/sa/emea_marketing/docs/Beneficiary_Change_Request.pdf",
+          "source_url": "https://www.citibank.com/tts/sa/emea_marketing/docs/Beneficiary-Change-Request-Risks-and-Best-Practices.pdf",
           "code": "L003",
           "status": "active",
           "introduced_in": "<=6.0"
@@ -723,14 +658,6 @@
           "code": "L004",
           "status": "active",
           "introduced_in": "<=6.0"
-        },
-        {
-          "name": "Card chip relay",
-          "definition": "Fraud trend where fraudsters manage to intercept the information exchanged between a card and an ATM/POS machine, slightly before the authorisation process, to generate a new, manipulated transaction before sending it to the issuing bank.",
-          "source": "EGPF",
-          "code": "L005",
-          "status": "active",
-          "introduced_in": "7.0"
         },
         {
           "name": "Card details stolen",
@@ -790,7 +717,7 @@
         {
           "name": "Card skimming",
           "definition": "Skimming occurs when devices are illegally installed on or inside ATMs, point-of-sale (POS) terminals, or fuel pumps to capture card data and record cardholders' PIN entries. Criminals use the data to create fake debit or credit cards and then steal from victims' accounts.",
-          "source": "FBI 'Skimming'",
+          "source": "FBI 'Scams and Safety'",
           "source_url": "https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/skimming",
           "code": "L012",
           "abridged": true,
@@ -809,17 +736,14 @@
         },
         {
           "name": "CEO fraud",
-          "definition": "Criminals pose as senior management (such as CEOs) or other senior staff to persuade staff into making urgent payments or to transfer funds. Requests often made via email but can also come via a phone call, often when the real member of staff is out of office.",
-          "source": "Barclays 'CEO Fraud'",
-          "source_url": "https://www.barclayscorporate.com/insights/fraud-protection/ceo-fraud/",
+          "definition": "CEO fraud will typically start with an email being sent from a fraudster to a member of staff in a company's finance department. The member of staff will be told by the fraudster who is purporting to be a company director or CEO that they need to quickly transfer money to a certain bank account for a specific reason. The member of staff will do as their boss has instructed, only to find that they have sent money to a fraudster's bank account. The fraudster will normally redistribute this money into other mule accounts and then close down the bank account to make it untraceable.",
+          "source": "National Fraud & Cyber Crime Reporting Centre 'Action Fraud warning after serious rise in CEO fraud'",
+          "source_url": "https://www.actionfraud.police.uk/alert/action-fraud-warning-after-serious-rise-in-ceo-fraud",
           "example": "Impersonation of manager",
           "code": "L014",
           "abridged": true,
           "status": "active",
-          "introduced_in": "<=6.0",
-          "last_modified_in": "7.0",
-          "last_change_type": "recited",
-          "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required."
+          "introduced_in": "<=6.0"
         },
         {
           "name": "Collusive merchant / data misuse",
@@ -887,29 +811,23 @@
         },
         {
           "name": "Fake betting",
-          "definition": "Betting and sports investment scams are fraudulent schemes where scammers entice victims to invest money in fake or exaggerated betting opportunities or sports-related investments, promising high returns with minimal risk, often posing as legitimate betting platforms, sports analysts, or investment firms.",
-          "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required.",
-          "source": "ScamSkunk 'Betting & Sports Investment Scam'",
-          "source_url": "https://www.scamskunk.com/knowledge-base/how-to-avoid-scams-a-z-category-b/betting-scams-and-sports-investment-2025/",
+          "definition": "These scams are a form of gambling made to look like real investments. (...) Betting syndicates: The scammer asks you to become a member of a betting syndicate for a joining fee. (...) You are required to make ongoing deposits to maintain the balance of the account. The scammer tells you that they will use funds in the account to place bets on behalf of the syndicate. You, and other 'syndicate members' are promised a percentage of the profits.",
+          "source": "National Anti-Scam Centre 'Investment scams / Gambling and sports betting scams'",
+          "source_url": "https://www.scamwatch.gov.au/types-of-scams/investment-scams",
           "code": "L022",
           "abridged": true,
           "status": "active",
-          "introduced_in": "<=6.0",
-          "last_modified_in": "7.0",
-          "last_change_type": "recited"
+          "introduced_in": "<=6.0"
         },
         {
           "name": "Fake customer support",
-          "definition": "In these scams, criminals pose as technical or customer support/service, some working out of fraudulent call centres across the globe, posing as representatives from legitimate companies, telling the victim there's an issue with their device or account and that they must act fast.",
-          "note": "Definition text replaced in v7.0 with an equivalent from a different authoritative source. The meaning did not change and no re-classification is required.",
-          "source": "FBI 'How We Can Help You, Tech Support Scams'",
-          "source_url": "https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/tech-support-scams",
+          "definition": "Fraudster impersonates customer support. The scammer will phone you and pretend to be a staff member from a large telecommunications or computer company (...). Alternatively they may claim to be from a technical support service provider. They will tell you that your computer has been sending error messages or that it has a virus. (...) The caller will request remote access to your computer to 'find out what the problem is'. The scammer may try to talk you into buying unnecessary software or a service to 'fix' the computer, or they may ask you for your personal details and your bank or credit card details.",
+          "source": "National Anti-Scam Centre 'Remote access scams'",
+          "source_url": "https://www.scamwatch.gov.au/protect-yourself/attempts-to-gain-your-personal-information/remote-access-scams",
           "code": "L023",
           "abridged": true,
           "status": "active",
-          "introduced_in": "<=6.0",
-          "last_modified_in": "7.0",
-          "last_change_type": "recited"
+          "introduced_in": "<=6.0"
         },
         {
           "name": "Fake loan",
@@ -995,7 +913,7 @@
         },
         {
           "name": "Fraudulent use of Contract for Difference (CFD)",
-          "definition": "A CFD is a contract between a broker and a trader who agree to exchange the difference in value of an underlying asset between the beginning and the end of the contract, often less than one day. Fraudster pretends to represent a legitimate company offering an investment opportunity based on CFD; the customer is directed to a fake website and tricked into setting up an account; once the customer wishes to liquidate the account, the funds are gone.",
+          "definition": "Contracts for difference (CFD) are a popular way of trading on the price of stocks and indices, commodities, forex and cryptocurrencies without owning the underlying assets. (...) A CFD is a contract between a broker and a trader who agree to exchange the difference in value of an underlying security between the beginning and the end of the contract, often less than one day.",
           "source": "Capital.com 'What is CFD trading and how does it work?'",
           "source_url": "https://capital.com/what-is-cfd-trading",
           "code": "L033",
@@ -1017,7 +935,7 @@
         {
           "name": "Gift card",
           "definition": "Scammers like to get gift cards as payment as it's easy for them to quickly sell them on secondary markets and pocket the cash.",
-          "source": "ScamWatch 'Payment demanded by gift card? It's a scam'",
+          "source": "National Anti-Scam Centre 'Payment demanded by gift card? It's a scam'",
           "source_url": "https://www.scamwatch.gov.au/news-alerts/payment-demanded-by-gift-card-its-a-scam",
           "code": "L035",
           "status": "active",
@@ -1026,7 +944,7 @@
         {
           "name": "Goods not received",
           "definition": "Payer submitted payment, however does not receive the purchased goods, because the offer was issued on a fake website store or by a fake seller.",
-          "source": "ScamWatch \"'Tis the season for online shopping scams\"",
+          "source": "National Anti-Scam Centre \"'Tis the season for online shopping scams\"",
           "source_url": "https://www.scamwatch.gov.au/news-alerts/tis-the-season-for-online-shopping-scams",
           "code": "L036",
           "status": "active",
@@ -1081,26 +999,6 @@
           "introduced_in": "<=6.0"
         },
         {
-          "name": "Money muling",
-          "definition": "Identifies transactions associated with patterns indicative of money mule activity. A money mule is a person who receives money from a third party in their bank account and transfers it to another one or takes it out in cash and gives it to someone else, obtaining a commission for it. Even if not directly involved in the crimes that generate the money, they are accomplices, as they launder the proceeds and help criminal syndicates remain anonymous.",
-          "source": "Europol 'Money muling'",
-          "source_url": "https://www.europol.europa.eu/operations-services-and-innovation/public-awareness-and-prevention-guides/money-muling",
-          "code": "L042",
-          "abridged": true,
-          "status": "active",
-          "introduced_in": "7.0"
-        },
-        {
-          "name": "Money mule victim",
-          "definition": "Unwitting or unknowing money mules are individuals unaware they are helping criminals profit by being part of a larger scheme, often solicited via an online romance scheme or job offer, asked to use their own account or open a new one in their true name, may be told to keep a portion of the money, motivated by trust in the actual existence of their romance or job position.",
-          "source": "FBI 'Money Mules'",
-          "source_url": "https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/money-mules",
-          "code": "L043",
-          "abridged": true,
-          "status": "active",
-          "introduced_in": "7.0"
-        },
-        {
           "name": "Multiple imprint",
           "definition": "When a single transaction is recorded multiple times on old-fashioned credit card imprint machines known as 'knuckle busters'.",
           "source": "Digital News Asia 'The 8 Different Types of Card Fraud'",
@@ -1127,20 +1025,20 @@
           "introduced_in": "<=6.0"
         },
         {
+          "name": "No physical meeting",
+          "definition": "E.g. reunion exclusively using a digital communication channel.",
+          "source": "EGPF",
+          "code": "L048",
+          "status": "active",
+          "introduced_in": "<=6.0"
+        },
+        {
           "name": "Non-crypto investment fraud",
           "definition": "You search online for bonds, shares or pension plans, then someone contacts you with an investment deal. They might say you need to pay a fee to secure it. Eventually they'll disappear with the fee and any money invested.",
           "source": "Barclays Bank UK 'Investment Scams'",
           "source_url": "https://www.barclays.co.uk/fraud-and-scams/investment-scams/",
           "code": "L047",
           "abridged": true,
-          "status": "active",
-          "introduced_in": "<=6.0"
-        },
-        {
-          "name": "No physical meeting",
-          "definition": "E.g. reunion exclusively using a digital communication channel.",
-          "source": "EGPF",
-          "code": "L048",
           "status": "active",
           "introduced_in": "<=6.0"
         },
@@ -1201,9 +1099,24 @@
           "introduced_in": "<=6.0"
         },
         {
+          "name": "Romance fraud",
+          "code": "L068",
+          "status": "active",
+          "introduced_in": "<=6.0",
+          "definition": "Scammers use dating or friendship to win your trust and get your money. Scammers use social media, dating or gaming apps and websites to find people looking for love and friendship. They create fake profiles, sometimes of famous people. They might also call or message a lot to make you feel special. This is sometimes called 'love bombing'. Once you trust them, they might tell you about an urgent problem they need your money for. They might ask you to set up accounts or transfer money they give you. Or they might convince you to use cryptocurrency and invest in a fake scheme they say is real. Either way, the scammer steals your money and disappears, and you don't get it back.",
+          "source": "National Anti-Scam Centre 'Romance scams'",
+          "source_url": "https://www.scamwatch.gov.au/types-of-scams/romance-scams",
+          "abridged": true,
+          "became_modus_in": {
+            "version": "7.0",
+            "code": "D009",
+            "note": "Moved from labels/tags to the modus section in 7.0. Its definition and cited URL also changed at that point (romance-scams became relationship-scams)."
+          }
+        },
+        {
           "name": "Sextortion",
           "definition": "Scammers use social media platforms and email as forums for sextortion scams, where they threaten to share intimate images or footage of you online, unless you give in to their demands.",
-          "source": "ScamWatch 'Gen Z the fastest growing victims of scams'",
+          "source": "National Anti-Scam Centre 'Gen Z the fastest growing victims of scams'",
           "source_url": "https://www.scamwatch.gov.au/news-alerts/gen-z-the-fastest-growing-victims-of-scams",
           "code": "L055",
           "status": "active",
@@ -1241,7 +1154,6 @@
         {
           "name": "Social media compromise",
           "definition": "Use of hacked, spoofed or stolen social media accounts to gain access to other parties for fraudulent purposes.",
-          "source": "EGPF",
           "code": "L059",
           "status": "active",
           "introduced_in": "<=6.0"
@@ -1320,7 +1232,6 @@
           "introduced_in": "<=6.0"
         }
       ],
-      "spelling_note": "The PDF spells one label two ways: 'Fake prize, sweepstakes, and lottery fraud' in the labels/tags section (p.39) and without the second comma in the modus tables (p.15). This file uses the labels/tags section spelling as canonical.",
       "retired": []
     },
     "payment_instrument": {
@@ -1377,11 +1288,6 @@
     {
       "version": "6.0",
       "date": "2025-06-18"
-    },
-    {
-      "version": "7.0",
-      "date": "2026-06-03",
-      "effective_from": "2027-01-01"
     }
   ],
   "change_types": {
@@ -1394,80 +1300,7 @@
     "redefined": "The meaning of an entry changed. This is the only change type that can require re-classification of existing records.",
     "recited": "The definition text was replaced with an equivalent from a different source. The meaning did not change and no re-classification is required."
   },
-  "changes": [
-    {
-      "version": "7.0",
-      "published": "2026-06-03",
-      "effective_from": "2027-01-01",
-      "source": "Annex of the EBA Fraud Taxonomy v7.0: changes since version 6.0.",
-      "records": [
-        {
-          "change_type": "split",
-          "dimension": "modus",
-          "from": [
-            "D024"
-          ],
-          "to": [
-            "D008",
-            "D009",
-            "D010"
-          ],
-          "successor_notes": {
-            "D008": "New modus (add-on).",
-            "D009": "Previously a label/tag; moved into the modus section.",
-            "D010": "New modus (add-on)."
-          },
-          "note": "'Emotional manipulation' in the 'Please help' classification was not granular enough and was replaced by three more specific modi."
-        },
-        {
-          "change_type": "moved",
-          "dimension_from": "labels_tags",
-          "dimension_to": "modus",
-          "to": [
-            "D009"
-          ],
-          "note": "'Romance fraud' moved from labels/tags to modus. Listed separately from the split above because one real change can have more than one facet; these records describe facets, they are not a count of changes."
-        },
-        {
-          "change_type": "redefined",
-          "dimension": "modus",
-          "scope": "high_level_classification",
-          "to": [
-            "G04"
-          ],
-          "note": "Definition of the 'Please help' classification updated to cover the new 'Charity / donation fraud' modus. Clarification only."
-        },
-        {
-          "change_type": "added",
-          "dimension": "labels_tags",
-          "to": [
-            "L042",
-            "L043",
-            "L005"
-          ]
-        },
-        {
-          "change_type": "recited",
-          "dimension": "modus",
-          "to": [
-            "D004"
-          ],
-          "note": "Former definition replaced with one from an alternative source. Meaning unchanged."
-        },
-        {
-          "change_type": "recited",
-          "dimension": "labels_tags",
-          "to": [
-            "L014",
-            "L022",
-            "L023"
-          ],
-          "note": "Former definitions replaced with ones from alternative sources. Meanings unchanged."
-        }
-      ],
-      "sources_last_checked": "2026-04"
-    }
-  ],
+  "changes": [],
   "compatibility": {
     "principle": "A record is classified under one version and carries that version. Consumers must expect to receive records classified under a version other than the one they run, because the taxonomy is republished annually with a six-month lead time and adopters do not all move on the same day. The rules below let a consumer interpret such a record instead of rejecting it.",
     "code_stability": "Codes are the unit of compatibility. A code is assigned once and never renumbered or reused, including after retirement. A code therefore denotes the same concept in every version in which it appears, and any two versions can be related to each other through the lineage fields rather than through name matching.",
@@ -1532,7 +1365,7 @@
     ],
     "emergency_change_process": "May be triggered when exceptional circumstances require immediate amendments (e.g. regulatory requirements, or fraud developments with a high degree of proliferation and potential large-scale impact); steps to adoption may be expedited."
   },
-  "lifecycle_note": "Every entry carries status, introduced_in and, where it changed, last_modified_in and last_change_type. introduced_in is '<=6.0' for any entry that predates version 7.0: the exact version in which it first appeared cannot be established from the v7.0 PDF alone and has deliberately not been guessed. Backfilling it requires the earlier published versions. Retired entries keep their code forever, move to the dimension's retired array, and are never reused, so a code is a permanent identifier for a concept rather than a slot. See change_types for the vocabulary used in the changes array, and derivations/README.md for declaring a local or simplified variant that stays traceable to this source.",
+  "lifecycle_note": "This is the 6.0 snapshot, transcribed in the same shape as 7.0. Codes are shared across versions: an entry keeps the same code in every version it appears in. Entries present here but not in 7.0 appear in 7.0 under dimensions.<name>.retired. introduced_in is '<=6.0' throughout because the versions before 6.0 have not been transcribed; it does not mean the entry was introduced in 6.0.",
   "codes_design_note": "Codes are intentionally opaque (for example 'D014', not 'romance_fraud'). Two reasons. First, a human-readable value in the machine field can bias a reviewer before they have read the definition. Second, names can change between annual versions while codes must not. Use code for storage and interchange, and name for display only. Once published, a code is never renumbered or reused: a retired entry keeps its code and is listed under dimensions.modus.retired with superseded_by, and each superseding entry carries derived_from, so trend series can be bridged across a split or rename instead of silently dropping to zero.",
   "definitions_note": "Definitions are transcribed from the EBA Fraud Taxonomy v7.0 PDF. Where the EBA quotes a third-party source, this file reproduces the quotation with its attribution, but some quotations are shortened; those entries carry abridged: true. Ellipses that appear in the PDF's own quotations are the EBA's. For the exact quoted text, consult the PDF, which is the sole authoritative version."
 }
