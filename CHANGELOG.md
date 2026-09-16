@@ -14,7 +14,7 @@ Adds the version currently in force and the means to compare versions.
 
 **Code scheme corrected before adoption.** The retired modus carried the code `D-RETIRED-01`, which encoded its status into its identifier. That breaks as soon as a version exists in which the entry is active, which is exactly what 6.0 is. It is now `D024`. This is a renumbering, which the stability rule otherwise forbids; it was done at 0.2.0 with no known adopters, and is not expected to happen again.
 
-Finding recorded in the README: the v7.0 annex documents eight changes, and the diff finds sixteen entries changed in place, eleven of them unmentioned. The cause is benign (quoted sources reword their own pages) but it means the annex cannot be relied on as a complete record of textual change.
+Finding recorded in the README: the v7.0 annex accounts for four entries that changed in place, and the diff finds sixteen, so twelve are unmentioned. The cause is benign (quoted sources reword their own pages) but it means the annex cannot be relied on as a complete record of textual change.
 
 ## 0.1.0 (2026-09-16)
 

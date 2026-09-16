@@ -171,9 +171,9 @@ Running `python3 diff_versions.py 6.0 7.0` on the two transcriptions gives:
 added 6, removed 2, changed in place 16 (12 recited, 4 text-changed)
 ```
 
-The annex to v7.0 describes eight changes: one modus split into three, three new labels, one label moved to the modus section, and four definitions re-cited from different sources. All of that is real and correctly documented.
+The annex to v7.0 describes its changes as six items: one modus split into three, three new labels, one label moved to the modus section, one high-level classification definition clarified, and four definitions re-cited from different sources. All of that is real and correctly documented.
 
-The diff finds **sixteen entries changed in place, eleven of which the annex does not mention.** The largest single pattern is an attribution change: the Australian source cited as "National Anti-Scam Centre" throughout 6.0 is cited as "ScamWatch" throughout 7.0, affecting five entries, with one also changing its article title from "Threats and extortion scams" to "Threat scams". Several cited URLs changed. Four definitions differ in wording.
+Of those, the annex accounts for four entries that changed in place. The diff finds **sixteen entries changed in place, so twelve are not mentioned.** The largest single pattern is an attribution change: the Australian source cited as "National Anti-Scam Centre" throughout 6.0 is cited as "ScamWatch" throughout 7.0, affecting five entries, with one also changing its article title from "Threats and extortion scams" to "Threat scams". Several cited URLs changed. Four definitions differ in wording.
 
 This is not sloppy drafting. Most definitions in the taxonomy are quotations from external bodies, and those bodies rewrite their own pages between June and June. The EBA re-quotes the current text, which is the right thing to do. The consequence is simply that **the annex is a guide to intended changes, not a complete record of textual ones**, and an implementer diffing on definition text will see more movement than the changelog predicts.
 
