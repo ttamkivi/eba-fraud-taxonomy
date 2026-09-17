@@ -11,6 +11,9 @@ Adds the version currently in force and the means to compare versions.
 - `diff_versions.py`: compares two versions by code, classifies each change, and flags changes the target version's annex does not mention.
 - `build_v6.py`: the derivation of 6.0 from 7.0 plus verified reverse deltas, kept so the transcription is auditable rather than asserted. Every delta was checked against text extracted from both official PDFs.
 - `validate.py` and `build_schema.py` take an optional version argument; with none, `validate.py` checks all versions.
+- `diff_versions.py` follows cross-dimension moves. Previously a concept that changed dimension (and therefore code) was reported as an unrelated retirement plus an unrelated addition, hiding the link a consumer most needs. "Romance fraud" moving from labels/tags to modus in 7.0 now reports as one `moved` record.
+
+**Coverage of the change vocabulary is partial, by circumstance.** The 6.0 to 7.0 transition exercises `added`, `retired`, `split`, `moved` and `recited`. It does not exercise `merged`, `renamed` or `redefined`, and it changes nothing structural: the ten high-level classifications, the three initiators, the two payment instruments and all fourteen method names are identical across both versions. The mechanism is therefore designed but tested against one transition only. Versions 1.0 to 5.0 would test the rest, and the EBA has stated that card fraud was merged into payment fraud in an earlier version, which is exactly the untested case.
 
 **Code scheme corrected before adoption.** The retired modus carried the code `D-RETIRED-01`, which encoded its status into its identifier. That breaks as soon as a version exists in which the entry is active, which is exactly what 6.0 is. It is now `D024`. This is a renumbering, which the stability rule otherwise forbids; it was done at 0.2.0 with no known adopters, and is not expected to happen again.
 

@@ -86,8 +86,27 @@ def main():
             documented.update(rec.get("from", []))
             documented.update(rec.get("to", []))
 
-    added, removed, changed = [], [], []
+    # Cross-dimension moves: the same concept leaves one namespace and appears in
+    # another, so its code changes. Without this, a move reads as an unrelated
+    # retirement plus an unrelated addition, which is exactly the link a consumer needs.
+    moved_pairs = {}
+    for code, (dim, e) in eb.items():
+        mf = e.get("moved_from")
+        if mf and mf.get("in_version") == args.to_version:
+            for old_code, (old_dim, old_e) in ea.items():
+                if old_dim == mf.get("dimension") and old_e["name"] == e["name"]:
+                    moved_pairs[old_code] = code
+    moved_targets = set(moved_pairs.values())
+
+    added, removed, changed, moved = [], [], [], []
+    for old_code, new_code in sorted(moved_pairs.items()):
+        moved.append({"change_type": "moved", "code": old_code, "to_code": new_code,
+                      "dimension_from": ea[old_code][0], "dimension_to": eb[new_code][0],
+                      "name": eb[new_code][1]["name"]})
+
     for code in sorted(set(ea) | set(eb)):
+        if code in moved_pairs or code in moved_targets:
+            continue
         if code not in ea:
             dim, e = eb[code]
             added.append({"change_type": "added", "dimension": dim, "code": code, "name": e["name"]})
@@ -115,7 +134,7 @@ def main():
         changed = [c for c in changed if not c["documented_in_annex"]]
 
     if args.json:
-        print(json.dumps({"from": args.from_version, "to": args.to_version,
+        print(json.dumps({"from": args.from_version, "to": args.to_version, "moved": moved,
                           "added": added, "removed": removed, "changed": changed}, indent=2, ensure_ascii=False))
         return 0
 
@@ -123,8 +142,15 @@ def main():
     counts = {}
     for c in changed:
         counts[c["change_type"]] = counts.get(c["change_type"], 0) + 1
-    print(f"added {len(added)}, removed {len(removed)}, changed in place {len(changed)} "
+    print(f"added {len(added)}, removed {len(removed)}, moved {len(moved)}, changed in place {len(changed)} "
           f"({', '.join(f'{v} {k}' for k, v in sorted(counts.items())) or 'none'})\n")
+
+    if moved:
+        print("Moved between dimensions (same concept, new code):")
+        for r in moved:
+            print(f"  [moved    ] {r['code']} -> {r['to_code']}  {r['dimension_from']} -> "
+                  f"{r['dimension_to']}  {r['name']}")
+        print()
 
     for title, rows in [("Added", added), ("Removed", removed)]:
         if rows:
