@@ -1,0 +1,215 @@
+{
+ "version": "5.0",
+ "previous": "4.0",
+ "source": "Annex (chapter 13) of EBA Fraud Taxonomy v5.0, 'Changes since EBA Fraud Taxonomy version 4.0'.",
+ "sources_last_checked": "2024-05",
+ "records": [
+  {
+   "change_type": "structure_changed",
+   "kind": "entry",
+   "dimension": "payment_instrument",
+   "scope": "dimension",
+   "in_annex": true,
+   "note": "New optional dimension 'payment instrument'. Chapter order changed: initiator moved from first to third position. '(what else)' added to the labels/tags heading."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "payment_instrument",
+   "to": [
+    "Account-to-account transaction",
+    "Card payment"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "retired",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "Card fraud"
+   ],
+   "in_annex": true,
+   "note": "Stand-alone high-level classification abolished, 'with a view to better integrating card fraud into the overall structure'."
+  },
+  {
+   "change_type": "renamed",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "Account takeover"
+   ],
+   "to": [
+    "Account / card / card details takeover by unauthorised party"
+   ],
+   "in_annex": true,
+   "note": "Renamed and broadened."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "Account / card / card details takeover by unauthorised party"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Control of card or card details by unauthorised party"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Safe account fraud",
+    "Advance fee fraud",
+    "Emotional manipulation",
+    "Extortion"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Definitions also refer to the handover of physical and virtual cards."
+  },
+  {
+   "change_type": "moved",
+   "kind": "entry",
+   "dimension": "modus",
+   "dimension_to": "labels_tags",
+   "from": [
+    "Card details stolen",
+    "Card never received",
+    "Use of counterfeit cards"
+   ],
+   "to": [
+    "Card details stolen",
+    "Card never received",
+    "Use of counterfeit cards"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "split",
+   "kind": "entry",
+   "dimension": "modus",
+   "dimension_to": "labels_tags",
+   "from": [
+    "Card lost or stolen"
+   ],
+   "to": [
+    "Card lost",
+    "Card stolen"
+   ],
+   "in_annex": false,
+   "note": "The annex lists 'Card lost' and 'Card stolen' among five items moved from modus to labels/tags. In 4.0 they were one modus, 'Card lost or stolen'. The change is a split as well as a move, and no successor rule is stated."
+  },
+  {
+   "change_type": "added",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "First party fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "regrouped",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Fraudulent card application",
+    "Fraudulent card claim",
+    "Fraudulent use of cash back scheme"
+   ],
+   "in_annex": true,
+   "note": "Moved from the abolished 'Card fraud' to the new 'First party fraud'."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Other first party fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "entry",
+   "dimension": "modus",
+   "from": [
+    "Overpayment scams"
+   ],
+   "to": [
+    "Overpayment fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "Can you please sign this?"
+   ],
+   "to": [
+    "Can you please sign in / sign this off?"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Fake institution"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "retired",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "from": [
+    "First party"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Emotional manipulation",
+    "Overpayment fraud"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Fake bank / financial institution",
+    "False billing scam",
+    "Nigeria"
+   ],
+   "in_annex": true
+  }
+ ]
+}

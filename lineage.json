@@ -1,0 +1,3976 @@
+{
+ "note": "Every code across every transcribed version. 'versions' shows where the concept sat and what it was called in each; 'events' is what changed between consecutive versions, as observed in the text, with 'in_annex' saying whether that version's own annex records it.",
+ "versions": [
+  "3.1",
+  "4.0",
+  "5.0",
+  "6.0",
+  "7.0"
+ ],
+ "codes": {
+  "T0001": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Brute force"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Brute force"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Brute force"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Brute force"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Brute force"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0002": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Data breach / theft"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Data breach / theft"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Data breach / theft"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Data breach / theft"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Data breach / theft"
+    }
+   },
+   "events": []
+  },
+  "T0003": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "E-mail compromise"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "E-mail compromise"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "E-mail compromise"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Email compromise"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Email compromise"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "moved",
+     "dimension_from": "method",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "E-mail compromise",
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0004": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "E-mail contact"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "E-mail contact"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "E-mail contact"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Email contact"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Email contact"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "E-mail contact",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0005": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Fake advertising"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Fake advertising"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Fake advertising"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Fake advertising"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Fake advertising"
+    }
+   },
+   "events": []
+  },
+  "T0006": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Fake merchant"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Fake merchant"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Fake merchant"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Fake merchant"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Fake merchant"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0007": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "In person contact"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "In person contact"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "In person contact"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "In person contact"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "In person contact"
+    }
+   },
+   "events": []
+  },
+  "T0008": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Malware"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Malware"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Malware"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Malware"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Malware"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0009": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Man in the middle"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "retired",
+     "in_annex": true
+    }
+   ],
+   "retired_in": "4.0"
+  },
+  "T0010": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Online contact"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Online contact"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Online contact"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Online contact"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Online contact"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0011": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Phone contact"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Phone contact"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Phone contact"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Phone contact"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Phone contact"
+    }
+   },
+   "events": []
+  },
+  "T0012": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Physical copy"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Physical copy"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Physical copy"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Physical copy"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Physical copy"
+    }
+   },
+   "events": []
+  },
+  "T0013": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Physical theft"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Physical theft"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Physical theft"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Physical theft"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Physical theft"
+    }
+   },
+   "events": []
+  },
+  "T0014": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Social media compromise"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Social media compromise"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Social media compromise"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Social media compromise"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Social media compromise"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "moved",
+     "dimension_from": "method",
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0015": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Social media contact"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Social media contact"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Social media contact"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Social media contact"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Social media contact"
+    }
+   },
+   "events": []
+  },
+  "T0016": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "Text message contact"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "Text message contact"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "Text message contact"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "Text message contact"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "Text message contact"
+    }
+   },
+   "events": []
+  },
+  "T0017": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "method",
+     "name": "New method"
+    },
+    "4.0": {
+     "dimension": "method",
+     "name": "New method"
+    },
+    "5.0": {
+     "dimension": "method",
+     "name": "New method"
+    },
+    "6.0": {
+     "dimension": "method",
+     "name": "New method"
+    },
+    "7.0": {
+     "dimension": "method",
+     "name": "New method"
+    }
+   },
+   "events": []
+  },
+  "T0018": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Your money is at risk"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Your money / personal information is at risk"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Your money / personal information is at risk"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Your money / personal information is at risk"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Your money / personal information is at risk"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "renamed",
+     "name_from": "Your money is at risk",
+     "in_annex": true
+    },
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0019": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Safe account fraud"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Safe account fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Safe account fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Safe account fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Safe account fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0020": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Stop unauthorised transaction fraud"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised transaction fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised transaction fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised transaction fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised transaction fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0021": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "You can earn/save a lot of money"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "You can earn/save a lot of money"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "You can earn/save a lot of money"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "You can earn/save a lot of money"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "You can earn/save a lot of money"
+    }
+   },
+   "events": []
+  },
+  "T0022": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Advance fee fraud"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Advance fee fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Advance fee fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Advance fee fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Advance fee fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0023": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Investment fraud"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Investment fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Investment fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Investment fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Investment fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0024": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "I am a seller/buyer"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "I am a seller/buyer"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "I am a seller/buyer"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "I am a seller/buyer"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "I am a seller/buyer"
+    }
+   },
+   "events": []
+  },
+  "T0025": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Online shopping fraud"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Online shopping fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Online shopping fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Online shopping fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Online shopping fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0026": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Please help me"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Please help me"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Please help me"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Please help"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Please help"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "Please help me",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0027": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Emotional manipulation"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Emotional manipulation"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Emotional manipulation"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Emotional manipulation"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "split",
+     "superseded_by": [
+      "T0121",
+      "T0095",
+      "T0122"
+     ],
+     "in_annex": true
+    }
+   ],
+   "retired_in": "7.0"
+  },
+  "T0028": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Send me money or I’ll …"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Send me money or I’ll …"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Send me money or I’ll …"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Send me money or I’ll …"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Send me money or I’ll …"
+    }
+   },
+   "events": []
+  },
+  "T0029": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Extortion"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Extortion"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Extortion"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Extortion"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Extortion"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0030": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "We’ve changed account number"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "We’ve changed account number"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "We’ve changed account number"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "We’ve changed account number"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "We’ve changed account number"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0031": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Impersonation of creditor"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Impersonation of creditor"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Impersonation of creditor"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Impersonation of creditor"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Impersonation of creditor"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0032": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "You owe money"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "You owe money"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "You owe money"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Comply with payment obligation"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Comply with payment obligation"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "You owe money",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0033": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Overpayment scams"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Overpayment scams"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Overpayment fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Overpayment fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Overpayment fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "renamed",
+     "name_from": "Overpayment scams",
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0034": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Phoney debt/bill collection"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Phoney debt/bill collection"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Phoney debt/bill collection"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Phoney debt/bill collection"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Phoney debt/bill collection"
+    }
+   },
+   "events": []
+  },
+  "T0035": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Can you please sign this?"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Can you please sign this?"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Can you please sign in / sign this off?"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Can you please sign in / sign this off?"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Can you please sign in / sign this off?"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "renamed",
+     "name_from": "Can you please sign this?",
+     "in_annex": true
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0036": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Fake institution"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Fake institution"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Fake institution"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Fake institution"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Fake institution"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0037": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Account takeover"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Account takeover"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Account / card / card details takeover by unauthorised party"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Account / card / card details / digital wallet takeover by unauthorised party"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Account / card / card details / digital wallet takeover by unauthorised party"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "renamed",
+     "name_from": "Account takeover",
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "Account / card / card details takeover by unauthorised party",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0038": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Pure account takeover"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Pure account takeover"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Pure account takeover"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Pure account takeover"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Pure account takeover"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0039": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Creditor account data manipulation"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Creditor account data manipulation"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Creditor account data manipulation"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Creditor account data manipulation"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Creditor account data manipulation"
+    }
+   },
+   "events": []
+  },
+  "T0040": {
+   "kind": "high_level_classification",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Card fraud"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Card fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "retired",
+     "in_annex": true
+    }
+   ],
+   "retired_in": "5.0"
+  },
+  "T0041": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Card details stolen"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Card details stolen"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card details stolen"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card details stolen"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card details stolen"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "moved",
+     "dimension_from": "modus",
+     "in_annex": true
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0042": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Card lost or stolen"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Card lost or stolen"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "split",
+     "superseded_by": [
+      "T0113",
+      "T0114"
+     ],
+     "in_annex": false
+    }
+   ],
+   "retired_in": "5.0"
+  },
+  "T0043": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Card never received"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Card never received"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card never received"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card never received"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card never received"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "moved",
+     "dimension_from": "modus",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0044": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Use of counterfeit cards"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Use of counterfeit cards"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Use of counterfeit cards"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Use of counterfeit cards"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Use of counterfeit cards"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "moved",
+     "dimension_from": "modus",
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0045": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Fraudulent card application"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card application"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card application"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card application"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card application"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "regrouped",
+     "group_from": "T0040",
+     "group_to": "T0111",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0046": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Fraudulent card claim"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card claim"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card claim"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card claim"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Fraudulent card claim"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "regrouped",
+     "group_from": "T0040",
+     "group_to": "T0111",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0047": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "Fraudulent use of cash back scheme"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "Fraudulent use of cash back scheme"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Fraudulent use of cash back scheme"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Fraudulent use of cash back scheme"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Fraudulent use of cash back scheme"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "regrouped",
+     "group_from": "T0040",
+     "group_to": "T0111",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0048": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "modus",
+     "name": "New fraud type (describe)"
+    },
+    "4.0": {
+     "dimension": "modus",
+     "name": "New fraud type (describe)"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "New fraud type (describe)"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "New fraud type (describe)"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "New fraud type (describe)"
+    }
+   },
+   "events": []
+  },
+  "T0049": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "initiator",
+     "name": "Customer"
+    },
+    "4.0": {
+     "dimension": "initiator",
+     "name": "Customer"
+    },
+    "5.0": {
+     "dimension": "initiator",
+     "name": "Customer"
+    },
+    "6.0": {
+     "dimension": "initiator",
+     "name": "Customer"
+    },
+    "7.0": {
+     "dimension": "initiator",
+     "name": "Customer"
+    }
+   },
+   "events": []
+  },
+  "T0050": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "initiator",
+     "name": "Fraudster"
+    },
+    "4.0": {
+     "dimension": "initiator",
+     "name": "Fraudster"
+    },
+    "5.0": {
+     "dimension": "initiator",
+     "name": "Fraudster"
+    },
+    "6.0": {
+     "dimension": "initiator",
+     "name": "Fraudster"
+    },
+    "7.0": {
+     "dimension": "initiator",
+     "name": "Fraudster"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0051": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "initiator",
+     "name": "First party"
+    },
+    "4.0": {
+     "dimension": "initiator",
+     "name": "First party"
+    },
+    "5.0": {
+     "dimension": "initiator",
+     "name": "First party"
+    },
+    "6.0": {
+     "dimension": "initiator",
+     "name": "First party"
+    },
+    "7.0": {
+     "dimension": "initiator",
+     "name": "First party"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0052": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Account takeover"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Account takeover"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Account takeover"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Account takeover"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Account takeover"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0053": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Advanced persistent threat (APT)"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Advanced persistent threat (APT)"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Advanced persistent threat (APT)"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Advanced persistent threat (APT)"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Advanced persistent threat (APT)"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0054": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Beneficiary account change"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Beneficiary account change"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Beneficiary account change"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Beneficiary account change"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Beneficiary account change"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0055": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "BIN attack"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "BIN attack"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "BIN attack"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "BIN attack"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "BIN attack"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0056": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Card not present"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Card not present"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card not present"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card not present"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card not present"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0057": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Card peeking"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Card peeking"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card peeking"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card peeking"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card peeking"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0058": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Card present"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Card present"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card present"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card present"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card present"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0059": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Card skimming"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Card skimming"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card skimming"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card skimming"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card skimming"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0060": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "CEO fraud"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "CEO fraud"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "CEO fraud"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "CEO fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "CEO fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0061": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Collusive merchant / data misuse"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Collusive merchant / data misuse"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Collusive merchant / data misuse"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Collusive merchant / data misuse"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Collusive merchant / data misuse"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0062": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Contactless relay fraud"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Contactless relay fraud"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Contactless relay fraud"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Contactless relay fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Contactless relay fraud"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0063": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Credit master"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Credit master"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Credit master"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Credit master"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Credit master"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0064": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Exploiting the system"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Exploiting the system"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Exploiting the system"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Exploiting the system"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Exploiting the system"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0065": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fake bank / financial institution"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake bank / financial institution"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake bank / financial institution"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake bank / financial institution"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake bank / financial institution"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0066": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fake betting"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake betting"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake betting"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake betting"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake betting"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0067": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fake customer support"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake customer support"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake customer support"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake customer support"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake customer support"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0068": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fake loan"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake loan"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake loan"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake loan"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake loan"
+    }
+   },
+   "events": []
+  },
+  "T0069": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fake police"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake police"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake police"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake police"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake police"
+    }
+   },
+   "events": []
+  },
+  "T0070": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fake website"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake website"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake website"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake website"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake website"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0071": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "False billing scam"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "False billing scam"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "False billing scam"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "False billing fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "False billing fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "False billing scam",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0072": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Falsified ID"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Falsified ID"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Falsified ID"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Falsified ID"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Falsified ID"
+    }
+   },
+   "events": []
+  },
+  "T0073": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Falsifying personal and financial information"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Falsifying personal and financial information"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Falsifying personal and financial information"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Falsifying personal and financial information"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Falsifying personal and financial information"
+    }
+   },
+   "events": []
+  },
+  "T0074": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "First party"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "First party"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "retired",
+     "in_annex": true
+    }
+   ],
+   "retired_in": "5.0"
+  },
+  "T0075": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent MOTO card transaction"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent MOTO card transaction"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent MOTO card transaction"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent MOTO card transaction"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent MOTO card transaction"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0076": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of Contract for Difference (CFD)"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of Contract for Difference (CFD)"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of Contract for Difference (CFD)"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of Contract for Difference (CFD)"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of Contract for Difference (CFD)"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0077": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of cryptocurrency"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of crypto currency"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of crypto currency"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of crypto currency"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fraudulent use of crypto currency"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "renamed",
+     "name_from": "Fraudulent use of cryptocurrency",
+     "in_annex": false
+    },
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0078": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Gift card"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Gift card"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Gift card"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Gift card"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Gift card"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0079": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Goods not received"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Goods not received"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Goods not received"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Goods not received"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Goods not received"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0080": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Impersonation"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Impersonation"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Impersonation"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Impersonation"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Impersonation"
+    }
+   },
+   "events": []
+  },
+  "T0081": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Keylogger"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Keylogger"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Keylogger"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Keylogger"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Keylogger"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0082": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Lookalike domain"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Lookalike domain"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Lookalike domain"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Lookalike domain"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Lookalike domain"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0083": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Malware – MageCart"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Malware – MageCart"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Malware – MageCart"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Malware – MageCart"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Malware – MageCart"
+    }
+   },
+   "events": []
+  },
+  "T0084": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Manipulated invoice"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Manipulated invoice"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Manipulated invoice"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Manipulated invoice"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Manipulated invoice"
+    }
+   },
+   "events": []
+  },
+  "T0085": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Multiple imprint"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Multiple imprint"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Multiple imprint"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Multiple imprint"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Multiple imprint"
+    }
+   },
+   "events": []
+  },
+  "T0086": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Nigeria"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Nigeria"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Nigeria"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Nigeria"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Nigeria"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0087": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Nightclub"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Nightclub"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Nightclub"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Nightclub"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Nightclub"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0088": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "No physical meeting"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "No physical meeting"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "No physical meeting"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "No physical meeting"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "No physical meeting"
+    }
+   },
+   "events": []
+  },
+  "T0089": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Phishing"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Phishing"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Phishing"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Phishing"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Phishing"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0090": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Physical meeting"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Physical meeting"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Physical meeting"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Physical meeting"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Physical meeting"
+    }
+   },
+   "events": []
+  },
+  "T0091": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / known perpetrator"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / known perpetrator"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / known perpetrator"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / known perpetrator"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / known perpetrator"
+    }
+   },
+   "events": []
+  },
+  "T0092": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / unknown perpetrator"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / unknown perpetrator"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / unknown perpetrator"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / unknown perpetrator"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Physical proximity credential theft / unknown perpetrator"
+    }
+   },
+   "events": []
+  },
+  "T0093": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Ransomware"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Ransomware"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Ransomware"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Ransomware"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Ransomware"
+    }
+   },
+   "events": []
+  },
+  "T0094": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Remote access trojan"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Remote access trojan"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Remote access trojan"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Remote access trojan"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Remote access trojan"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0095": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Romance scam"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Romance scam"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Romance scam"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Romance fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Romance fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "Romance scam",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "moved",
+     "dimension_from": "labels_tags",
+     "in_annex": true
+    },
+    {
+     "version": "7.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0",
+   "derived_from": [
+    {
+     "code": "T0027",
+     "relation": "split_from",
+     "in_version": "7.0"
+    }
+   ]
+  },
+  "T0096": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Sextortion"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Sextortion"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Sextortion"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Sextortion"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Sextortion"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    },
+    {
+     "version": "7.0",
+     "change_type": "source_updated",
+     "in_annex": false
+    }
+   ]
+  },
+  "T0097": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Shoulder surfing"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Shoulder surfing"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Shoulder surfing"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Shoulder surfing"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Shoulder surfing"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0098": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Smishing"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Smishing"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Smishing"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Smishing"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Smishing"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0099": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Subscription scam"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Subscription scam"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Subscription scam"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Subscription fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Subscription fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "Subscription scam",
+     "in_annex": true
+    }
+   ],
+   "declared_introduced_in": "3.0"
+  },
+  "T0100": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Synthetic ID"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Synthetic ID"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Synthetic ID"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Synthetic ID"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Synthetic ID"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0101": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Third-party channel"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party channel"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party channel"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party channel"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party channel"
+    }
+   },
+   "events": []
+  },
+  "T0102": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Third-party vendor account takeover"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party vendor account takeover"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party vendor account takeover"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party vendor account takeover"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Third-party vendor account takeover"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0103": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Vishing"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Vishing"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Vishing"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Vishing"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Vishing"
+    }
+   },
+   "events": [],
+   "declared_introduced_in": "3.0"
+  },
+  "T0104": {
+   "kind": "entry",
+   "versions": {
+    "3.1": {
+     "dimension": "labels_tags",
+     "name": "Wecycle"
+    },
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Wecycle"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Wecycle"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Wecycle"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Wecycle"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": false
+    }
+   ]
+  },
+  "T0105": {
+   "kind": "entry",
+   "versions": {
+    "4.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised access fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised access fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised access fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Stop unauthorised access fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "added",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "reworded",
+     "sources_changed": false,
+     "in_annex": true
+    }
+   ]
+  },
+  "T0106": {
+   "kind": "entry",
+   "versions": {
+    "4.0": {
+     "dimension": "modus",
+     "name": "Claim a benefit fraud"
+    },
+    "5.0": {
+     "dimension": "modus",
+     "name": "Claim a benefit fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Claim a benefit fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Claim a benefit fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0107": {
+   "kind": "entry",
+   "versions": {
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Discount / refund fraud"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Discount / refund fraud"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Discount / refund fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Discount / refund fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0108": {
+   "kind": "entry",
+   "versions": {
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Fake prize, sweepstakes, and lottery scams"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Fake prize, sweepstakes, and lottery scams"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Fake prize, sweepstakes, and lottery fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Fake prize, sweepstakes, and lottery fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "added",
+     "in_annex": true
+    },
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "Fake prize, sweepstakes, and lottery scams",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0109": {
+   "kind": "entry",
+   "versions": {
+    "4.0": {
+     "dimension": "labels_tags",
+     "name": "Non-crypto investment scam"
+    },
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Non-crypto investment scam"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Non-crypto investment fraud"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Non-crypto investment fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "4.0",
+     "change_type": "added",
+     "in_annex": true
+    },
+    {
+     "version": "5.0",
+     "change_type": "reworded",
+     "sources_changed": true,
+     "in_annex": false
+    },
+    {
+     "version": "6.0",
+     "change_type": "renamed",
+     "name_from": "Non-crypto investment scam",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0110": {
+   "kind": "entry",
+   "versions": {
+    "5.0": {
+     "dimension": "modus",
+     "name": "Control of card or card details by unauthorised party"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Control of card or card details by unauthorised party"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Control of card or card details by unauthorised party"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0111": {
+   "kind": "high_level_classification",
+   "versions": {
+    "5.0": {
+     "dimension": "modus",
+     "name": "First party fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "First party fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "First party fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0112": {
+   "kind": "entry",
+   "versions": {
+    "5.0": {
+     "dimension": "modus",
+     "name": "Other first party fraud"
+    },
+    "6.0": {
+     "dimension": "modus",
+     "name": "Other first party fraud"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Other first party fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0113": {
+   "kind": "entry",
+   "versions": {
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card lost"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card lost"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card lost"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "derived_from": [
+      "T0042"
+     ],
+     "in_annex": false
+    }
+   ],
+   "derived_from": [
+    {
+     "code": "T0042",
+     "relation": "split_from",
+     "in_version": "5.0"
+    }
+   ]
+  },
+  "T0114": {
+   "kind": "entry",
+   "versions": {
+    "5.0": {
+     "dimension": "labels_tags",
+     "name": "Card stolen"
+    },
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Card stolen"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card stolen"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "derived_from": [
+      "T0042"
+     ],
+     "in_annex": false
+    }
+   ],
+   "derived_from": [
+    {
+     "code": "T0042",
+     "relation": "split_from",
+     "in_version": "5.0"
+    }
+   ]
+  },
+  "T0115": {
+   "kind": "entry",
+   "versions": {
+    "5.0": {
+     "dimension": "payment_instrument",
+     "name": "Account-to-account transaction"
+    },
+    "6.0": {
+     "dimension": "payment_instrument",
+     "name": "Account-to-account transaction"
+    },
+    "7.0": {
+     "dimension": "payment_instrument",
+     "name": "Account-to-account transaction"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0116": {
+   "kind": "entry",
+   "versions": {
+    "5.0": {
+     "dimension": "payment_instrument",
+     "name": "Card payment"
+    },
+    "6.0": {
+     "dimension": "payment_instrument",
+     "name": "Card payment"
+    },
+    "7.0": {
+     "dimension": "payment_instrument",
+     "name": "Card payment"
+    }
+   },
+   "events": [
+    {
+     "version": "5.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0117": {
+   "kind": "entry",
+   "versions": {
+    "6.0": {
+     "dimension": "modus",
+     "name": "Impersonation of person with authority to instruct payments"
+    },
+    "7.0": {
+     "dimension": "modus",
+     "name": "Impersonation of person with authority to instruct payments"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0118": {
+   "kind": "entry",
+   "versions": {
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Family emergency"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Family emergency"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0119": {
+   "kind": "entry",
+   "versions": {
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Shock calls"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Shock calls"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0120": {
+   "kind": "entry",
+   "versions": {
+    "6.0": {
+     "dimension": "labels_tags",
+     "name": "Spoofed email"
+    },
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Spoofed email"
+    }
+   },
+   "events": [
+    {
+     "version": "6.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0121": {
+   "kind": "entry",
+   "versions": {
+    "7.0": {
+     "dimension": "modus",
+     "name": "Support a friend or family member fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "7.0",
+     "change_type": "added",
+     "derived_from": [
+      "T0027"
+     ],
+     "in_annex": true
+    }
+   ],
+   "derived_from": [
+    {
+     "code": "T0027",
+     "relation": "split_from",
+     "in_version": "7.0"
+    }
+   ]
+  },
+  "T0122": {
+   "kind": "entry",
+   "versions": {
+    "7.0": {
+     "dimension": "modus",
+     "name": "Charity / donation fraud"
+    }
+   },
+   "events": [
+    {
+     "version": "7.0",
+     "change_type": "added",
+     "derived_from": [
+      "T0027"
+     ],
+     "in_annex": true
+    }
+   ],
+   "derived_from": [
+    {
+     "code": "T0027",
+     "relation": "split_from",
+     "in_version": "7.0"
+    }
+   ]
+  },
+  "T0123": {
+   "kind": "entry",
+   "versions": {
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Card chip relay"
+    }
+   },
+   "events": [
+    {
+     "version": "7.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0124": {
+   "kind": "entry",
+   "versions": {
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Money muling"
+    }
+   },
+   "events": [
+    {
+     "version": "7.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  },
+  "T0125": {
+   "kind": "entry",
+   "versions": {
+    "7.0": {
+     "dimension": "labels_tags",
+     "name": "Money mule victim"
+    }
+   },
+   "events": [
+    {
+     "version": "7.0",
+     "change_type": "added",
+     "in_annex": true
+    }
+   ]
+  }
+ }
+}

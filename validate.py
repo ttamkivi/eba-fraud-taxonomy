@@ -1,254 +1,206 @@
 #!/usr/bin/env python3
-"""Integrity checks for taxonomy.json and schema.json. Exit code 1 on any failure."""
+"""Integrity checks across every transcribed version. Exit code 1 on any failure.
+
+    python3 validate.py
+"""
+import glob
 import json
 import os
 import re
 import sys
 
-problems = []
-warnings = []
+sys.path.insert(0, "build")
+from parse import norm  # noqa: E402
+
+problems, warnings = [], []
+fail, warn = problems.append, warnings.append
+
+VERSIONS = sorted((os.path.basename(os.path.dirname(p)) for p in glob.glob("versions/*/taxonomy.json")),
+                  key=lambda v: [int(x) for x in v.split(".")])
+CODE = re.compile(r"^T\d{4}$")
+lineage = json.load(open("lineage.json", encoding="utf-8"))
+registry = json.load(open("build/codes.json", encoding="utf-8"))
 
 
-def fail(msg):
-    problems.append(msg)
+def entries(tax):
+    """(dimension, entry) for every active entry, groups included as dimension 'modus_group'."""
+    d = tax["dimensions"]
+    out = []
+    for dim, block in d.items():
+        if dim == "modus":
+            for g in block["high_level_classifications"]:
+                out.append(("modus_group", g))
+                out += [("modus", m) for m in g["modi"]]
+            out.append(("modus", block["catch_all"]))
+        else:
+            out += [(dim, v) for v in block["values"]]
+    return out
 
 
-def warn(msg):
-    warnings.append(msg)
+def reassembles(e):
+    """The definition plus its sources must be exactly the PDF cell, word for word."""
+    text = e.get("pdf_text", "")
+    for s in e.get("sources", []):
+        for part in (s.get("attribution"), s.get("url")):
+            if part and part not in text:
+                return f"source part not verbatim in pdf_text: {part[:50]}"
+    rest = norm(text)
+    for s in e.get("sources", []):
+        for part in (s.get("url"), s.get("attribution")):
+            if part:
+                rest = rest.replace(norm(part), " ", 1)
+    rest_words = rest.split()
+    want = norm(e.get("definition", "")).split()
+    # every definition word appears in order in the cell, and nothing but source words is left over
+    it = iter(rest_words)
+    if not all(w in it for w in want):
+        return "definition is not a word-for-word extract of pdf_text"
+    left = len(rest_words) - len(want)
+    markers = len(re.findall(r"\b(definition based on the following source|sources?)\b", rest))
+    if left > markers * 6 + 2:
+        return f"pdf_text has {left} words that are neither definition nor source"
+    return None
 
 
-import glob as _glob
+all_codes_seen = {}
+for v in VERSIONS:
+    tax = json.load(open(f"versions/{v}/taxonomy.json", encoding="utf-8"))
+    schema = json.load(open(f"versions/{v}/schema.json", encoding="utf-8"))
+    if tax["version"] != v:
+        fail(f"{v}: file declares version {tax['version']}")
+    ents = entries(tax)
+    codes = [e["code"] for _, e in ents]
+    for c in codes:
+        if not CODE.match(c):
+            fail(f"{v}: malformed code {c}")
+    dup = {c for c in codes if codes.count(c) > 1}
+    if dup:
+        fail(f"{v}: duplicate codes {sorted(dup)}")
+    for dim in {d for d, _ in ents}:
+        ns = [norm(e["name"]) for d, e in ents if d == dim]
+        dn = {n for n in ns if ns.count(n) > 1}
+        if dn:
+            fail(f"{v}: duplicate names in {dim}: {sorted(dn)}")
+    labels = {e["code"] for d, e in ents if d == "labels_tags"}
+    vocab = set(tax["change_types"])
+    for g in tax["dimensions"]["modus"]["high_level_classifications"]:
+        for m in g["modi"]:
+            if m["group_code"] != g["code"]:
+                fail(f"{v}: {m['code']} group_code {m['group_code']} != {g['code']}")
+            if len(m["possible_labels_tags_codes"]) != len(m["possible_labels_tags"]):
+                fail(f"{v}: {m['code']} possible labels do not all resolve")
+            for c in m["possible_labels_tags_codes"]:
+                if c not in labels:
+                    fail(f"{v}: {m['code']} references {c}, not a label in this version")
+            if m.get("possible_labels_tags_unmatched"):
+                warn(f"{v}: {m['name']}: the PDF lists a possible label that is not a label in this version: "
+                     f"'{m['possible_labels_tags_unmatched']}'")
+    for d, e in ents:
+        if d != "modus_group":
+            why = reassembles(e)
+            if why:
+                fail(f"{v} {e['code']} {e['name']}: {why}")
+        if e.get("status") != "active":
+            fail(f"{v} {e['code']}: status must be 'active'")
+        intro = e.get("introduced_in")
+        if intro != "<=3.1" and intro not in VERSIONS:
+            fail(f"{v} {e['code']}: introduced_in '{intro}'")
+        if e.get("last_change_type") and e["last_change_type"] not in vocab:
+            fail(f"{v} {e['code']}: last_change_type '{e['last_change_type']}' not in change_types")
+        for df in e.get("derived_from", []):
+            if df["code"] not in lineage["codes"]:
+                fail(f"{v} {e['code']}: derived_from unknown code {df['code']}")
+        # lineage agrees with this file
+        rec = lineage["codes"].get(e["code"])
+        if not rec or v not in rec["versions"]:
+            fail(f"{v} {e['code']}: missing from lineage.json")
+        elif norm(rec["versions"][v]["name"]) != norm(e["name"]):
+            fail(f"{v} {e['code']}: name differs from lineage.json")
+        all_codes_seen[e["code"]] = (v, d, e["name"])
+    active = set(codes)
+    for dim, block in tax["dimensions"].items():
+        for r in block.get("retired", []) + block.get("retired_high_level_classifications", []):
+            if r["code"] in active:
+                fail(f"{v}: {r['code']} is both active and retired")
+            if r.get("reason") not in vocab:
+                fail(f"{v}: retired {r['code']} reason '{r.get('reason')}' not in change_types")
+            for s in r.get("superseded_by", []):
+                if s not in active:
+                    fail(f"{v}: retired {r['code']} superseded_by {s}, which is not active in {v}")
+    for b in tax["changes"]:
+        for r in b["declared"]:
+            if r["change_type"] not in vocab:
+                fail(f"{v}: changes {b['version']} uses unknown change_type {r['change_type']}")
+            if None in (r.get("from_codes") or []) + (r.get("to_codes") or []):
+                fail(f"{v}: changes {b['version']} has an unresolved code in a {r['change_type']} record")
 
-VERSION = sys.argv[1] if len(sys.argv) > 1 else None
-if VERSION is None:
-    # no argument: check every transcribed version, then root consistency
-    versions = sorted(os.path.basename(os.path.dirname(p))
-                      for p in _glob.glob("versions/*/taxonomy.json"))
-    import subprocess
-    rc = 0
-    for v in versions:
-        print(f"=== {v} ===")
-        rc |= subprocess.call([sys.executable, __file__, v])
-    latest = max(versions, key=lambda v: [int(x) for x in v.split(".")])
-    root = open("taxonomy.json", encoding="utf-8").read()
-    if root != open(f"versions/{latest}/taxonomy.json", encoding="utf-8").read():
-        print(f"FAIL: taxonomy.json differs from versions/{latest}/taxonomy.json "
-              f"(root must be a copy of the latest published version)")
-        rc |= 1
-    else:
-        print(f"OK: taxonomy.json matches versions/{latest}/taxonomy.json")
-    sys.exit(rc)
+    # schema in sync
+    d = tax["dimensions"]
+    modi = [m for g in d["modus"]["high_level_classifications"] for m in g["modi"]]
+    expect = {"method_code": [x["code"] for x in d["method"]["values"]],
+              "modus_code": [x["code"] for x in modi] + [d["modus"]["catch_all"]["code"]],
+              "initiator_code": [x["code"] for x in d["initiator"]["values"]]}
+    if "payment_instrument" in d:
+        expect["payment_instrument_code"] = [x["code"] for x in d["payment_instrument"]["values"]]
+    for prop, want in expect.items():
+        if schema["properties"].get(prop, {}).get("enum") != want:
+            fail(f"{v}: schema.json enum '{prop}' out of sync (run build_schema.py)")
+    if schema["properties"]["taxonomy_version"]["const"] != v:
+        fail(f"{v}: schema taxonomy_version const is wrong")
+    print(f"{v}: methods={len(d['method']['values'])} modi={len(modi)}+1 "
+          f"groups={len(d['modus']['high_level_classifications'])} initiators={len(d['initiator']['values'])} "
+          f"labels={len(d['labels_tags']['values'])} "
+          f"instruments={len(d['payment_instrument']['values']) if 'payment_instrument' in d else '-'}")
 
-tax = json.load(open(f"versions/{VERSION}/taxonomy.json", encoding="utf-8"))
-schema = json.load(open(f"versions/{VERSION}/schema.json", encoding="utf-8"))
-dims = tax["dimensions"]
+# a code means one concept: never two dimensions in one version, and every registry code is used
+for c, rec in lineage["codes"].items():
+    for v, where in rec["versions"].items():
+        if not os.path.exists(f"versions/{v}/taxonomy.json"):
+            fail(f"lineage: {c} claims version {v}, which is not transcribed")
+unused = set(registry["codes"]) - set(lineage["codes"])
+if unused:
+    fail(f"build/codes.json has codes no version uses: {sorted(unused)}")
 
-# ---- collect entries -------------------------------------------------------
-methods = dims["method"]["values"]
-initiators = dims["initiator"]["values"]
-labels = dims["labels_tags"]["values"]
-instruments = dims["payment_instrument"]["values"]
-groups = dims["modus"]["high_level_classifications"]
-modi = [m for g in groups for m in g["modi"]]
-catch_all = dims["modus"]["catch_all"]
-retired = dims["modus"].get("retired", [])
+# root copies
+latest = VERSIONS[-1]
+for f in ("taxonomy.json", "schema.json"):
+    if open(f, encoding="utf-8").read() != open(f"versions/{latest}/{f}", encoding="utf-8").read():
+        fail(f"{f} is not a copy of versions/{latest}/{f}")
 
-label_names = {v["name"] for v in labels}
-all_entries = methods + initiators + labels + instruments + modi + [catch_all] + retired
-
-# ---- codes: present, unique, well-formed -----------------------------------
-codes = [e.get("code") for e in all_entries]
-for e in all_entries:
-    if not e.get("code"):
-        fail(f"missing code: {e.get('name')}")
-dupes = {c for c in codes if c and codes.count(c) > 1}
-if dupes:
-    fail(f"duplicate codes: {sorted(dupes)}")
-pattern = re.compile(r"^(M\d{2}|I\d{2}|D\d{3}|L\d{3}|P\d{2}|D-RETIRED-\d{2})$")
-for c in codes:
-    if c and not pattern.match(c):
-        fail(f"malformed code: {c}")
-for g in groups:
-    if not re.match(r"^G\d{2}$", g.get("code", "")):
-        fail(f"malformed group code on: {g['name']}")
-
-# ---- names unique within each dimension ------------------------------------
-for dim_name, values in [("method", methods), ("initiator", initiators),
-                         ("labels_tags", labels), ("payment_instrument", instruments),
-                         ("modus", modi)]:
-    names = [v["name"] for v in values]
-    d = {n for n in names if names.count(n) > 1}
-    if d:
-        fail(f"duplicate names in {dim_name}: {sorted(d)}")
-
-# ---- every possible_labels_tags reference resolves to a real label ---------
-for m in modi:
-    for ref in m.get("possible_labels_tags", []):
-        if ref not in label_names:
-            fail(f"modus '{m['name']}' references unknown label/tag '{ref}'")
-
-# ---- modus group_code matches enclosing group ------------------------------
-for g in groups:
-    for m in g["modi"]:
-        if m.get("group_code") != g["code"]:
-            fail(f"modus '{m['name']}' group_code {m.get('group_code')} != {g['code']}")
-
-# ---- lineage: derived_from / superseded_by are consistent -------------------
-retired_by_code = {r["code"]: r for r in retired}
-modus_by_code = {m["code"]: m for m in modi}
-for m in modi:
-    df = m.get("derived_from")
-    if df:
-        if df["code"] not in retired_by_code:
-            fail(f"'{m['name']}' derived_from unknown retired code {df['code']}")
-        elif m["code"] not in retired_by_code[df["code"]].get("superseded_by", []):
-            fail(f"retired {df['code']} does not list {m['code']} in superseded_by")
-for r in retired:
-    for sc in r.get("superseded_by", []):
-        if sc not in modus_by_code:
-            fail(f"retired {r['code']} superseded_by unknown modus code {sc}")
-
-# ---- schema enums match data exactly ---------------------------------------
-def names_of(vals):
-    return [v["name"] for v in vals]
-
-
-def codes_of(vals):
-    return [v["code"] for v in vals]
-
-
-expect = {
-    "method": names_of(methods),
-    "method_code": codes_of(methods),
-    "initiator": names_of(initiators),
-    "initiator_code": codes_of(initiators),
-    "modus": names_of(modi) + [catch_all["name"]],
-    "modus_code": codes_of(modi) + [catch_all["code"]],
-    "payment_instrument": names_of(instruments),
-    "payment_instrument_code": codes_of(instruments),
-}
-for prop, want in expect.items():
-    got = schema["properties"].get(prop, {}).get("enum")
-    if got != want:
-        fail(f"schema.json enum for '{prop}' is out of sync with taxonomy.json (run build_schema.py)")
-
-if schema["properties"]["taxonomy_version"]["const"] != tax["version"]:
-    fail("schema taxonomy_version const != taxonomy.json version")
-
-# ---- no em dashes anywhere (house rule) -------------------------------------
-for fname in (_glob.glob("*.md") + _glob.glob("*.py") + _glob.glob("*.json")
-              + _glob.glob("versions/*/*.json") + _glob.glob("derivations/*") + ["LICENSE"]):
-    try:
-        txt = open(fname, encoding="utf-8").read()
-    except FileNotFoundError:
-        warn(f"{fname} not found")
-        continue
-    em_dash = chr(0x2014)
-    if em_dash in txt:
-        n = txt.count(em_dash)
-        fail(f"{fname} contains {n} em dash(es)")
-
-# ---- lifecycle metadata on every entry -------------------------------------
-VALID_CHANGE_TYPES = set(tax["change_types"])
-for e in methods + initiators + labels + instruments + modi:
-    if e.get("status") != "active":
-        fail(f"{e.get('code')} {e.get('name')}: status must be 'active' (retired entries live in the retired array)")
-    intro = e.get("introduced_in")
-    if not intro:
-        fail(f"{e.get('code')} {e.get('name')}: missing introduced_in")
-    elif intro != "<=6.0" and intro not in {v["version"] for v in tax["version_history"]}:
-        fail(f"{e.get('code')}: introduced_in '{intro}' is not a known version or '<=6.0'")
-    lct = e.get("last_change_type")
-    if lct and lct not in VALID_CHANGE_TYPES:
-        fail(f"{e.get('code')}: last_change_type '{lct}' not in change_types vocabulary")
-    if lct and not e.get("last_modified_in"):
-        fail(f"{e.get('code')}: has last_change_type but no last_modified_in")
-
-for dim_name in ["method", "initiator", "labels_tags", "payment_instrument", "modus"]:
-    if "retired" not in dims[dim_name]:
-        fail(f"dimension '{dim_name}' has no retired array (use [] if nothing is retired)")
-for r in retired:
-    for required in ["code", "name", "status", "retired_in", "reason", "dimension"]:
-        if required not in r:
-            fail(f"retired entry {r.get('code')}: missing {required}")
-    if r.get("status") != "retired":
-        fail(f"retired entry {r.get('code')}: status must be 'retired'")
-    if r.get("reason") not in VALID_CHANGE_TYPES:
-        fail(f"retired entry {r.get('code')}: reason '{r.get('reason')}' not in change_types vocabulary")
-
-# ---- changes array is internally consistent --------------------------------
-known_codes = {e["code"] for e in methods + initiators + labels + instruments + modi}
-known_codes.add(catch_all["code"])
-known_codes |= {r["code"] for r in retired}
-known_codes |= {g["code"] for g in groups}
-seen_versions = set()
-for block in tax.get("changes", []):
-    seen_versions.add(block["version"])
-    if block["version"] not in {v["version"] for v in tax["version_history"]}:
-        fail(f"changes block for unknown version {block['version']}")
-    for rec in block["records"]:
-        if rec["change_type"] not in VALID_CHANGE_TYPES:
-            fail(f"changes {block['version']}: unknown change_type '{rec['change_type']}'")
-        for c in rec.get("from", []) + rec.get("to", []):
-            if c not in known_codes:
-                fail(f"changes {block['version']}: references unknown code '{c}'")
-        for c in rec.get("successor_notes", {}):
-            if c not in rec.get("to", []):
-                fail(f"changes {block['version']}: successor_note for {c} which is not in 'to'")
-if tax["version"] not in seen_versions:
-    warn(f"no changes block for the current version {tax['version']}")
-
-# ---- derivations resolve to real codes -------------------------------------
-import glob
-import os
-
-VALID_RELATIONS = {"exact", "broader", "narrower", "related"}
-for path in sorted(glob.glob("derivations/*.json")):
-    try:
-        der = json.load(open(path, encoding="utf-8"))
-    except Exception as exc:  # noqa: BLE001
-        fail(f"{path}: not valid JSON ({exc})")
-        continue
-    src = der.get("derivation_of", {})
-    if src.get("version") != tax["version"]:
-        # A derivation is valid against one version only; it is not this version's problem.
-        continue
-    for mapping in der.get("mappings", []):
-        if mapping.get("relation") not in VALID_RELATIONS:
-            fail(f"{path}: mapping '{mapping.get('local_code')}' has invalid relation '{mapping.get('relation')}'")
-        targets = mapping.get("maps_to", [])
-        if not targets:
-            fail(f"{path}: mapping '{mapping.get('local_code')}' maps to nothing")
-        for c in targets:
-            if c not in known_codes:
-                fail(f"{path}: mapping '{mapping.get('local_code')}' references unknown code '{c}'")
-        if mapping.get("relation") == "exact" and len(targets) != 1:
-            fail(f"{path}: mapping '{mapping.get('local_code')}' is 'exact' but maps to {len(targets)} codes")
-
-# ---- example record validates ---------------------------------------------
+# example record validates against its own version's schema
 try:
     import jsonschema
-
-    example = json.load(open("example-case.json"))
-    if example.get("taxonomy_version") == VERSION:
-        jsonschema.validate(example, schema)
-    else:
-        warn(f"example-case.json is pinned to {example.get('taxonomy_version')}, not {VERSION}; skipped")
+    ex = json.load(open("example-case.json", encoding="utf-8"))
+    jsonschema.validate(ex, json.load(open(f"versions/{ex['taxonomy_version']}/schema.json", encoding="utf-8")))
 except ImportError:
-    warn("jsonschema not installed; skipped example validation")
-except FileNotFoundError:
-    warn("example-case.json not found; skipped example validation")
-except Exception as e:  # noqa: BLE001
-    fail(f"example-case.json failed schema validation: {e}")
+    warn("jsonschema not installed; example-case.json not validated")
+except Exception as exc:  # noqa: BLE001
+    fail(f"example-case.json: {exc}")
 
-# ---- report ---------------------------------------------------------------
-print(f"methods={len(methods)} modi={len(modi)}(+1 catch-all) groups={len(groups)} "
-      f"initiators={len(initiators)} labels={len(labels)} instruments={len(instruments)} "
-      f"retired={len(retired)}")
+# derivations resolve against their declared version
+for path in sorted(glob.glob("derivations/*.json")):
+    der = json.load(open(path, encoding="utf-8"))
+    v = der["derivation_of"]["version"]
+    active = {e["code"] for _, e in entries(json.load(open(f"versions/{v}/taxonomy.json", encoding="utf-8")))}
+    for m in der["mappings"]:
+        for c in m["maps_to"]:
+            if c not in active:
+                fail(f"{path}: {m['local_code']} maps to {c}, not a code in {v}")
+        if m["relation"] == "exact" and len(m["maps_to"]) != 1:
+            fail(f"{path}: {m['local_code']} is 'exact' but maps to {len(m['maps_to'])} codes")
+
+# house rule: no em dashes in anything this repository authors (the EBA's own text is exempt)
+authored = (glob.glob("*.md") + glob.glob("*.py") + glob.glob("build/*.py") + glob.glob("build/*.json")
+            + glob.glob("build/transitions/*.json") + glob.glob("derivations/*") + ["example-case.json"])
+for f in authored:
+    n = open(f, encoding="utf-8").read().count(chr(0x2014))
+    if n:
+        fail(f"{f} contains {n} em dash(es)")
+
 for w in warnings:
     print("WARN:", w)
 for p in problems:
     print("FAIL:", p)
 if problems:
     sys.exit(1)
-print("OK: all integrity checks passed")
+print(f"OK: {len(VERSIONS)} versions, {len(lineage['codes'])} codes, all integrity checks passed")

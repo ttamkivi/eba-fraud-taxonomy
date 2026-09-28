@@ -1,6 +1,29 @@
 # Changelog
 
-Changes to this repository. Changes to the taxonomy itself are recorded by the EBA and mirrored in `taxonomy.json` under `version_history` and `changes`.
+Changes to this repository. Changes to the taxonomy itself are recorded by the EBA and mirrored in each version's `changes`.
+
+## 0.3.0 (2026-09-28)
+
+Every public version, verbatim, with one code per concept across all of them. **This release renumbers every code**; see "Global codes" below and `build/crosswalk-0.2.json`.
+
+**All public versions.** `versions/` now holds 3.1 (27 October 2022), 4.0 (7 June 2023) and 5.0 (5 June 2024) alongside 6.0 and 7.0. Versions 2.0 and 3.0 were Closed User Group and are not reproduced; the 3.0 cycle is recorded from Annex I of the public 3.1 document.
+
+**Verbatim text, rebuilt from the PDFs.** 0.2 shortened or paraphrased a third of its definitions (32 of 110 in 7.0 carried `abridged: true`, and some unflagged ones were reworded too). That made a text diff between versions meaningless, because every paraphrase looks like a change. Every version is now generated from its PDF by `build/`: definitions are the EBA's text, sources are cut out into a `sources` list, and the whole cell is kept in `pdf_text`. `validate.py` checks that every definition and its sources reassemble word for word into the cell. `abridged`, `source`, `source_url` and `source_url_2` are gone; `sources` replaces the last three. `build_v6.py` is gone, because 6.0 is no longer derived from 7.0.
+
+**Global codes.** One series, `T0001` to `T0125`, across every dimension and the high-level classifications. A concept keeps its code when it is renamed, moved to another dimension, or moved to another high-level classification; only a split or merge creates new codes. 0.2 used one series per dimension, so a concept that changed dimension had to change code, and the full history shows that happens in four of the five content cycles. `build/codes.json` freezes the assignment: a rebuild never renumbers, and new codes are only appended. This renumbering breaks the 0.2 promise that codes never change. It was done because the project is still a draft with no known adopters, and 0.2 codes map one-to-one through the crosswalk.
+
+**Model fixes found by testing against the history:**
+
+- `moved` keeps the code. A split may cross dimensions ("Card lost or stolen", a modus in 4.0, became the labels "Card lost" and "Card stolen" in 5.0).
+- New change types: `regrouped` (a modus moves to another high-level classification: three did in 5.0), `structure_changed` (5.0 added the payment instrument dimension), and two observed-only types, `reworded` and `source_updated`, kept apart from the EBA's declared `redefined` and `recited`.
+- High-level classifications have codes and a lifecycle, and can be retired ("Card fraud", 5.0).
+- Dimensions can be absent from a version: payment instrument does not exist before 5.0.
+
+**Lineage and reconciliation.** `lineage.json` records, for every code, where the concept sat and what it was called in each version, and every change to it. Each version's `changes` block holds the annex's declarations, the changes observed in the text, and a reconciliation in both directions. Across four public cycles: 14, 22, 10 and 13 changes are not declared in the annex, including three renames and one split; nothing the annexes declare is missing from the text.
+
+**Tools rewritten for the new model.** `diff_versions.py` compares any two versions; for consecutive versions it marks what the annex leaves out. `migrate.py` resolves codes through `lineage.json` in both directions, across moves and multi-step splits, and reports a dimension the reader's version does not have. `validate.py` checks every version and the consistency between them. `example-case.json` and `derivations/example-simplified-set.json` use the new codes.
+
+**Two corrections to 0.2's findings.** The 6.0 to 7.0 diff now finds 13 changes the annex does not declare, not 12; the earlier figure was measured against paraphrased text. And the claim that "card fraud was merged into payment fraud in an earlier version" is more precisely: in 5.0 the high-level classification "Card fraud" was abolished, four of its modi moved to labels/tags (one of them split in two), and three moved to a new classification, "First party fraud".
 
 ## 0.2.0 (2026-09-16)
 

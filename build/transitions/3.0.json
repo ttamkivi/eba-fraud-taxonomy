@@ -1,0 +1,193 @@
+{
+ "version": "3.0",
+ "previous": "2.0",
+ "source": "Annex I of EBA Fraud Taxonomy v3.1 (27 October 2022), 'Changes since EBA Fraud Taxonomy version 2.0'. Version 2.0 itself is not transcribed here, so 'from' entries are names only, without codes.",
+ "records": [
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "initiator",
+   "to": [
+    "First party"
+   ],
+   "in_annex": true,
+   "note": "Added as an optional element."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "initiator",
+   "scope": "dimension",
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Detail on the distinction between 'manipulation of payer' and 'unauthorised transaction' added."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "method",
+   "scope": "dimension",
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Definition of 'method' extended: '...and specifies the first point of contact between the fraudster and the victim'."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "method",
+   "to": [
+    "Fake advertising"
+   ],
+   "in_annex": true,
+   "note": "High-level description updated."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "method",
+   "to": [
+    "Brute force",
+    "Online contact",
+    "Social media compromise"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "method",
+   "from": [
+    "Lookalike domain"
+   ],
+   "to": [
+    "Fake merchant"
+   ],
+   "in_annex": true,
+   "note": "Annex: 'added / replaces lookalike domain'. Lookalike domain moved to labels/tags in the same version."
+  },
+  {
+   "change_type": "moved",
+   "kind": "entry",
+   "dimension": "method",
+   "dimension_to": "labels_tags",
+   "from": [
+    "Lookalike domain"
+   ],
+   "to": [
+    "Lookalike domain"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Safe account fraud",
+    "Advance fee fraud",
+    "Extortion",
+    "Emotional manipulation"
+   ],
+   "in_annex": true,
+   "note": "Definitions expanded to include the possibility of handing over credentials."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "from": [
+    "Fraudulent MOTO card transaction"
+   ],
+   "to": [
+    "Card details stolen"
+   ],
+   "in_annex": true,
+   "note": "Annex: 'added / replaces fraudulent MOTO card transaction'."
+  },
+  {
+   "change_type": "moved",
+   "kind": "entry",
+   "dimension": "modus",
+   "dimension_to": "labels_tags",
+   "from": [
+    "Fraudulent MOTO card transaction"
+   ],
+   "to": [
+    "Fraudulent MOTO card transaction"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "added",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "Can you please sign this?"
+   ],
+   "in_annex": true,
+   "note": "New high-level classification, containing 'Fake institution'."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Fake institution"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "from": [
+    "Initiation of unauthorised transactions"
+   ],
+   "to": [
+    "Pure account takeover"
+   ],
+   "in_annex": true,
+   "note": "Annex: 'added / replaces initiation of unauthorised transactions'."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Stop unauthorised transaction fraud"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Advanced persistent threat (APT)",
+    "BIN attack",
+    "Card peeking",
+    "Card skimming",
+    "Contactless relay fraud",
+    "Credit master",
+    "Exploiting the system",
+    "Fake website",
+    "Gift card",
+    "Keylogger",
+    "Nightclub",
+    "Phishing",
+    "Romance scam",
+    "Shoulder surfing",
+    "Smishing",
+    "Subscription scam",
+    "Third-party vendor account takeover",
+    "Vishing"
+   ],
+   "in_annex": true,
+   "note": "Annex counts 20 labels/tags added, including the two moved in from method and modus."
+  }
+ ],
+ "other": [
+  "Amended definition of 'fraud': the terms 'fraud' and 'scam' removed from the sub-categories; a sentence added clarifying that 'manipulation of the payer' covers scenarios described as scams.",
+  "Order of modi in the high-level classification 'Card fraud' adapted."
+ ]
+}

@@ -1,0 +1,196 @@
+{
+ "version": "6.0",
+ "previous": "5.0",
+ "source": "Annex (chapter 13) of EBA Fraud Taxonomy v6.0, 'Changes since EBA Fraud Taxonomy version 5.0'.",
+ "sources_last_checked": "2025-03",
+ "records": [
+  {
+   "change_type": "moved",
+   "kind": "entry",
+   "dimension": "method",
+   "dimension_to": "labels_tags",
+   "from": [
+    "E-mail compromise"
+   ],
+   "to": [
+    "Email compromise"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "renamed",
+   "kind": "entry",
+   "dimension": "method",
+   "from": [
+    "E-mail compromise"
+   ],
+   "to": [
+    "Email compromise"
+   ],
+   "in_annex": false,
+   "note": "The annex describes a move of 'Email compromise'; in 5.0 the method was spelled 'E-mail compromise'.",
+   "dimension_to": "labels_tags"
+  },
+  {
+   "change_type": "moved",
+   "kind": "entry",
+   "dimension": "method",
+   "dimension_to": "labels_tags",
+   "from": [
+    "Social media compromise"
+   ],
+   "to": [
+    "Social media compromise"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "renamed",
+   "kind": "entry",
+   "dimension": "method",
+   "from": [
+    "E-mail contact"
+   ],
+   "to": [
+    "Email contact"
+   ],
+   "in_annex": false
+  },
+  {
+   "change_type": "renamed",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "Please help me"
+   ],
+   "to": [
+    "Please help"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "Account / card / card details takeover by unauthorised party"
+   ],
+   "to": [
+    "Account / card / card details / digital wallet takeover by unauthorised party"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "You owe money"
+   ],
+   "to": [
+    "Comply with payment obligation"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "Please help",
+    "Account / card / card details / digital wallet takeover by unauthorised party",
+    "Comply with payment obligation"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Pure account takeover",
+    "Fake institution",
+    "Stop unauthorised transaction fraud",
+    "Stop unauthorised access fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Impersonation of person with authority to instruct payments"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "from": [
+    "Fake prize, sweepstakes, and lottery scams",
+    "False billing scam",
+    "Non-crypto investment scam",
+    "Romance scam",
+    "Subscription scam"
+   ],
+   "to": [
+    "Fake prize, sweepstakes, and lottery fraud",
+    "False billing fraud",
+    "Non-crypto investment fraud",
+    "Romance fraud",
+    "Subscription fraud"
+   ],
+   "in_annex": true,
+   "note": "'fraud' instead of 'scam', for consistency of terminology."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Nightclub"
+   ],
+   "in_annex": true,
+   "note": "'fraud' instead of 'scam' in the definition."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Shock calls",
+    "Family emergency",
+    "Spoofed email"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add on",
+   "note": "The annex names the first 'Shock call'; the label is 'Shock calls'."
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Safe account fraud"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Use of counterfeit cards"
+   ],
+   "in_annex": true
+  }
+ ]
+}

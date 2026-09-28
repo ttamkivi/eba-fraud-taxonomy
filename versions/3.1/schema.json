@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EBA Fraud Taxonomy 6.0: fraud case classification record",
-  "description": "Validates one fraud-case classification against the EBA Fraud Taxonomy v6.0. The permitted codes are generated from taxonomy.json by build_schema.py.",
+  "title": "EBA Fraud Taxonomy 3.1: fraud case classification record",
+  "description": "Validates one fraud-case classification against the EBA Fraud Taxonomy v3.1. The permitted codes are generated from taxonomy.json by build_schema.py.",
   "type": "object",
   "required": [
     "taxonomy_version",
@@ -12,7 +12,7 @@
   "properties": {
     "taxonomy_version": {
       "type": "string",
-      "const": "6.0",
+      "const": "3.1",
       "description": "Taxonomy version the record was classified under. Always store it: entries are added, split, moved and retired between versions."
     },
     "method_code": {
@@ -20,15 +20,18 @@
       "enum": [
         "T0001",
         "T0002",
+        "T0003",
         "T0004",
         "T0005",
         "T0006",
         "T0007",
         "T0008",
+        "T0009",
         "T0010",
         "T0011",
         "T0012",
         "T0013",
+        "T0014",
         "T0015",
         "T0016",
         "T0017"
@@ -40,15 +43,18 @@
       "enum": [
         "Brute force",
         "Data breach / theft",
-        "Email contact",
+        "E-mail compromise",
+        "E-mail contact",
         "Fake advertising",
         "Fake merchant",
         "In person contact",
         "Malware",
+        "Man in the middle",
         "Online contact",
         "Phone contact",
         "Physical copy",
         "Physical theft",
+        "Social media compromise",
         "Social media contact",
         "Text message contact",
         "New method"
@@ -64,25 +70,24 @@
       "enum": [
         "T0019",
         "T0020",
-        "T0105",
         "T0022",
-        "T0106",
         "T0023",
         "T0025",
         "T0027",
         "T0029",
         "T0031",
-        "T0117",
         "T0033",
         "T0034",
         "T0036",
         "T0038",
         "T0039",
-        "T0110",
+        "T0041",
+        "T0042",
+        "T0043",
+        "T0044",
         "T0045",
         "T0046",
         "T0047",
-        "T0112",
         "T0048"
       ],
       "description": "Modus (what) as a code. Canonical machine value."
@@ -92,25 +97,24 @@
       "enum": [
         "Safe account fraud",
         "Stop unauthorised transaction fraud",
-        "Stop unauthorised access fraud",
         "Advance fee fraud",
-        "Claim a benefit fraud",
         "Investment fraud",
         "Online shopping fraud",
         "Emotional manipulation",
         "Extortion",
         "Impersonation of creditor",
-        "Impersonation of person with authority to instruct payments",
-        "Overpayment fraud",
+        "Overpayment scams",
         "Phoney debt/bill collection",
         "Fake institution",
         "Pure account takeover",
         "Creditor account data manipulation",
-        "Control of card or card details by unauthorised party",
+        "Card details stolen",
+        "Card lost or stolen",
+        "Card never received",
+        "Use of counterfeit cards",
         "Fraudulent card application",
         "Fraudulent card claim",
         "Fraudulent use of cash back scheme",
-        "Other first party fraud",
         "New fraud type (describe)"
       ],
       "description": "Optional display label for modus_code. Not a source of truth."
@@ -152,22 +156,6 @@
       },
       "uniqueItems": true,
       "description": "Optional display labels for labels_tags_codes."
-    },
-    "payment_instrument_code": {
-      "type": "string",
-      "enum": [
-        "T0115",
-        "T0116"
-      ],
-      "description": "Payment instrument (optional) as a code."
-    },
-    "payment_instrument": {
-      "type": "string",
-      "enum": [
-        "Account-to-account transaction",
-        "Card payment"
-      ],
-      "description": "Optional display label for payment_instrument_code."
     }
   },
   "allOf": [

@@ -1,65 +1,64 @@
 # EBA Fraud Taxonomy, machine-readable
 
-A JSON transcription of the Euro Banking Association's **EBA Fraud Taxonomy v7.0** (published 3 June 2026, effective 1 January 2027): the common vocabulary for categorising payment fraud, maintained by the EBA's Expert Group on Payment Fraud-related Topics (EGPF) since 2020.
+A JSON transcription of every public version of the Euro Banking Association's **EBA Fraud Taxonomy**: the common vocabulary for categorising payment fraud, maintained by the EBA's Expert Group on Payment Fraud-related Topics (EGPF) since 2020. Five versions are here, 3.1 (October 2022) to 7.0 (June 2026), with one code for each concept across all of them.
 
-The official taxonomy is published as a PDF. Every institution that integrates it re-types the same tables into its own systems, and repeats that work each June when a new version is released. Each of those transcriptions is private, unverified, and subtly different from the others, which quietly undermines the comparability the taxonomy exists to create.
+The official taxonomy is published as a PDF, once a year. Every institution that integrates it re-types the same tables into its own systems and repeats the work each June. Each of those transcriptions is private, unverified and subtly different from the others, which quietly undermines the comparability the taxonomy exists to create. And because each one starts from the latest PDF, none of them can say what changed.
 
-This repository does that transcription once, in the open, so it can be checked instead of repeated.
+This repository does that transcription once, in the open, for every version, so it can be checked instead of repeated.
 
-> **Which version do I need?** 7.0 is the latest published version but does not take effect until **1 January 2027**. Anything running in production today is on **6.0**. Both are in `versions/`.
+> **Which version do I need?** Anything running in production today is on **6.0**. **7.0** was published on 3 June 2026 and takes effect on **1 January 2027**. Both are in `versions/`, with 3.1, 4.0 and 5.0 for records classified under them.
 
 **What it gives you**
 
-- **The full v7.0 content as JSON**, every entry with its definition and source citation, ready to load rather than re-type.
-- **Stable identifiers.** The PDF has names only. Names change between versions; these codes do not, so stored records survive a rename without migration.
-- **A validation schema** for a classification record, generated from the data so the two cannot drift apart.
-- **Version lineage that survives a split.** When a category is divided, a trend series keyed on the old code continues as the sum of its successors instead of dropping to zero.
-- **Rules for consumers on different versions**, so a record classified under one version can be read under another without being rejected or silently mangled.
-- **A path for simplified local vocabularies** that stay reconcilable with everyone else's, instead of each institution inventing a private mapping.
-- **A real diff between versions.** Run `diff_versions.py 6.0 7.0` and see exactly what moved, including the changes the annex does not list.
+- **Every public version as JSON**, the EBA's text verbatim, each definition with its cited sources separated out and the full PDF cell kept alongside so it can be checked.
+- **One code per concept, across versions and dimensions.** A concept keeps its code when it is renamed, when it moves to another dimension, and when it moves to another high-level classification. Stored records survive all three without migration.
+- **The history of every code**, in `lineage.json`: where the concept sat and what it was called in each version, and every change to it.
+- **A reconciliation of each annual cycle against the EBA's own annex**, in both directions: what changed but is not declared, and what is declared but not visible.
+- **Rules for consumers on different versions**, and `migrate.py` to apply them: a record classified under one version can be read under another without being rejected or silently mangled.
+- **A validation schema per version**, and a path for simplified local vocabularies that stay reconcilable with everyone else's.
 
-**Status: community draft, version 0.1.0.** Voluntary work by users of the taxonomy, prepared for the Euro Banking Association. This is not an EBA publication. It is offered to the EBA and to other users of the taxonomy as a basis for discussion; if the EBA chooses to publish an official machine-readable distribution, that will supersede this file. Until then, the PDF is the sole authoritative text and this repository defers to it wherever the two differ.
+**Status: community draft, version 0.3.0.** Voluntary work by users of the taxonomy, prepared for the Euro Banking Association. This is not an EBA publication. If the EBA publishes an official machine-readable distribution, that will supersede this one. Until then the PDF is the sole authoritative text, and this repository defers to it wherever the two differ.
 
 ```bash
-python3 validate.py              # check every version, and that root matches the latest
-python3 diff_versions.py 6.0 7.0 # what changed between versions
+python3 validate.py               # every version, every cross-version check
+python3 diff_versions.py 6.0 7.0  # what changed in one cycle, and what the annex omits
+python3 diff_versions.py 3.1 7.0  # across any span
+python3 migrate.py example-case.json --to 6.0
 ```
-
-Sections 1 to 3 below cover the legal position, what the annual change cycle means for an implementation, and the technical detail. Start at section 3 if you only want to use the files.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `versions/<v>/taxonomy.json` | One transcription per published version. Currently **6.0** (in force until 31 December 2026) and **7.0** (effective 1 January 2027). |
+| `versions/<v>/taxonomy.json` | One file per published version: 3.1, 4.0, 5.0, 6.0, 7.0. Generated; do not edit by hand. |
 | `versions/<v>/schema.json` | The record schema for that version, generated from its taxonomy file. |
-| `taxonomy.json`, `schema.json` | Copies of the latest published version (7.0), kept at the root for convenience. `validate.py` enforces that they match. |
-| `schema.json` | JSON Schema (2020-12) for validating a single fraud-case classification record. Generated from `taxonomy.json`; do not edit by hand. |
-| `example-case.json` | A record that validates against `schema.json`. |
-| `build_schema.py` | Regenerates `schema.json` from `taxonomy.json`. |
-| `validate.py` | Integrity checks: code uniqueness, cross-references, lineage consistency, schema drift, example validation. Exit code 1 on failure. |
-| `migrate.py` | Resolves a classification record across taxonomy versions and reports the fidelity of the result. |
-| `diff_versions.py` | Reports what actually changed between two versions, and which of it the official annex does not mention. |
-| `build_v6.py` | How the 6.0 transcription was derived, kept so the derivation is auditable. |
-| `derivations/` | How to declare a local or simplified vocabulary that stays traceable to this one, with a worked example. |
-| `CHANGELOG.md` | Changes to this repository (not to the taxonomy itself; that is in `taxonomy.json` under `version_history` and `changes`). |
+| `taxonomy.json`, `schema.json` | Copies of the latest version (7.0) at the root. `validate.py` enforces that they match. |
+| `lineage.json` | Every code across every version, and every change to it. Generated. |
+| `example-case.json` | A 7.0 record that validates against its schema. |
+| `validate.py` | Integrity checks within and across versions. Exit code 1 on failure. |
+| `diff_versions.py` | What changed between two versions, and what the annex does not declare. |
+| `migrate.py` | Reads a record under another version and reports the fidelity of the result. |
+| `build_schema.py` | Regenerates the schemas. |
+| `build/` | How the versions are made, so the transcription is auditable rather than asserted. See section 4. |
+| `derivations/` | How to declare a local or simplified vocabulary that stays traceable to this one. |
+| `CHANGELOG.md` | Changes to this repository. Changes to the taxonomy are in each version's `changes`. |
 | `LICENSE` | CC BY 4.0. |
 
 ## 1. Legal
 
-**Source.** Euro Banking Association, *EBA Fraud Taxonomy, Version 7.0*, 3 June 2026. Classification: Public. Document reference `EBA_20260603_EBA_Fraud_Taxonomy_(Fraud_Type_Categorisation)_v7.0`.
+**Source.** Euro Banking Association, *EBA Fraud Taxonomy*, versions 3.1 (27 October 2022), 4.0 (7 June 2023), 5.0 (5 June 2024), 6.0 (18 June 2025) and 7.0 (3 June 2026). Each file records its document reference under `source_document`.
 
-**Licence.** The EBA Fraud Taxonomy is licensed by the Euro Banking Association under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) and is stated to be available to any interested party. This repository is a derivative work under the same licence. Attribution for the taxonomy content belongs to the Euro Banking Association.
+**Licence.** From version 3.1 onwards the EBA Fraud Taxonomy is licensed by the Euro Banking Association under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) and stated to be available to any interested party. This repository is a derivative work under the same licence. Attribution for the taxonomy content belongs to the Euro Banking Association. Versions 2.0 and 3.0 were classified Closed User Group and are not reproduced here. What is said about the 3.0 cycle comes from Annex I of the public 3.1 document, which describes it.
 
-**Changes made** (CC BY 4.0 requires that these be stated): the PDF's tables were restructured into JSON; opaque codes were added to every entry; a lineage record was added for the modus retired in v7.0; some third-party quotations were shortened and are flagged `abridged: true`; one label spelled two ways in the PDF was normalised (see `spelling_note` in `taxonomy.json`). Nothing was added to the taxonomy's content, and no entry was removed.
+**Changes made** (CC BY 4.0 requires that these be stated): the PDF's tables were restructured into JSON; line breaks were collapsed and URLs the PDF wrapped across lines were re-joined; each definition's source attributions were cut out into a separate `sources` list, with the full cell kept in `pdf_text`; codes, lifecycle fields and lineage were added. No definition was reworded, shortened or merged. Nothing was added to the taxonomy's content, and no entry was removed.
 
 **Conditions carried over from the EBA's own usage terms.** Users acknowledge the annual review process and the expectation that an updated version is implemented effective 1 January following that cycle, save emergency updates; and adhere to the objective of a common pan-European fraud vocabulary without limitation on payment instrument type.
 
-**Third-party definitions.** Many individual definitions are quotations from external sources (national fraud reporting bodies, Europol, the FBI, EAST, industry glossaries), each cited with `source` and `source_url` exactly as the EBA cites them. Those quotations remain the property of their authors. Preserve the attributions in any downstream use.
+**Third-party definitions.** Many definitions are quotations from external sources (national fraud reporting bodies, Europol, the FBI, EAST, industry glossaries), cited exactly as the EBA cites them. Those quotations remain the property of their authors. Preserve the attributions in any downstream use.
 
-**Two different EBAs.** The taxonomy is published by the Euro Banking Association, a payments industry association. Its `initiator` definitions are taken from the Guidelines on fraud reporting under PSD2 issued by the *European Banking Authority*, the EU regulator. They are unrelated organisations that share an acronym.
+**Two different EBAs.** The taxonomy is published by the Euro Banking Association, a payments industry association. Its initiator definitions are taken from the Guidelines on fraud reporting under PSD2 issued by the *European Banking Authority*, the EU regulator. They are unrelated organisations that share an acronym.
 
-**Regulatory status.** The taxonomy is aligned with the PSD2 fraud reporting guidelines. The Payment Services Regulation (PSR) and PSD3 have been politically agreed but not yet published in the Official Journal; the EBA has indicated the taxonomy will be reviewed once they are. Do not describe this file as PSR-aligned.
+**Regulatory status.** The taxonomy is aligned with the PSD2 fraud reporting guidelines. The Payment Services Regulation (PSR) and PSD3 have been politically agreed but not yet published in the Official Journal; the EBA has indicated the taxonomy will be reviewed once they are. Do not describe these files as PSR-aligned.
 
 ## 2. Operational
 
@@ -75,151 +74,173 @@ Sections 1 to 3 below cover the legal position, what the annual change cycle mea
 | June | EBA communicates the new version. |
 | By end of December | Six-month implementation lead time; the new version is effective 1 January. |
 
-An emergency change process exists for regulatory changes or fast-moving fraud developments.
+An emergency change process exists for regulatory changes or fast-moving fraud developments. Each version's own wording of this process is in its file under `chapters.review_and_updating_process`.
 
 ### What this means for an implementation
 
-- **Store the version with every record.** `taxonomy_version` is required in `schema.json`. Modi are added, split and retired between versions; a record classified under v6.0 cannot be assumed valid under v7.0 without review.
-- **Use codes, not names, as the stored value.** See section 3. Names change; codes do not.
-- **Labels/tags are open.** The taxonomy states that its labels are suggestions and that PSPs may choose their own to fit internal reporting. `schema.json` therefore does not constrain `labels_tags_codes` to the listed values. Codes of the form `L` plus three digits should resolve to `taxonomy.json`; anything else is institution-specific.
-- **First party fraud is internal-only.** The PDF states that the high-level classification "First party fraud" is included for exploration and internal reporting, not for fraud intelligence sharing. Respect that boundary in any cross-institution exchange.
-- **Propose changes through the EBA, not here.** Additions to the taxonomy's content belong in the EGPF's annual change-request process described above. This repository will track what the EBA publishes; it will not fork the taxonomy.
+- **Store the version with every record.** `taxonomy_version` is required in every schema. Entries are added, split, moved and retired between versions; a record's codes are only fully interpretable against the version it was classified under.
+- **Store codes, not names.** Names change between versions (fifteen renames in four cycles); codes do not.
+- **Labels/tags are open.** The taxonomy states that its labels are suggestions and PSPs may choose their own. The schemas therefore do not constrain `labels_tags_codes`. Codes of the form `T` plus four digits should resolve here; anything else is institution-specific.
+- **First party fraud is internal-only.** From 5.0 the PDF states that the high-level classification "First party fraud" is included for exploration and internal reporting, not for fraud intelligence sharing. Respect that boundary in any cross-institution exchange.
+- **Propose changes through the EBA, not here.** Additions to the taxonomy's content belong in the EGPF's annual change-request process. This repository tracks what the EBA publishes; it does not fork the taxonomy.
 
 ## 3. Technical
 
 ### Structure
 
 ```
-taxonomy.json
+versions/7.0/taxonomy.json
   dimensions
-    method              14 values, codes M01..M14 (M14 is the "New method" catch-all)
-    modus               23 values, codes D001..D023, grouped under 10 high-level
-                        classifications G01..G10; catch-all D999 "New fraud type";
-                        retired[] holds entries removed in past versions
-    initiator            3 values, codes I01..I03
-    labels_tags         67 values, codes L001..L067 (open-ended in the schema)
-    payment_instrument   2 values, codes P01..P02
+    method              14 values (one is the "New method" catch-all)
+    modus               10 high-level classifications holding 23 modi, plus the
+                        "New fraud type" catch-all; retired[] and
+                        retired_high_level_classifications[]
+    initiator            3 values
+    labels_tags         67 values (open-ended in the schema)
+    payment_instrument   2 values (from 5.0 onwards; absent before)
+  changes               one block per cycle from 3.0: what the annex declares,
+                        what was observed, and the reconciliation between them
+  chapters              the introduction, fraud definition and review process,
+                        verbatim
 ```
 
-Every entry carries `code`, `name`, `definition`, and where the PDF gives them `source`, `source_url`, `example` or `examples`. Modi also carry `group_code` and `possible_labels_tags`. Entries whose quoted definition is shortened carry `abridged: true`.
+Every entry carries `code`, `name`, `definition`, `sources` (each an `attribution` and, where the PDF gives one, a `url`), lifecycle fields, and `pdf_page` and `pdf_text`. Modi also carry `group_code`, `possible_labels_tags` and `possible_labels_tags_codes`. Where the PDF appends a qualifier to a name, such as "First party (optional element relevant, in particular, to card fraud)", the qualifier is in `name_qualifier`.
 
 ### Codes
 
-Codes are opaque on purpose (`D014`, not `romance_fraud`). A readable value in a machine field can bias a reviewer before they have read the definition, and names can change between versions while identifiers must not. Once published, a code is never renumbered or reused.
+**One series, `T0001` to `T0125`, across every dimension and the high-level classifications.** A code identifies a concept, not a slot. It is assigned the first time the concept appears, and it follows the concept:
+
+- renamed: same code ("Romance scam" became "Romance fraud" in 6.0: `T0095` throughout)
+- moved to another dimension: same code (`T0095` was a label/tag until 6.0 and is a modus from 7.0)
+- moved to another high-level classification: same code, different `group_code`
+- split or merged: new codes for the successors, each carrying `derived_from`
+
+Codes are opaque on purpose. A readable value in a machine field can bias a reviewer before they have read the definition, and both the name and the dimension of a concept change between versions, so neither can be in the identifier. Once assigned, a code is never renumbered or reused. `build/codes.json` is the registry that enforces this: rebuilding never renumbers, and a new code is only ever appended.
+
+Release 0.2 of this repository used one series per dimension (`M01`, `D001`, `L001` and so on). That scheme broke on the most common kind of change: a concept moving between dimensions had to change code. `build/crosswalk-0.2.json` maps every 0.2 code to its 0.3 code.
 
 ### Versioning and lifecycle
 
-The taxonomy changes once a year, and the changes are not all the same kind. Treating them as one undifferentiated "new version" is what forces every consumer to re-read the whole document each June. This repository models them explicitly.
+Every entry carries `status`, `introduced_in` and, where it has changed, `last_modified_in` and `last_change_type`. Entries that have been renamed, moved, regrouped or split carry `renamed_from`, `moved_from`, `regrouped_from` or `derived_from`. `introduced_in` is `<=3.1` for anything already present in 3.1, the earliest public version; `declared_introduced_in` is `3.0` where the annex printed in 3.1 says so. Retired entries keep their code and move to a `retired` array, with `superseded_by` where there are successors.
 
-Every entry carries `status`, `introduced_in`, and where it has changed, `last_modified_in` and `last_change_type`. Retired entries keep their code forever, move to their dimension's `retired` array, and are never reused, so a code permanently identifies a concept rather than a slot.
-
-`change_types` in `taxonomy.json` defines the vocabulary:
+The change vocabulary, in `change_types`:
 
 | Type | Consumer impact |
 |---|---|
 | `added` | Add the entry. |
 | `retired` | Stop using it for new records. Existing records stay valid under their own version. |
-| `split` | One entry becomes several. Predecessor carries `superseded_by`, successors carry `derived_from`. |
+| `split` | One entry becomes several, possibly in a different dimension. Predecessor carries `superseded_by`, successors carry `derived_from`. |
 | `merged` | Several become one. The survivor carries `derived_from`. |
-| `renamed` | Code unchanged, so stored records need no migration. Display labels change. |
-| `moved` | Same concept, different dimension. The code changes, because namespaces are per dimension. Entry carries `moved_from`. |
-| `redefined` | The meaning changed. **The only type that can require re-classifying existing records.** |
-| `recited` | Definition text swapped for an equivalent from a different source. Meaning unchanged, no work required. |
+| `renamed` | Code unchanged. Display labels change. |
+| `moved` | Same concept, different dimension. **Code unchanged.** The entry carries `moved_from`. |
+| `regrouped` | A modus moved to another high-level classification. Code unchanged, `group_code` changes. |
+| `redefined` | The EBA declares the definition updated, usually as a "clarification". It does not say whether the meaning changed: review. |
+| `recited` | The EBA declares the definition replaced with one from a different source. |
+| `reworded` | Observed, not declared: the definition text differs and the annex is silent. Needs a human read. |
+| `source_updated` | Observed, not declared: the definition is unchanged but its cited source or link changed. |
+| `structure_changed` | A change to the taxonomy rather than an entry: a dimension, chapter or attribute added. |
 
-The last two are the distinction that saves the most effort. v7.0 re-cited four definitions from different sources without changing any meaning; a consumer diffing on text alone would treat those as substantive and review them for nothing.
-
-`changes` holds one block per version with records typed by that vocabulary, so a consumer can diff programmatically rather than reading an annex.
-
-**Worked example, v7.0.** `D-RETIRED-01` ("Emotional manipulation") was split into `D008`, `D009` and `D010`. A trend series keyed on the retired code continues as the sum of its successors instead of dropping to zero at the version boundary. `D009` ("Romance fraud") additionally carries `moved_from`, because it existed as a label/tag before becoming a modus: one real change, two lineage facts, both recorded.
-
-**A stated gap.** `introduced_in` is `"<=6.0"` for every entry that predates v7.0. The exact version in which those entries first appeared cannot be established from the v7.0 PDF alone and has not been guessed. Backfilling it requires the earlier published versions.
+`redefined` and `recited` come from the annex; `reworded` and `source_updated` come from comparing the text. Keeping them apart is the point: the first two are what the EBA intended, the second two are what an implementer will actually see.
 
 ### Working across versions
 
-Adopters do not all move on the same day. The taxonomy is republished annually with a six-month lead time, so a consumer will receive records classified under a version other than the one it runs. That is normal traffic, not an error, and the repository is designed for it.
+Adopters do not all move on the same day, so a consumer will receive records classified under a version other than the one it runs. That is normal traffic, not an error.
 
-Codes are the unit of compatibility. A code is assigned once and never renumbered or reused, so it denotes the same concept in every version it appears in, and any two versions can be related through the lineage fields rather than by matching names, which breaks at every rename.
+**Reading an older record on a newer version.** Resolve its codes. Codes still present read directly, in whatever dimension they now sit. A retired code is found in the `retired` arrays, and `superseded_by` gives the successors. Do not rewrite the stored record: interpret it at read time and keep the original version stamp, which is the only evidence of what was actually assessed.
 
-**Reading an older record on a newer version.** Resolve its codes. Ones that still exist read directly. A retired code is found in its dimension's `retired` array, and `superseded_by` gives the successors. Do not rewrite the stored record: interpret it at read time and keep the original version stamp, which is the only evidence of what was actually assessed.
+**Reading a newer record on an older version.** An unrecognised code must not be discarded and must not be treated as invalid. Widen it: follow `derived_from` to a predecessor the consumer knows, or fall back to the high-level classification. **Widen, never drop and never guess.**
 
-**Reading a newer record on an older version.** An unrecognised code must not be discarded and must not be treated as invalid. Widen it: follow `derived_from` to a predecessor the consumer knows, or fall back to the high-level classification group. **Widen, never drop and never guess.** Dropping loses a case from every downstream count; guessing a sibling invents data. Widening loses precision but is never wrong, and it is recorded.
-
-Every resolution reports a fidelity:
+**A code that moved.** A 6.0 record carries Romance fraud (`T0095`) in `labels_tags_codes`; a 7.0 record carries it in `modus_code`. Keep each record's code where it was classified. When counting across versions, count the code, not the field.
 
 | Fidelity | Meaning |
 |---|---|
-| `exact` | One code to one code. Safe both directions. Includes entries whose definition was only `recited`, since that does not change meaning. |
-| `widening` | Several codes roll up into one coarser code. Safe: counts aggregate without loss. This is what keeps a trend series continuous across a split. |
-| `narrowing` | One code maps to several finer ones. Not automatically resolvable; the finer distinction was not in the original record. Keep it coarse or re-classify from the source case. |
-
-`migrate.py` implements this:
+| `exact` | One code to one code. Includes renames and moves, which keep the code. |
+| `widening` | A finer code read as a coarser one. Safe: counts roll up without loss. |
+| `narrowing` | One code maps to several finer ones. Not automatically resolvable. Keep it coarse or re-classify from the source case. |
+| `unresolved` | Retired with no successor, or a dimension the reader's version does not have. Keep it as received. |
 
 ```bash
-python3 migrate.py record.json --to 7.0   # resolve a record, exit 1 if it needs a human
-python3 migrate.py --explain D009          # how one code resolves in both directions
+python3 migrate.py record.json --to 7.0   # exits 1 if the result needs a human
+python3 migrate.py --explain T0095        # one code's full history
 ```
 
-`schema.json` pins exactly one version deliberately, so validation is unambiguous about what a record claims to be. A consumer that must accept several versions should keep one generated schema per version and select on `taxonomy_version`, rather than loosening one schema to accept everything. Tag each release so earlier schemas stay retrievable.
+Three cases from the real history, all handled:
 
-This repository currently carries 7.0 only, and the codes in it are assigned here: the EBA's PDF does not define codes. So there is no earlier code table to map from yet. The mechanism is defined now and demonstrated against the 6.0 to 7.0 change, so it is in place before it is needed. Transcribing 6.0 would make the mapping concrete in both directions.
+- A 4.0 record with modus "Card lost or stolen" (`T0042`) read under 7.0 narrows to two labels, "Card lost" (`T0113`) and "Card stolen" (`T0114`). The split crossed dimensions.
+- A 7.0 record with modus "Romance fraud" (`T0095`) read under 6.0 is exact. The code is a label/tag there, and the result says so.
+- A 7.0 record with "Support a friend or family member fraud" (`T0121`) read under 6.0 widens to "Emotional manipulation" (`T0027`), the modus it was split from.
 
-### What actually changes between versions
+Each version has its own schema, pinned to that version. A consumer that must accept several versions should select the schema by `taxonomy_version` rather than loosen one schema to accept everything.
 
-Running `python3 diff_versions.py 6.0 7.0` on the two transcriptions gives:
+### What five years of change cycles show
 
-```
-added 6, removed 2, changed in place 16 (12 recited, 4 text-changed)
-```
+Every cycle from 3.1 to 7.0 was compared entry by entry and reconciled against that version's annex (`diff_versions.py A B --undocumented`, or `changes[].reconciliation` in any file):
 
-The annex to v7.0 describes its changes as six items: one modus split into three, three new labels, one label moved to the modus section, one high-level classification definition clarified, and four definitions re-cited from different sources. All of that is real and correctly documented.
+| Cycle | Changes in the text | Not declared in the annex |
+|---|---|---|
+| 3.1 to 4.0 | 34 | 14 |
+| 4.0 to 5.0 | 48 | 22 |
+| 5.0 to 6.0 | 34 | 10 |
+| 6.0 to 7.0 | 25 | 13 |
 
-Of those, the annex accounts for four entries that changed in place. The diff finds **sixteen entries changed in place, so twelve are not mentioned.** The largest single pattern is an attribution change: the Australian source cited as "National Anti-Scam Centre" throughout 6.0 is cited as "ScamWatch" throughout 7.0, affecting five entries, with one also changing its article title from "Threats and extortion scams" to "Threat scams". Several cited URLs changed. Four definitions differ in wording.
+Nothing the annexes declare is missing from the text. The gap runs the other way. What the history shows:
 
-This is not sloppy drafting. Most definitions in the taxonomy are quotations from external bodies, and those bodies rewrite their own pages between June and June. The EBA re-quotes the current text, which is the right thing to do. The consequence is simply that **the annex is a guide to intended changes, not a complete record of textual ones**, and an implementer diffing on definition text will see more movement than the changelog predicts.
+1. **Entries move between dimensions in four of the five content cycles.** Method to label/tag in 3.0 and 6.0, modus to label/tag in 3.0 and 5.0, label/tag to modus in 7.0: six concepts in the public versions alone. A code scheme with one series per dimension breaks every year, which is why 0.3 replaced it.
+2. **Some concepts change more than once.** Romance was the label/tag "Romance scam" (3.0), then "Romance fraud" (6.0), then a modus (7.0). "Social media compromise" was added as a method in 3.0 and moved to labels/tags in 6.0. First party has been an initiator (from 3.0), a label/tag (deleted in 5.0) and a high-level classification (from 5.0).
+3. **The deletion register starts at 7.0.** 7.0 added a chapter, *Items that have been deleted*, which lists one item. The public versions retired five: the method "Man in the middle" (4.0), the high-level classification "Card fraud", the modus "Card lost or stolen" and the label/tag "First party" (all 5.0), and "Emotional manipulation" (7.0).
+4. **One split was described as a move.** The 5.0 annex lists "Card lost" and "Card stolen" among items moved from modus to labels/tags. In 4.0 they were one modus, "Card lost or stolen". No successor rule is stated, so a trend series on the 4.0 modus has nowhere to go.
+5. **Three renames are not declared.** "Fraudulent use of cryptocurrency" became "crypto currency" (4.0); "E-mail contact" became "Email contact" and "E-mail compromise" became "Email compromise" (6.0).
+6. **Definitions move more than names.** Most definitions are quotations, and quoted sources rewrite their own pages. The text of "Safe account fraud" changed in every public cycle, and in 7.0 the undeclared change turns "encourage you to transfer" into "pressure you to transfer".
+7. **The structure changed once.** 5.0 added a whole dimension, payment instrument. A format that hard-codes four dimensions would have broken in 2024.
+8. **Some cross-references do not resolve.** Modi list "possible labels/tags" that are not labels in the same version: a generic "Physical proximity credential theft" where only two variants are defined (4.0 onwards), and "Shock call" where the label is "Shock calls" (6.0). These are kept as found, under `possible_labels_tags_unmatched`, and `validate.py` reports them.
 
-That is the argument for keeping the content in a form that can be diffed. `diff_versions.py --undocumented` lists only the changes the annex does not cover.
-
-A caveat the tool states in its own output: it reports `text-changed` where the definition differs but nothing declares why, because a machine cannot tell a cosmetic rewording from a change of meaning. Two of the four are visibly cosmetic (`Malware` moves quotation marks; `Pure account takeover` modernises "computer criminal" to "cyber criminal"). The tool does not guess, and neither does the data.
+None of this is careless drafting. The annex is a guide to intended changes, written for a human reader, and it is good at that. It is not a complete record of textual change, and an implementer who diffs definitions will see more movement than it predicts. That is the argument for a form that can be diffed.
 
 ### Local and simplified variants
 
-Not every institution can adopt full granularity at once, and the usual result is private mappings that are not comparable between institutions. `derivations/` documents how to declare a coarser local vocabulary that maps onto this one with stated relations (`exact`, `broader`, `narrower`, `related`, following SKOS mapping conventions), so that two parties on different local sets can still be reconciled. A derivation never redefines or renumbers a source code. If a local value cannot be expressed as a relation to any source code, that is a gap in the taxonomy and belongs in the EBA's change-request process rather than a private extension.
+Not every institution can adopt full granularity at once, and the usual result is private mappings that cannot be compared between institutions. `derivations/` documents how to declare a coarser local vocabulary that maps onto this one with stated relations (`exact`, `broader`, `narrower`, `related`, following SKOS mapping conventions). A derivation never redefines or renumbers a source code.
 
 ### Example record
 
 ```json
 {
   "taxonomy_version": "7.0",
-  "method_code": "M09",  "method": "Phone contact",
-  "modus_code": "D001",  "modus": "Safe account fraud",
-  "initiator_code": "I01",  "initiator": "Customer",
-  "labels_tags_codes": ["L021", "L037"],
+  "method_code": "T0011", "method": "Phone contact",
+  "modus_code": "T0019", "modus": "Safe account fraud",
+  "initiator_code": "T0049", "initiator": "Customer",
+  "labels_tags_codes": ["T0065", "T0080"],
   "labels_tags": ["Fake bank / financial institution", "Impersonation"],
-  "payment_instrument_code": "P01",  "payment_instrument": "Account-to-account transaction"
+  "payment_instrument_code": "T0115", "payment_instrument": "Account-to-account transaction"
 }
 ```
 
-### Checking and regenerating
+## 4. How the versions are built
+
+The versions are generated, not typed. The pipeline is in `build/`, and every step can be rerun:
+
+| Step | File | What it does |
+|---|---|---|
+| 1 | `build/extract.py` | Reads one PDF with pdfplumber and writes `build/extracted/<v>.json`: every table cell as the PDF holds it. The only step that needs the PDFs. |
+| 2 | `build/parse.py` | Splits each cell into definition, sources, examples and name qualifier. Every part is cut out of the cell verbatim. |
+| 3 | `build/transitions/<v>.json` | Curated. What each version's annex declares, in the change vocabulary, and the identity links a name match cannot find (a rename, a move, a split). Each record says whether the annex states it (`in_annex`). |
+| 4 | `build/build.py` | Assigns and freezes codes, carries identity through renames, moves and splits, compares consecutive versions, reconciles them with the annexes, and writes `versions/`, `lineage.json` and the crosswalk. |
 
 ```bash
-python3 validate.py              # every version; exits 1 on any failure
-python3 validate.py 7.0          # one version
-python3 build_schema.py 7.0      # regenerate that version's schema after editing its taxonomy
-python3 diff_versions.py 6.0 7.0 # what changed, and what the annex omits
+python3 build/extract.py EBA_..._v7.0.pdf   # only when a PDF changes; needs pdfplumber
+python3 build/build.py
+python3 build_schema.py
+python3 validate.py                         # jsonschema needed for the example check
 ```
 
-`validate.py` requires the `jsonschema` package for the example-record check and skips it with a warning if the package is absent.
+`validate.py` proves the transcription rather than trusting it: every definition plus its sources must reassemble, word for word, into the PDF cell it came from.
 
-### Updating to a new taxonomy version
+### Adding a new version
 
-1. Add new entries with the next free code in the relevant namespace, `status: "active"` and `introduced_in` set to the new version. Never reuse a code, and never renumber an existing one.
-2. Move removed entries to their dimension's `retired` array with `status: "retired"`, `retired_in`, a `reason` from `change_types`, and `superseded_by` where there are successors. Set `derived_from` on each successor.
-3. For entries that changed in place, set `last_modified_in` and `last_change_type`. Distinguish `redefined` from `recited` honestly: the first costs consumers a re-classification review, the second costs them nothing.
-4. Append a block to `changes` with one typed record per change, and append to `version_history`.
-5. Update `version`, `published` and `effective_from`.
-6. Run `build_schema.py`, then `validate.py`.
-7. Recheck anything in `derivations/` that maps to a retired or split code.
-8. During the six-month lead time consumers may need to accept both the outgoing and incoming version; `schema.json` pins one version by design, so tag the previous release.
+1. Run `build/extract.py` on the new PDF.
+2. Write `build/transitions/<v>.json` from its annex, one record per declared change. Add identity links for any rename or move the annex does not state; the build output lists every addition and retirement, which is where they show up.
+3. Add the version to `VERSIONS` and `EFFECTIVE` in `build/build.py`, then build, generate schemas and validate.
+4. Read `diff_versions.py <previous> <new> --undocumented` before adopting: it lists what the annex leaves out.
+5. Recheck anything in `derivations/` that maps to a split or retired code.
 
 ## Contact and corrections
 

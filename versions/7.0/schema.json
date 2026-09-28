@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EBA Fraud Taxonomy: fraud case classification record",
-  "description": "Validates one fraud-case classification against the EBA Fraud Taxonomy v7.0. This schema fixes the shape of a record. The permitted values are versioned data in taxonomy.json; the enums below are generated from it by build_schema.py and must not be edited by hand.",
+  "title": "EBA Fraud Taxonomy 7.0: fraud case classification record",
+  "description": "Validates one fraud-case classification against the EBA Fraud Taxonomy v7.0. The permitted codes are generated from taxonomy.json by build_schema.py.",
   "type": "object",
   "required": [
     "taxonomy_version",
@@ -13,27 +13,27 @@
     "taxonomy_version": {
       "type": "string",
       "const": "7.0",
-      "description": "Taxonomy version the record was classified under. Always store it: modi are added, split and retired between versions."
+      "description": "Taxonomy version the record was classified under. Always store it: entries are added, split, moved and retired between versions."
     },
     "method_code": {
       "type": "string",
       "enum": [
-        "M01",
-        "M02",
-        "M03",
-        "M04",
-        "M05",
-        "M06",
-        "M07",
-        "M08",
-        "M09",
-        "M10",
-        "M11",
-        "M12",
-        "M13",
-        "M14"
+        "T0001",
+        "T0002",
+        "T0004",
+        "T0005",
+        "T0006",
+        "T0007",
+        "T0008",
+        "T0010",
+        "T0011",
+        "T0012",
+        "T0013",
+        "T0015",
+        "T0016",
+        "T0017"
       ],
-      "description": "Method (how): attack vector or first point of contact, as an opaque code. Canonical machine value."
+      "description": "Method (how) as a code. Canonical machine value."
     },
     "method": {
       "type": "string",
@@ -57,37 +57,37 @@
     },
     "method_new_description": {
       "type": "string",
-      "description": "Required free text when method_code is M14 (New method)."
+      "description": "Required free text when method_code is T0017 (New method)."
     },
     "modus_code": {
       "type": "string",
       "enum": [
-        "D001",
-        "D002",
-        "D003",
-        "D004",
-        "D005",
-        "D006",
-        "D007",
-        "D008",
-        "D009",
-        "D010",
-        "D011",
-        "D012",
-        "D013",
-        "D014",
-        "D015",
-        "D016",
-        "D017",
-        "D018",
-        "D019",
-        "D020",
-        "D021",
-        "D022",
-        "D023",
-        "D999"
+        "T0019",
+        "T0020",
+        "T0105",
+        "T0022",
+        "T0106",
+        "T0023",
+        "T0025",
+        "T0121",
+        "T0095",
+        "T0122",
+        "T0029",
+        "T0031",
+        "T0117",
+        "T0033",
+        "T0034",
+        "T0036",
+        "T0038",
+        "T0039",
+        "T0110",
+        "T0045",
+        "T0046",
+        "T0047",
+        "T0112",
+        "T0048"
       ],
-      "description": "Modus (what): the fraudster's action leading to loss via a payment transaction, as an opaque code. Canonical machine value."
+      "description": "Modus (what) as a code. Canonical machine value."
     },
     "modus": {
       "type": "string",
@@ -121,16 +121,16 @@
     },
     "modus_new_description": {
       "type": "string",
-      "description": "Required free text when modus_code is D999 (New fraud type (describe))."
+      "description": "Required free text when modus_code is T0048 (New fraud type (describe))."
     },
     "initiator_code": {
       "type": "string",
       "enum": [
-        "I01",
-        "I02",
-        "I03"
+        "T0049",
+        "T0050",
+        "T0051"
       ],
-      "description": "Initiator (who): who initiated the affected payment transaction, as an opaque code. Canonical machine value."
+      "description": "Initiator (who) as a code. Canonical machine value."
     },
     "initiator": {
       "type": "string",
@@ -147,7 +147,7 @@
         "type": "string"
       },
       "uniqueItems": true,
-      "description": "Labels/tags (what else) as codes. Optional and deliberately unconstrained: the taxonomy states that the listed labels are suggestions and PSPs may add their own. Values starting with 'L' followed by three digits should resolve to taxonomy.json; anything else is institution-specific."
+      "description": "Labels/tags (what else) as codes. Deliberately unconstrained: the taxonomy states that its labels are suggestions and PSPs may add their own. Values of the form T followed by four digits should resolve to taxonomy.json; anything else is institution-specific."
     },
     "labels_tags": {
       "type": "array",
@@ -160,10 +160,10 @@
     "payment_instrument_code": {
       "type": "string",
       "enum": [
-        "P01",
-        "P02"
+        "T0115",
+        "T0116"
       ],
-      "description": "Payment instrument (optional): account-to-account or card, as an opaque code."
+      "description": "Payment instrument (optional) as a code."
     },
     "payment_instrument": {
       "type": "string",
@@ -179,7 +179,7 @@
       "if": {
         "properties": {
           "method_code": {
-            "const": "M14"
+            "const": "T0017"
           }
         },
         "required": [
@@ -196,7 +196,7 @@
       "if": {
         "properties": {
           "modus_code": {
-            "const": "D999"
+            "const": "T0048"
           }
         },
         "required": [

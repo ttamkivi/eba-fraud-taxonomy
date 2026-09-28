@@ -40,7 +40,7 @@ See `example-simplified-set.json` in this directory. Minimum fields:
   "name": "...",
   "maintainer": "...",
   "mappings": [
-    { "local_code": "...", "local_name": "...", "relation": "broader", "maps_to": ["D001"] }
+    { "local_code": "...", "local_name": "...", "relation": "broader", "maps_to": ["T0019"] }
   ]
 }
 ```

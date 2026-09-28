@@ -1,0 +1,53 @@
+{
+ "publisher": "Euro Banking Association (EBA)",
+ "publisher_body": "Expert Group on Payment Fraud-related Topics (EGPF), created by the EBA in February 2020",
+ "license": {
+  "name": "CC BY 4.0",
+  "url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "EBA Fraud Taxonomy by the Euro Banking Association, licensed under CC BY 4.0. Restructured into JSON with codes and lineage added by this repository; the EBA's text is otherwise reproduced verbatim.",
+  "usage_conditions": [
+   "Acknowledge the review and updating process and the expectation that updated versions are implemented effective 1 January following an annual review cycle, save emergency updates.",
+   "Adhere to the objective of a common pan-European fraud vocabulary without limitation on payment instrument type."
+  ]
+ },
+ "source_note": "This JSON is a community-maintained machine-readable transcription of the official EBA Fraud Taxonomy PDF. The PDF published by the EBA is the sole authoritative source; this file is not itself an EBA publication.",
+ "code_scheme": {
+  "format": "T followed by four digits, one series across every dimension and the high-level classifications.",
+  "rules": [
+   "A code identifies a concept, not a position. It is assigned the first time the concept appears in a transcribed version, and never renumbered or reused.",
+   "A concept keeps its code when it is renamed, moved to another dimension, or moved to another high-level classification. Only a split or merge creates new codes, and the new codes carry derived_from.",
+   "Codes are opaque on purpose. They say nothing about dimension or status, because both change between versions.",
+   "The EBA's PDF defines no codes. These are assigned by this repository. build/crosswalk-0.2.json maps the per-dimension codes of repository release 0.2 to these."
+  ]
+ },
+ "compatibility": {
+  "principle": "A record is classified under one version and carries that version. Consumers must expect records classified under a version other than the one they run, because the taxonomy is republished every June and adopters do not all move on the same day. The rules below let a consumer interpret such a record instead of rejecting it.",
+  "code_stability": "Because codes are global and follow the concept, a code read under any version means the same concept. What can differ between versions is where the concept sits (its dimension, its group) and what it is called. lineage.json records both for every version.",
+  "backward": {
+   "meaning": "A consumer on a newer version reading a record classified under an older version.",
+   "rule": "Resolve the record's codes against the version the record names. A code still present in the newer version is read directly, in whatever dimension it now sits. A retired code is found in the retired arrays; superseded_by gives its successors. Do not rewrite the stored record: interpret it, and keep the original version stamp."
+  },
+  "forward": {
+   "meaning": "A consumer on an older version reading a record classified under a newer version.",
+   "rule": "An unrecognised code must not be discarded and must not be treated as invalid. Widen it: follow derived_from to a predecessor the consumer knows, and failing that fall back to the high-level classification, which is coarser but stable. Record that the value was widened."
+  },
+  "unknown_code_rule": "Widen, never drop and never guess. Dropping an unknown code silently loses a case from every downstream count; guessing a sibling code invents data.",
+  "lossiness": {
+   "exact": "One code maps to one code. Safe in both directions. Includes renames and moves, which keep the code.",
+   "widening": "Several codes map to one coarser code. Safe: counts roll up without loss. This is the direction that keeps a trend series continuous across a split.",
+   "narrowing": "One code maps to several finer codes. Not automatically resolvable: the finer distinction was not in the original record. Keep the record at the coarser level or re-classify the case from its source material."
+  },
+  "dimension_moves": "A move keeps the code but changes which field of a record the code belongs in. A record classified under 6.0 carries Romance fraud in labels_tags_codes; under 7.0 the same code is a modus. Reading the old record, keep the code where it was classified. Counting across versions, count the code, not the field.",
+  "trend_series": "To carry a series across a split, sum the successors and attribute the total to the predecessor. To carry it across a rename, a move or a regroup, do nothing: the code is unchanged.",
+  "schema_versioning": "Each version has its own schema.json, pinned to that version, so validation is unambiguous about what a record claims to be. Select the schema by the record's taxonomy_version field."
+ },
+ "lifecycle_note": "Every entry carries status, introduced_in and, where it changed, last_modified_in and last_change_type, plus renamed_from, moved_from, regrouped_from and derived_from where they apply. introduced_in is the first transcribed version in which the entry appears; '<=3.1' means it was already present in 3.1, the earliest public version. declared_introduced_in is set where the annex printed in 3.1 says the entry was added in 3.0. Retired entries keep their code and move to their dimension's retired array.",
+ "definitions_note": "Definitions are the EBA's text, verbatim, with source attributions cut out into 'sources'. pdf_text holds the whole table cell exactly as extracted, including the attribution, so every definition can be checked against it. Where the EBA quotes a third party, the quotation marks and ellipses are the EBA's. Line breaks are collapsed and URLs the PDF wrapped are re-joined; nothing else is changed. The PDF governs.",
+ "dimension_labels": {
+  "method": "Method (how)",
+  "modus": "Modus (what)",
+  "initiator": "Initiator (who)",
+  "labels_tags": "Labels/tags (what else)",
+  "payment_instrument": "Payment instrument (optional)"
+ }
+}

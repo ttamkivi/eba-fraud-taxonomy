@@ -1,0 +1,188 @@
+{
+ "version": "4.0",
+ "previous": "3.1",
+ "source": "Annex (chapter 12) of EBA Fraud Taxonomy v4.0, 'Changes since EBA Fraud Taxonomy version 3.1'.",
+ "sources_last_checked": null,
+ "records": [
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "initiator",
+   "to": [
+    "Fraudster",
+    "Customer"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "'Modification of a payment order by the fraudster' added to Fraudster; an example moved from Customer to Fraudster."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "method",
+   "scope": "dimension",
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Definition of 'method' extended: '...or the point of compromise'."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "method",
+   "to": [
+    "Fake advertising"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Example in the high-level description updated."
+  },
+  {
+   "change_type": "retired",
+   "kind": "entry",
+   "dimension": "method",
+   "from": [
+    "Man in the middle"
+   ],
+   "in_annex": true,
+   "note": "Annex: 'no longer relevant: the method Malware normally applies in the context of modification of a payment order by the fraudster'."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "We’ve changed account number"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "from": [
+    "Your money is at risk"
+   ],
+   "to": [
+    "Your money / personal information is at risk"
+   ],
+   "in_annex": true,
+   "note": "Aligned with a new fraud trend."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "Your money / personal information is at risk"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Stop unauthorised access fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Claim a benefit fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Safe account fraud",
+    "Advance fee fraud",
+    "Extortion",
+    "Emotional manipulation"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Definitions refer to the handover of credentials in addition to money."
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Advance fee fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Annex: 'additional update to definition (new authoritative and publicly available source cited)'."
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Card lost or stolen",
+    "Fake institution",
+    "Impersonation of creditor"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "structure_changed",
+   "kind": "entry",
+   "dimension": "modus",
+   "scope": "attribute",
+   "in_annex": true,
+   "note": "'Possible labels/tags' completed for each modus. The annex counts 'definitions of 8 modi updated' but names seven distinct modi (Advance fee fraud is listed twice)."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Fake prize, sweepstakes, and lottery scams",
+    "Non-crypto investment scam",
+    "Discount / refund fraud"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Card not present",
+    "Card present",
+    "Fraudulent use of crypto currency"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification"
+  },
+  {
+   "change_type": "renamed",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "from": [
+    "Fraudulent use of cryptocurrency"
+   ],
+   "to": [
+    "Fraudulent use of crypto currency"
+   ],
+   "in_annex": false,
+   "note": "The annex reports an updated definition only; the name also changed."
+  }
+ ],
+ "other": [
+  "Chapter 'Review and updating process': updated timeline for the launch of the annual change cycle."
+ ]
+}

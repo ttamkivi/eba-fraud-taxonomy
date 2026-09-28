@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EBA Fraud Taxonomy 6.0: fraud case classification record",
-  "description": "Validates one fraud-case classification against the EBA Fraud Taxonomy v6.0. The permitted codes are generated from taxonomy.json by build_schema.py.",
+  "title": "EBA Fraud Taxonomy 5.0: fraud case classification record",
+  "description": "Validates one fraud-case classification against the EBA Fraud Taxonomy v5.0. The permitted codes are generated from taxonomy.json by build_schema.py.",
   "type": "object",
   "required": [
     "taxonomy_version",
@@ -12,7 +12,7 @@
   "properties": {
     "taxonomy_version": {
       "type": "string",
-      "const": "6.0",
+      "const": "5.0",
       "description": "Taxonomy version the record was classified under. Always store it: entries are added, split, moved and retired between versions."
     },
     "method_code": {
@@ -20,6 +20,7 @@
       "enum": [
         "T0001",
         "T0002",
+        "T0003",
         "T0004",
         "T0005",
         "T0006",
@@ -29,6 +30,7 @@
         "T0011",
         "T0012",
         "T0013",
+        "T0014",
         "T0015",
         "T0016",
         "T0017"
@@ -40,7 +42,8 @@
       "enum": [
         "Brute force",
         "Data breach / theft",
-        "Email contact",
+        "E-mail compromise",
+        "E-mail contact",
         "Fake advertising",
         "Fake merchant",
         "In person contact",
@@ -49,6 +52,7 @@
         "Phone contact",
         "Physical copy",
         "Physical theft",
+        "Social media compromise",
         "Social media contact",
         "Text message contact",
         "New method"
@@ -72,7 +76,6 @@
         "T0027",
         "T0029",
         "T0031",
-        "T0117",
         "T0033",
         "T0034",
         "T0036",
@@ -100,7 +103,6 @@
         "Emotional manipulation",
         "Extortion",
         "Impersonation of creditor",
-        "Impersonation of person with authority to instruct payments",
         "Overpayment fraud",
         "Phoney debt/bill collection",
         "Fake institution",

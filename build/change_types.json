@@ -1,0 +1,14 @@
+{
+ "added": "A new entry with no predecessor. Consumers add it.",
+ "retired": "An entry removed with no successor. Its code is kept and never reused. Records classified under an earlier version stay valid under that version.",
+ "split": "One entry replaced by several. Each successor carries derived_from; the retired predecessor carries superseded_by. Successors may sit in a different dimension from the predecessor. A trend series on the predecessor continues as the sum of its successors.",
+ "merged": "Several entries replaced by one. The survivor carries derived_from listing each predecessor.",
+ "renamed": "Same concept, different name. The code does not change, so stored records need no migration.",
+ "moved": "Same concept, different dimension (for example a label/tag becoming a modus). The code does not change: codes are global, not per dimension. The entry carries moved_from.",
+ "regrouped": "A modus moved to a different high-level classification. The code does not change; group_code does, and the entry carries regrouped_from.",
+ "redefined": "The EBA declares that the definition was updated. The annex usually calls this a clarification, but it does not say whether the meaning changed, so treat stored records as needing review.",
+ "recited": "The EBA declares that the definition was replaced with one from a different source. The EBA presents this as a change of source, not of meaning.",
+ "reworded": "Observed only: the definition text differs between versions and the annex does not declare it. This repository cannot tell a cosmetic rewording from a change of meaning, and does not guess.",
+ "source_updated": "Observed only: the definition text is unchanged but its cited source or link changed.",
+ "structure_changed": "A change to the taxonomy's structure rather than to an entry: a dimension added, a chapter added or reordered, or a new attribute on every entry."
+}

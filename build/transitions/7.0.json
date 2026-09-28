@@ -1,0 +1,88 @@
+{
+ "version": "7.0",
+ "previous": "6.0",
+ "source": "Annex (chapter 14) of EBA Fraud Taxonomy v7.0, 'Changes since EBA Fraud Taxonomy version 6.0', and chapter 13, 'Items that have been deleted'.",
+ "sources_last_checked": "2026-04",
+ "records": [
+  {
+   "change_type": "split",
+   "kind": "entry",
+   "dimension": "modus",
+   "from": [
+    "Emotional manipulation"
+   ],
+   "to": [
+    "Support a friend or family member fraud",
+    "Romance fraud",
+    "Charity / donation fraud"
+   ],
+   "in_annex": true,
+   "note": "The annex spells the first successor 'familiy'."
+  },
+  {
+   "change_type": "moved",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "dimension_to": "modus",
+   "from": [
+    "Romance fraud"
+   ],
+   "to": [
+    "Romance fraud"
+   ],
+   "in_annex": true,
+   "note": "'Included in previous versions of the EBA Fraud Taxonomy as a label/tag.'"
+  },
+  {
+   "change_type": "redefined",
+   "kind": "high_level_classification",
+   "dimension": "modus",
+   "to": [
+    "Please help"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "clarification",
+   "note": "Updated to capture the new modus 'charity / donation fraud'."
+  },
+  {
+   "change_type": "added",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "Money muling",
+    "Money mule victim",
+    "Card chip relay"
+   ],
+   "in_annex": true,
+   "eba_qualifier": "add-on"
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "modus",
+   "to": [
+    "Advance fee fraud"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "recited",
+   "kind": "entry",
+   "dimension": "labels_tags",
+   "to": [
+    "CEO fraud",
+    "Fake betting",
+    "Fake customer support"
+   ],
+   "in_annex": true
+  },
+  {
+   "change_type": "structure_changed",
+   "kind": "entry",
+   "dimension": "modus",
+   "scope": "document",
+   "in_annex": true,
+   "note": "New chapter 'Items that have been deleted from the EBA Fraud Taxonomy'. It lists one item, 'emotional manipulation'."
+  }
+ ]
+}

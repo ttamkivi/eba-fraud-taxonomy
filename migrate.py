@@ -1,144 +1,145 @@
 #!/usr/bin/env python3
-"""Move a classification record between taxonomy versions.
+"""Read a classification record under a different taxonomy version.
 
-Answers the practical question a consumer faces once the taxonomy is republished:
-a record arrives stamped with a version that is not the one you run. This resolves
-it using the lineage recorded in taxonomy.json, and is explicit about what the
+A record arrives stamped with a version that is not the one you run. This resolves
+each code against the target version using lineage.json, and says what the
 resolution cost.
 
-    python3 migrate.py example-case.json --to 7.0
-    python3 migrate.py --explain D009
+    python3 migrate.py example-case.json --to 5.0
+    python3 migrate.py --explain T0095
 
 Every result carries a fidelity: exact (safe), widening (safe, coarser),
-narrowing (ambiguous, needs a human or the source case). Unknown codes are
-widened, never dropped and never guessed.
+narrowing (ambiguous, needs a human or the source case), unresolved. Unknown codes
+are widened, never dropped and never guessed. The stored record is never rewritten.
 """
 import argparse
 import json
+import os
 import sys
 
-DIMENSIONS = ["method", "modus", "initiator", "labels_tags", "payment_instrument"]
+RANK = {"exact": 0, "widening": 1, "narrowing": 2, "unresolved": 3}
+FIELDS = {"method_code": "method", "modus_code": "modus", "initiator_code": "initiator",
+          "payment_instrument_code": "payment_instrument"}
 
 
-def load(path="taxonomy.json"):
-    return json.load(open(path, encoding="utf-8"))
+def load_lineage():
+    return json.load(open("lineage.json", encoding="utf-8"))
 
 
-def index(tax):
-    """code -> (dimension, entry, state)."""
-    idx = {}
-    for dim in DIMENSIONS:
-        block = tax["dimensions"][dim]
-        if dim == "modus":
-            for group in block["high_level_classifications"]:
-                for m in group["modi"]:
-                    idx[m["code"]] = (dim, m, "active")
-            ca = block["catch_all"]
-            idx[ca["code"]] = (dim, ca, "active")
-        else:
-            for v in block["values"]:
-                idx[v["code"]] = (dim, v, "active")
-        for r in block.get("retired", []):
-            idx[r["code"]] = (dim, r, "retired")
-    return idx
+def vkey(v):
+    return [int(x) for x in v.split(".")]
 
 
-def group_of(tax, code):
-    for group in tax["dimensions"]["modus"]["high_level_classifications"]:
-        for m in group["modi"]:
-            if m["code"] == code:
-                return group
-    return None
+def successors(lineage, code, target):
+    """Follow superseded_by through every split up to the target version."""
+    out, stack = [], [code]
+    while stack:
+        c = stack.pop()
+        rec = lineage["codes"][c]
+        if target in rec["versions"]:
+            out.append(c)
+            continue
+        for ev in rec["events"]:
+            if ev.get("superseded_by") and vkey(ev["version"]) <= vkey(target):
+                stack += ev["superseded_by"]
+    return sorted(set(out))
 
 
-def resolve(tax, idx, code):
-    """Resolve one code against the version held in taxonomy.json."""
-    if code not in idx:
-        return {"code": code, "status": "unknown", "fidelity": "unresolved",
-                "note": "Not present in this version. Widen it against the version that issued the record; "
-                        "do not drop it and do not substitute a sibling code."}
+def group_in(lineage, code, version):
+    """The high-level classification a modus sat in, in the version it was read from."""
+    tax = json.load(open(os.path.join("versions", version, "taxonomy.json"), encoding="utf-8"))
+    for g in tax["dimensions"]["modus"]["high_level_classifications"]:
+        if any(m["code"] == code for m in g["modi"]):
+            return g["code"], g["name"]
+    return None, None
 
-    dim, entry, state = idx[code]
 
-    if state == "active":
-        out = {"code": code, "name": entry["name"], "dimension": dim,
-               "status": "active", "fidelity": "exact"}
-        if entry.get("last_change_type") == "recited":
-            out["note"] = ("Definition was re-cited in %s from a different source. Meaning unchanged, so this "
-                           "is still an exact match and needs no re-classification." % entry["last_modified_in"])
-        if entry.get("derived_from"):
-            out["predecessor"] = entry["derived_from"]["code"]
-            out["note_forward"] = ("A consumer that predates %s will not know this code. It widens to %s."
-                                   % (entry["introduced_in"], entry["derived_from"]["code"]))
-        if entry.get("moved_from"):
-            out["moved_from"] = entry["moved_from"]
+def resolve(lineage, code, source, target, field_dim=None):
+    rec = lineage["codes"].get(code)
+    if rec is None:
+        return {"code": code, "fidelity": "unresolved",
+                "note": "Not a code in any transcribed version. Keep it as received; do not drop it and do not "
+                        "substitute a sibling."}
+    here = rec["versions"].get(target)
+    if here:
+        out = {"code": code, "name": here["name"], "dimension": here["dimension"], "fidelity": "exact"}
+        if field_dim and here["dimension"] != field_dim:
+            out["note"] = (f"Same concept, same code. It was classified as a {field_dim} under {source} and is a "
+                           f"{here['dimension']} under {target}. Keep it in the field it was classified in; count it "
+                           f"by code.")
+        was = rec["versions"].get(source)
+        if was and was["name"] != here["name"]:
+            out["renamed"] = {"from": was["name"], "to": here["name"]}
         return out
+    if vkey(target) > vkey(source):
+        succ = successors(lineage, code, target)
+        name = rec["versions"].get(source, {}).get("name")
+        if succ:
+            return {"code": code, "name": name, "fidelity": "narrowing" if len(succ) > 1 else "exact",
+                    "candidates": [{"code": c, **lineage["codes"][c]["versions"][target]} for c in succ],
+                    "note": f"Split before {target}. The record cannot say which successor applies, because the "
+                            f"distinction was added after it was classified. Keep it at this level or re-classify "
+                            f"from the source case; for counting, the successors sum back to it."}
+        return {"code": code, "name": name, "fidelity": "unresolved", "retired_in": rec.get("retired_in"),
+                "note": f"Retired in {rec.get('retired_in')} with no successor. The record stays valid under {source}."}
+    # the record is newer than the reader: widen
+    for d in rec.get("derived_from", []):
+        if target in lineage["codes"][d["code"]]["versions"]:
+            return {"code": code, "fidelity": "widening", "widened_to": d["code"],
+                    "name": lineage["codes"][d["code"]]["versions"][target]["name"],
+                    "note": f"{code} does not exist in {target}. It was split from {d['code']}, which does."}
+    if rec["kind"] == "entry" and rec["versions"].get(source, {}).get("dimension") == "modus":
+        gc, gn = group_in(lineage, code, source)
+        if gc and target in lineage["codes"][gc]["versions"]:
+            return {"code": code, "fidelity": "widening", "widened_to": gc, "name": gn,
+                    "note": f"{code} does not exist in {target}. Widened to its high-level classification."}
+    tax = json.load(open(os.path.join("versions", target, "taxonomy.json"), encoding="utf-8"))
+    dim = rec["versions"].get(source, {}).get("dimension")
+    if dim and dim not in tax["dimensions"]:
+        return {"code": code, "fidelity": "unresolved",
+                "note": f"The {dim} dimension does not exist in {target}. Keep the value as received; a {target} "
+                        f"reader has nowhere to put it."}
+    return {"code": code, "fidelity": "unresolved",
+            "note": f"{code} does not exist in {target} and has no predecessor there. Keep it as received."}
 
-    successors = entry.get("superseded_by", [])
-    if not successors:
-        return {"code": code, "name": entry["name"], "dimension": dim, "status": "retired",
-                "fidelity": "unresolved",
-                "note": "Retired in %s with no successor. Records already classified with it stay valid under "
-                        "their own version." % entry.get("retired_in")}
 
-    return {"code": code, "name": entry["name"], "dimension": dim, "status": "retired",
-            "retired_in": entry.get("retired_in"), "reason": entry.get("reason"),
-            "candidates": [{"code": c, "name": idx[c][1]["name"]} for c in successors if c in idx],
-            "fidelity": "narrowing",
-            "note": "This code was %s in %s. The record cannot say which successor applies, because the "
-                    "distinction was added after it was classified. Keep it at this level, or re-classify from "
-                    "the source case. For counting, the successors sum back to this code."
-                    % (entry.get("reason"), entry.get("retired_in"))}
-
-
-def migrate(tax, record, target):
-    idx = index(tax)
-    source = record.get("taxonomy_version", "unstated")
+def migrate(lineage, record, target):
+    source = record.get("taxonomy_version")
+    if not source:
+        sys.exit("record has no taxonomy_version: it cannot be interpreted safely")
     report = {"from_version": source, "to_version": target, "fields": {}, "overall": "exact"}
-    rank = {"exact": 0, "widening": 1, "narrowing": 2, "unresolved": 3}
-
-    fields = [("method_code", "method"), ("modus_code", "modus"),
-              ("initiator_code", "initiator"), ("payment_instrument_code", "payment_instrument")]
-    for code_field, _ in fields:
-        if code_field in record:
-            r = resolve(tax, idx, record[code_field])
-            report["fields"][code_field] = r
-            if rank[r["fidelity"]] > rank[report["overall"]]:
-                report["overall"] = r["fidelity"]
+    for field, dim in FIELDS.items():
+        if field in record:
+            r = resolve(lineage, record[field], source, target, dim)
+            report["fields"][field] = r
+            report["overall"] = max(report["overall"], r["fidelity"], key=RANK.get)
     if "labels_tags_codes" in record:
-        rs = [resolve(tax, idx, c) for c in record["labels_tags_codes"]]
+        rs = [resolve(lineage, c, source, target, "labels_tags") for c in record["labels_tags_codes"]]
         report["fields"]["labels_tags_codes"] = rs
         for r in rs:
-            if rank[r["fidelity"]] > rank[report["overall"]]:
-                report["overall"] = r["fidelity"]
-
-    if source != target and source != "unstated":
-        report["note"] = ("The stored record keeps taxonomy_version %s. Interpretation under %s is a read-time "
-                          "operation; rewriting the stamp would destroy the only evidence of what was actually "
-                          "assessed at the time." % (source, target))
+            report["overall"] = max(report["overall"], r["fidelity"], key=RANK.get)
+    if source != target:
+        report["note"] = (f"The stored record keeps taxonomy_version {source}. Reading it under {target} is a "
+                          "read-time operation; rewriting the stamp would destroy the evidence of what was assessed.")
     return report
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("record", nargs="?", help="path to a classification record")
-    ap.add_argument("--to", help="target taxonomy version")
-    ap.add_argument("--explain", metavar="CODE", help="explain how one code resolves")
-    ap.add_argument("--taxonomy", default="taxonomy.json")
+    ap.add_argument("record", nargs="?")
+    ap.add_argument("--to", help="target taxonomy version (default: latest)")
+    ap.add_argument("--explain", metavar="CODE", help="print one code's full history")
     args = ap.parse_args()
-
-    tax = load(args.taxonomy)
-
+    lineage = load_lineage()
     if args.explain:
-        print(json.dumps(resolve(tax, index(tax), args.explain), indent=2, ensure_ascii=False))
+        rec = lineage["codes"].get(args.explain)
+        print(json.dumps(rec if rec else {"code": args.explain, "status": "unknown"}, indent=2, ensure_ascii=False))
         return 0
-
     if not args.record:
         ap.print_help()
         return 2
-
     record = json.load(open(args.record, encoding="utf-8"))
-    report = migrate(tax, record, args.to or tax["version"])
+    report = migrate(lineage, record, args.to or lineage["versions"][-1])
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0 if report["overall"] in ("exact", "widening") else 1
 

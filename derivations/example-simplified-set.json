@@ -11,36 +11,55 @@
       "local_code": "SCAM_IMPERSONATION",
       "local_name": "Impersonation scam",
       "relation": "broader",
-      "maps_to": ["D001", "D002", "D003", "D016"],
+      "maps_to": [
+        "T0019",
+        "T0020",
+        "T0105",
+        "T0036"
+      ],
       "note": "Covers the 'your money is at risk' modi plus the fake institution modus."
     },
     {
       "local_code": "SCAM_INVESTMENT",
       "local_name": "Investment or advance fee scam",
       "relation": "broader",
-      "maps_to": ["D004", "D005", "D006"]
+      "maps_to": [
+        "T0022",
+        "T0106",
+        "T0023"
+      ]
     },
     {
       "local_code": "SCAM_PURCHASE",
       "local_name": "Purchase scam",
       "relation": "exact",
-      "maps_to": ["D007"]
+      "maps_to": [
+        "T0025"
+      ]
     },
     {
       "local_code": "SCAM_RELATIONSHIP",
       "local_name": "Relationship or emotional scam",
       "relation": "broader",
-      "maps_to": ["D008", "D009", "D010"],
+      "maps_to": [
+        "T0121",
+        "T0095",
+        "T0122"
+      ],
       "note": "These three replaced a single modus in v7.0. A local value at this level is stable across that split, which is one reason to map at a coarser level during a transition."
     },
     {
       "local_code": "TAKEOVER",
       "local_name": "Account or card takeover",
       "relation": "broader",
-      "maps_to": ["D017", "D018", "D019"]
+      "maps_to": [
+        "T0038",
+        "T0039",
+        "T0110"
+      ]
     }
   ],
   "not_covered": {
-    "note": "This example deliberately does not map the first party fraud classification (D020 to D023). The taxonomy states those are for internal reporting and not for fraud intelligence sharing, so a derivation intended for cross-institution exchange should leave them out rather than map them."
+    "note": "This example deliberately does not map the first party fraud classification (T0045, T0046, T0047, T0112). The taxonomy states those are for internal reporting and not for fraud intelligence sharing, so a derivation intended for cross-institution exchange should leave them out rather than map them."
   }
 }
