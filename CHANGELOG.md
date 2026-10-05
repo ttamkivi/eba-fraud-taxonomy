@@ -2,6 +2,10 @@
 
 Changes to this repository. Changes to the taxonomy itself are recorded by the EBA and mirrored in each version's `changes`.
 
+## Unreleased
+
+Status line in the README now states that the repository is governed by the EBA, maintained by volunteers in the EBA working group, with the technical implementation done by an outsourced build partner. It previously described the repository as a community draft and not an EBA publication. The PDF remains the authoritative text.
+
 ## 0.3.0 (2026-09-28)
 
 Every public version, verbatim, with one code per concept across all of them. **This release renumbers every code**; see "Global codes" below and `build/crosswalk-0.2.json`.
