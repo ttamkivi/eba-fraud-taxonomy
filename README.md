@@ -17,7 +17,7 @@ This repository does that transcription once, in the open, for every version, so
 - **Rules for consumers on different versions**, and `migrate.py` to apply them: a record classified under one version can be read under another without being rejected or silently mangled.
 - **A validation schema per version**, and a path for simplified local vocabularies that stay reconcilable with everyone else's.
 
-**Status: governed by the EBA, version 0.3.0.** This repository is governed by the Euro Banking Association, which holds the intellectual property in the taxonomy. It is maintained by volunteers in the EBA working group, and the technical implementation is done by an outsourced build partner. The PDF remains the authoritative text, and this repository defers to it wherever the two differ.
+**Status: voluntary draft, version 0.3.0.** This repository is voluntary work by users of the taxonomy, prepared for the Euro Banking Association and not yet adopted by it. The EBA owns the taxonomy and holds the intellectual property in it. The PDF remains the authoritative text, and this repository defers to it wherever the two differ.
 
 ```bash
 python3 validate.py               # every version, every cross-version check

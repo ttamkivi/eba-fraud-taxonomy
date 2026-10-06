@@ -4,7 +4,7 @@ Changes to this repository. Changes to the taxonomy itself are recorded by the E
 
 ## Unreleased
 
-Status line in the README now states that the repository is governed by the EBA, maintained by volunteers in the EBA working group, with the technical implementation done by an outsourced build partner. It previously described the repository as a community draft and not an EBA publication. The PDF remains the authoritative text.
+Status line in the README corrected. An earlier edit said the repository is governed by the EBA, maintained by volunteers in the EBA working group, with the technical implementation done by an outsourced build partner. Nothing confirms the EBA has adopted it, and the claim contradicted the LICENSE and the rule to propose changes through the EBA. It now says the repository is voluntary work prepared for the EBA and not yet adopted by it, that the EBA owns the taxonomy and its IP, and that the PDF remains the authoritative text.
 
 ## 0.3.0 (2026-09-28)
 
