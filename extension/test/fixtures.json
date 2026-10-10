@@ -1,0 +1,382 @@
+[
+ {
+  "text": "Alert: dormant account reactivated with an outsized outgoing transfer. The savings account of customer Thomas Janssens had no activity for 14 months. On 03/10/2026 a new device was registered and the phone number was changed. At 02:58 an online transfer of EUR 18,400 to a new beneficiary, BE68539007547034, was approved with two in-app confirmations using the customer's own credentials. The customer has not been contacted yet. Contact on +32 470 12 34 56.",
+  "expected": {
+   "classification": {
+    "method": null,
+    "modus": "Pure account takeover",
+    "initiator": "Customer",
+    "instrument": "Account-to-account transaction",
+    "labels": [],
+    "high_level_classification": "Account / card / card details / digital wallet takeover by unauthorised party",
+    "codes": {
+     "method": null,
+     "modus": "T0038",
+     "initiator": "T0049",
+     "instrument": "T0115",
+     "labels": []
+    }
+   },
+   "evidence": [
+    {
+     "dimension": "modus",
+     "value": "Pure account takeover",
+     "code": "T0038",
+     "quote": "new device was registered"
+    },
+    {
+     "dimension": "initiator",
+     "value": "Customer",
+     "code": "T0049",
+     "quote": "customer's own credentials"
+    },
+    {
+     "dimension": "initiator",
+     "value": "Fraudster",
+     "code": "T0050",
+     "quote": "new device was registered"
+    },
+    {
+     "dimension": "instrument",
+     "value": "Account-to-account transaction",
+     "code": "T0115",
+     "quote": "transfer"
+    }
+   ],
+   "confidence": {
+    "method": "none",
+    "modus": "moderate",
+    "initiator": "contested",
+    "instrument": "moderate"
+   }
+  }
+ },
+ {
+  "text": "Alert: dormant account reactivated with an outsized outgoing transfer. The savings account of customer Thomas Janssens had no activity for 14 months. On 03/10/2026 a new device was registered and the phone number was changed. At 02:58 an online transfer of EUR 18,400 to a new beneficiary, BE68539007547034, was approved with two in-app confirmations using the customer's own credentials. The customer has not been contacted yet. Contact on +32 470 12 34 56. Analyst update. The customer was reached at 09:40. He did not make the transfer himself, but he did approve two prompts in his banking app after a call from someone claiming to be from the bank's security team. The caller said the account was under attack and that the money had to be moved to a safe account. The new device and the phone number change were done by the caller during the call, using remote access (AnyDesk). Further review. The customer now recalls a text message with a link to a cloned version of the bank's login page, received two days before the call, where he entered his credentials. The receiving account forwarded the funds on within the hour to two further accounts, which points to a mule account.",
+  "expected": {
+   "classification": {
+    "method": "Text message contact",
+    "modus": "Safe account fraud",
+    "initiator": "Customer",
+    "instrument": "Account-to-account transaction",
+    "labels": [
+     "Money muling",
+     "Phishing",
+     "Smishing",
+     "Vishing",
+     "Fake bank / financial institution"
+    ],
+    "high_level_classification": "Your money / personal information is at risk",
+    "codes": {
+     "method": "T0016",
+     "modus": "T0019",
+     "initiator": "T0049",
+     "instrument": "T0115",
+     "labels": [
+      "T0124",
+      "T0089",
+      "T0098",
+      "T0103",
+      "T0065"
+     ]
+    }
+   },
+   "evidence": [
+    {
+     "dimension": "method",
+     "value": "Phone contact",
+     "code": "T0011",
+     "quote": "call"
+    },
+    {
+     "dimension": "method",
+     "value": "Text message contact",
+     "code": "T0016",
+     "quote": "text message"
+    },
+    {
+     "dimension": "method",
+     "value": "Text message contact",
+     "code": "T0016",
+     "quote": "text message with a link to a cloned version of the bank's login page, received two days before"
+    },
+    {
+     "dimension": "method",
+     "value": "Malware",
+     "code": "T0008",
+     "quote": "remote access"
+    },
+    {
+     "dimension": "modus",
+     "value": "Safe account fraud",
+     "code": "T0019",
+     "quote": "safe account"
+    },
+    {
+     "dimension": "modus",
+     "value": "Pure account takeover",
+     "code": "T0038",
+     "quote": "new device was registered"
+    },
+    {
+     "dimension": "initiator",
+     "value": "Customer",
+     "code": "T0049",
+     "quote": "approve two prompts"
+    },
+    {
+     "dimension": "initiator",
+     "value": "Customer",
+     "code": "T0049",
+     "quote": "customer's own credentials"
+    },
+    {
+     "dimension": "initiator",
+     "value": "Fraudster",
+     "code": "T0050",
+     "quote": "new device was registered"
+    },
+    {
+     "dimension": "instrument",
+     "value": "Account-to-account transaction",
+     "code": "T0115",
+     "quote": "transfer"
+    },
+    {
+     "dimension": "labels",
+     "value": "Money muling",
+     "code": "T0124",
+     "quote": "mule"
+    },
+    {
+     "dimension": "labels",
+     "value": "Smishing",
+     "code": "T0098",
+     "quote": "text message with a link to a cloned"
+    },
+    {
+     "dimension": "labels",
+     "value": "Vishing",
+     "code": "T0103",
+     "quote": "call from someone claiming to be from the bank's security team"
+    },
+    {
+     "dimension": "labels",
+     "value": "Phishing",
+     "code": "T0089",
+     "quote": "cloned version"
+    },
+    {
+     "dimension": "labels",
+     "value": "Fake bank / financial institution",
+     "code": "T0065",
+     "quote": "claiming to be from the bank"
+    }
+   ],
+   "confidence": {
+    "method": "high",
+    "modus": "high",
+    "initiator": "high",
+    "instrument": "moderate"
+   }
+  }
+ },
+ {
+  "text": "The customer received a text message with a link to a cloned version of the bank's login page and entered credentials. Funds were moved on to two mule accounts.",
+  "expected": {
+   "classification": {
+    "method": "Text message contact",
+    "modus": "New fraud type (describe)",
+    "initiator": null,
+    "instrument": null,
+    "labels": [
+     "Money muling",
+     "Phishing",
+     "Smishing"
+    ],
+    "high_level_classification": "Not covered by the taxonomy",
+    "codes": {
+     "method": "T0016",
+     "modus": "T0048",
+     "initiator": null,
+     "instrument": null,
+     "labels": [
+      "T0124",
+      "T0089",
+      "T0098"
+     ]
+    }
+   },
+   "evidence": [
+    {
+     "dimension": "method",
+     "value": "Text message contact",
+     "code": "T0016",
+     "quote": "text message"
+    },
+    {
+     "dimension": "labels",
+     "value": "Money muling",
+     "code": "T0124",
+     "quote": "mule"
+    },
+    {
+     "dimension": "labels",
+     "value": "Smishing",
+     "code": "T0098",
+     "quote": "text message with a link to a cloned"
+    },
+    {
+     "dimension": "labels",
+     "value": "Phishing",
+     "code": "T0089",
+     "quote": "cloned version"
+    },
+    {
+     "dimension": "modus",
+     "value": "New fraud type (describe)",
+     "code": "T0048",
+     "quote": "no modus phrase matched"
+    }
+   ],
+   "confidence": {
+    "method": "moderate",
+    "modus": "none",
+    "initiator": "none",
+    "instrument": "none"
+   }
+  }
+ },
+ {
+  "text": "Customer paid a deposit to a fake shop found through an advert on social media. The goods never arrived.",
+  "expected": {
+   "classification": {
+    "method": "Fake advertising",
+    "modus": "Online shopping fraud",
+    "initiator": null,
+    "instrument": null,
+    "labels": [],
+    "high_level_classification": "I am a seller/buyer",
+    "codes": {
+     "method": "T0005",
+     "modus": "T0025",
+     "initiator": null,
+     "instrument": null,
+     "labels": []
+    }
+   },
+   "evidence": [
+    {
+     "dimension": "method",
+     "value": "Social media contact",
+     "code": "T0015",
+     "quote": "social media"
+    },
+    {
+     "dimension": "method",
+     "value": "Fake merchant",
+     "code": "T0006",
+     "quote": "fake shop"
+    },
+    {
+     "dimension": "method",
+     "value": "Fake advertising",
+     "code": "T0005",
+     "quote": "advert"
+    },
+    {
+     "dimension": "modus",
+     "value": "Online shopping fraud",
+     "code": "T0025",
+     "quote": "goods"
+    }
+   ],
+   "confidence": {
+    "method": "contested",
+    "modus": "high",
+    "initiator": "none",
+    "instrument": "none"
+   }
+  }
+ },
+ {
+  "text": "Card details were used for a card not present purchase abroad without the customer.",
+  "expected": {
+   "classification": {
+    "method": null,
+    "modus": "Control of card or card details by unauthorised party",
+    "initiator": "Fraudster",
+    "instrument": null,
+    "labels": [],
+    "high_level_classification": "Account / card / card details / digital wallet takeover by unauthorised party",
+    "codes": {
+     "method": null,
+     "modus": "T0110",
+     "initiator": "T0050",
+     "instrument": null,
+     "labels": []
+    }
+   },
+   "evidence": [
+    {
+     "dimension": "modus",
+     "value": "Online shopping fraud",
+     "code": "T0025",
+     "quote": "purchase"
+    },
+    {
+     "dimension": "modus",
+     "value": "Control of card or card details by unauthorised party",
+     "code": "T0110",
+     "quote": "Card details were used"
+    },
+    {
+     "dimension": "initiator",
+     "value": "Fraudster",
+     "code": "T0050",
+     "quote": "without the customer"
+    }
+   ],
+   "confidence": {
+    "method": "none",
+    "modus": "contested",
+    "initiator": "moderate",
+    "instrument": "none"
+   }
+  }
+ },
+ {
+  "text": "Nothing recognisable here, just a generic description of an event.",
+  "expected": {
+   "classification": {
+    "method": null,
+    "modus": "New fraud type (describe)",
+    "initiator": null,
+    "instrument": null,
+    "labels": [],
+    "high_level_classification": "Not covered by the taxonomy",
+    "codes": {
+     "method": null,
+     "modus": "T0048",
+     "initiator": null,
+     "instrument": null,
+     "labels": []
+    }
+   },
+   "evidence": [
+    {
+     "dimension": "modus",
+     "value": "New fraud type (describe)",
+     "code": "T0048",
+     "quote": "no modus phrase matched"
+    }
+   ],
+   "confidence": {
+    "method": "none",
+    "modus": "none",
+    "initiator": "none",
+    "instrument": "none"
+   }
+  }
+ }
+]

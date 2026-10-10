@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "EBA Fraud Taxonomy Classifier (reference MVP)",
+  "version": "0.2.0",
+  "description": "Select the text of a fraud case, press the hotkey, and get the EBA Fraud Taxonomy codes with the words that justify them, ready to save as a versioned case comment. Runs in the browser and sends nothing anywhere.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Classify the selected case text"
+  },
+  "commands": {
+    "classify-selection": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Classify the selected case text"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'none'"
+  }
+}

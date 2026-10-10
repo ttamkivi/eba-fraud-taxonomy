@@ -16,6 +16,7 @@ This repository does that transcription once, in the open, for every version, so
 - **A reconciliation of each annual cycle against the EBA's own annex**, in both directions: what changed but is not declared, and what is declared but not visible.
 - **Rules for consumers on different versions**, and `migrate.py` to apply them: a record classified under one version can be read under another without being rejected or silently mangled.
 - **A validation schema per version**, and a path for simplified local vocabularies that stay reconcilable with everyone else's.
+- **A classifier plugin (reference MVP)**, in `extension/`: a browser extension that reads a case the analyst selects, sets personal data aside, matches the words against rules written for the taxonomy, and returns the codes with the words behind each one, as a versioned case comment. It runs in the browser and sends nothing anywhere. See [`extension/README.md`](extension/README.md).
 
 **Status: voluntary draft, version 0.3.0.** This repository is voluntary work by users of the taxonomy, prepared for the Euro Banking Association and not yet adopted by it. The EBA owns the taxonomy and holds the intellectual property in it. The PDF remains the authoritative text, and this repository defers to it wherever the two differ.
 
@@ -41,6 +42,7 @@ python3 migrate.py example-case.json --to 6.0
 | `build_schema.py` | Regenerates the schemas. |
 | `build/` | How the versions are made, so the transcription is auditable rather than asserted. See section 4. |
 | `derivations/` | How to declare a local or simplified vocabulary that stays traceable to this one. |
+| `extension/` | The classifier plugin: a browser extension with reference rules, generated from `taxonomy.json`, an invented case to try it on, and its checks (`node extension/test/run.js`). |
 | `CHANGELOG.md` | Changes to this repository. Changes to the taxonomy are in each version's `changes`. |
 | `LICENSE` | CC BY 4.0. |
 
@@ -241,6 +243,14 @@ python3 validate.py                         # jsonschema needed for the example 
 3. Add the version to `VERSIONS` and `EFFECTIVE` in `build/build.py`, then build, generate schemas and validate.
 4. Read `diff_versions.py <previous> <new> --undocumented` before adopting: it lists what the annex leaves out.
 5. Recheck anything in `derivations/` that maps to a split or retired code.
+
+## 5. Applying the taxonomy to a case
+
+The files above make the taxonomy machine-readable. Applying it to a real case is the step most implementations do by hand, and the one where banks drift apart: each shortens the lists to a handful of headings, and the route back to the codes is lost.
+
+`extension/` is a reference MVP for that step, proposed to the EBA Fraud Taxonomy Implementation Guidance Group. It is a browser extension that works next to whatever case tool a bank already uses. It reads only the text the analyst selects, sets personal data aside, matches the words against inspectable rules, and returns method, modus, initiator, instrument and labels, each with its code from `taxonomy.json` and the words that produced it. The result goes back into the case as a structured comment, numbered version 1, 2, 3 as the case develops, with what changed and why. The analyst decides.
+
+The rules are deterministic, so every value can be traced and disagreed with, and a provider could put a model behind the same interface and be checked against the same cases. Accuracy has not been measured on labelled cases yet. Codes in the plugin are generated from this repository by `extension/build_data.py`, and `node extension/test/run.js` fails if they drift.
 
 ## Contact and corrections
 

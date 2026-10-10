@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invented case for trying the classifier plugin</title>
+<style>
+  :root{--ink:#37384c;--ink2:#5b5d73;--ink3:#7d8097;--rule:#e3e5ee;--sunk:#f3f4f8;--pink:#f24abd}
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.55 -apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#f4f5f9}
+  header{background:var(--ink);color:#fff;padding:12px 20px;display:flex;gap:12px;align-items:center}
+  header b{font-size:15px} header span{color:#d3d5e4;font-size:13px}
+  main{max-width:900px;margin:0 auto;padding:18px 16px 60px;display:flex;flex-direction:column;gap:12px}
+  .how{background:#fff;border:2px dashed var(--pink);border-radius:10px;padding:12px 16px;font-size:13px}
+  .how ol{margin:6px 0 0;padding-left:20px}
+  .card{background:#fff;border:1px solid var(--rule);border-radius:10px}
+  .hd{padding:9px 14px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;font-weight:700;font-size:13px}
+  .hd span{font-weight:600;color:var(--ink3);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .bd{padding:10px 14px}
+  dl{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;margin:0} dt{color:var(--ink3);font-weight:600}
+  ul{margin:0;padding-left:18px}
+  .thread{display:flex;flex-direction:column;gap:8px}
+  .cmt{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px 14px;white-space:pre-wrap}
+  .cmt small{display:block;color:var(--ink3);margin-bottom:4px;white-space:normal}
+  textarea{width:100%;min-height:110px;font:inherit;padding:10px;border:1px solid var(--rule);border-radius:8px}
+  button{font:600 13px inherit;padding:7px 14px;border-radius:7px;border:1px solid var(--rule);background:#fff;cursor:pointer}
+  button.pri{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .sample{font-size:12.5px;color:var(--ink2);background:var(--sunk);border-radius:8px;padding:8px 10px;margin-top:8px}
+</style>
+</head>
+<body>
+<header><b>Case FRD-2026-0412</b><span>Demo Bank NV &middot; an invented case for trying the classifier plugin</span></header>
+<main>
+  <div class="how"><b>How to try it</b> (the plugin must be loaded from the <code>extension</code> folder, see its README)
+    <ol>
+      <li>Press <b>Select the case</b>, then the hotkey (<b>Ctrl+Shift+Y</b>, on a Mac <b>Command+Shift+Y</b>). The plugin opens with version 1.</li>
+      <li>Click into the comment box and press <b>Insert as case comment</b> in the plugin, then <b>Add comment</b>.</li>
+      <li>Add the analyst's note (use the sample below), press <b>Select the case</b> and the hotkey again. Version 2 shows what changed.</li>
+    </ol>
+  </div>
+
+  <div id="case">
+    <div class="card"><div class="hd">Alert<span>Fraud &middot; 02:58</span></div><div class="bd">
+      <dl><dt>rule</dt><dd>Dormant Account Reactivation With Outsized Outgoing Transfer</dd><dt>customer</dt><dd>Customer Thomas Janssens, savings account</dd></dl></div></div>
+    <div class="card" style="margin-top:12px"><div class="hd">Recorded facts<span>captured with the alert</span></div><div class="bd"><ul>
+      <li>The savings account of customer Thomas Janssens had no activity for 14 months.</li>
+      <li>On 03/10/2026 a new device was registered and the phone number was changed.</li>
+      <li>The banking app reported an active phone call during the session.</li>
+      <li>At 02:58 an online transfer of EUR 18,400 to a new beneficiary, BE68539007547034, was approved with two in-app confirmations using the customer's own credentials.</li>
+      <li>The customer has not been contacted yet.</li>
+    </ul></div></div>
+    <div class="card" style="margin-top:12px"><div class="hd">Case thread<span>newest at the bottom</span></div><div class="bd thread" id="thread"><div style="color:var(--ink3);font-style:italic" id="empty">No comments yet.</div></div></div>
+  </div>
+
+  <div class="card"><div class="hd">Add a comment<span>S. Dubois, analyst</span></div><div class="bd">
+    <textarea id="box" placeholder="Write a comment, or click here and use Insert as case comment in the plugin"></textarea>
+    <div class="row"><button class="pri" id="add">Add comment</button><button id="pick">Select the case</button><button id="fill">Use the sample analyst note</button></div>
+    <div class="sample" id="sampleText">Customer reached at 09:40. He did not make the transfer himself, but he did approve two prompts in his banking app after a call from someone claiming to be from the bank's security team. The caller said the account was under attack and the money had to be moved to a safe account. He also recalls a text message with a link to a cloned version of the bank's login page, two days before the call, where he entered his credentials. The receiving account forwarded the funds within the hour to two further accounts, which points to a mule account.</div>
+  </div></div>
+</main>
+<script>
+  const $ = s => document.querySelector(s);
+  $('#add').onclick = () => {
+    const t = $('#box').value.trim(); if (!t) return;
+    const plugin = /^EBA Fraud Taxonomy classification/.test(t);
+    const d = document.createElement('div'); d.className = 'cmt';
+    d.innerHTML = '<small></small>'; d.querySelector('small').textContent = (plugin ? 'Classifier plugin, saved by S. Dubois' : 'S. Dubois, analyst') + ' · ' + new Date().toTimeString().slice(0, 5);
+    d.appendChild(document.createTextNode(t));
+    $('#thread').appendChild(d); $('#empty').hidden = true; $('#box').value = '';
+  };
+  $('#fill').onclick = () => { $('#box').value = $('#sampleText').textContent; $('#box').focus(); };
+  $('#pick').onclick = () => { const r = document.createRange(); r.selectNodeContents($('#case')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+</script>
+</body>
+</html>
